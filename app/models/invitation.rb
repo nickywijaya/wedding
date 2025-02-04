@@ -1,8 +1,0 @@
-class Invitation < ApplicationRecord
-  self.table_name = "invitations"
-
-  has_many :invitation_guests, class_name: 'InvitationGuest', foreign_key: :invitation_id
-  has_many :guests, class_name: 'Guest', through: :invitation_guests
-
-  belongs_to :venue, class_name: 'Venue'
-end
