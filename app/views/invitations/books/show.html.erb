@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+
+  <%= stylesheet_link_tag 'para', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <!-- Parallax Section 1: Welcome -->
+  <div class="parallax" id="parallax-1" style="background-image: url('<%= @background_image_url %>');">
+    <div class="content">
+      <h1>Hi <%= @guests %> you are invited to</h1>
+      <h1> Nicky & Nova Holy Matrimony</h1>
+      <p>Join us by click the reservation down below</p>
+    </div>
+  </div>
+
+  <!-- Wedding Details Section -->
+  <section>
+    <div class="section-header">
+      <h2>Wedding Details</h2>
+    </div>
+    <p>Date: <%= @venue.start_time.strftime("%B %d, %Y") %></p>
+    <p>Venue: <%= @venue.name %></p>
+    <p><%= @venue.address %></p>
+    <iframe src=<%= @venue.map_src %> width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <!-- Parallax Section 2: Our Story -->
+  <div class="parallax" id="parallax-2" style="background-image: url('<%= @story_background_image %>');">
+    <div class="content">
+      <h2>Our Story</h2>
+      <p><%= @couple_story %></p>
+    </div>
+  </div>
+</body>
+</html>
