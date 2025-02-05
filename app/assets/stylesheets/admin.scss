@@ -1,0 +1,120 @@
+/* app/assets/stylesheets/application.css */
+
+// listing section
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.btn {
+  padding: 5px 10px;
+  margin: 2px;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+// form section
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: .5rem;
+  border-radius: .25rem;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  padding: .5rem 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Initially hidden */
+  position: fixed;
+  z-index: 1; /* Stay on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+  padding-top: 60px;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* You can adjust this */
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Button styles */
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

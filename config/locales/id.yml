@@ -1,0 +1,11 @@
+id:
+  services:
+    missing_attributes: '%{attribute} tidak ditemukan'
+    venue_services:
+      missing_attributes: '%{attribute} tidak boleh kosong'
+      invalid_phone_number: Format nomor HP salah
+      invalid_alternative_phone: Format nomor telepon alternatif salah
+    errors:
+      action_forbidden: Tidak dapat melakukan action tersebut
+      params_invalid: 'Parameter %{field} tidak valid'
+      params_invalid_with_message: 'Parameter %{field} %{message}'
