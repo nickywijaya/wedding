@@ -6,6 +6,7 @@ class CreateVenuesTable < ActiveRecord::Migration[5.2]
       t.text :map_src
       t.datetime :start_time
       t.datetime :end_time
+      t.integer :max_attendees
 
       t.timestamps
     end
