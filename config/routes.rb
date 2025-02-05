@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   namespace :admin, path: '_adminz' do
     resources :venues
+
+    resources :weddings
   end
 
 

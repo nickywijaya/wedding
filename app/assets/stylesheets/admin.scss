@@ -1,4 +1,6 @@
 /* app/assets/stylesheets/application.css */
+
+// listing section
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -37,4 +39,29 @@ th {
 .btn-success {
   background-color: #28a745;
   color: white;
+}
+
+// form section
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: .5rem;
+  border-radius: .25rem;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  padding: .5rem 1rem;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
 }

@@ -1,0 +1,52 @@
+<h1>Edit Venue Details</h1>
+
+<%= stylesheet_link_tag "admin" %>
+
+<%= form_with model: @venue, url: admin_venue_path(@venue), method: :patch, local: true do |form| %>
+  <% if @venue.errors.any? %>
+    <div class="error-messages">
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+      <ul>
+        <% @venue.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, "Venue Name" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address, "Venue Address" %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :map_src, "Venue Map Src" %>
+    <%= form.text_area :map_src, class: "form-control", rows: 3 %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :max_attendees, "Venue Max Attendees" %>
+    <%= form.number_field :max_attendees, step: 1, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_time, "Venue Start Time" %>
+    <%= form.datetime_local_field :start_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_time, "Venue End Time" %>
+    <%= form.datetime_local_field :end_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Update venue", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Back to venues', admin_venues_path, class: 'btn btn-secondary' %>
