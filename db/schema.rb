@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_09_19_105315) do
+ActiveRecord::Schema.define(version: 2025_02_05_095612) do
 
   create_table "guests", id: { type: :bigint, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 2024_09_19_105315) do
   end
 
   create_table "invitations", id: :string, charset: "utf8mb3", force: :cascade do |t|
-    t.integer "venue_id"
+    t.integer "wedding_id"
     t.boolean "attending"
+    t.integer "participant"
     t.string "comments"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,6 +41,18 @@ ActiveRecord::Schema.define(version: 2024_09_19_105315) do
     t.text "map_src"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.integer "max_attendees"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "weddings", id: { type: :bigint, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
+    t.string "couple_1"
+    t.string "couple_2"
+    t.string "story"
+    t.string "hashtag"
+    t.integer "venue_id"
+    t.integer "attendees"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

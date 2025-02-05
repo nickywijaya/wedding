@@ -16,8 +16,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: <%= ENV['DATABASE_TEST_NAME'] || 'wedding_test' %>
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: <%= ENV['DATABASE_NAME'] || 'wedding_production' %>

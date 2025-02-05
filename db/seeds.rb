@@ -13,7 +13,17 @@ venue.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0371
 6001147a9a1e55d!2sGBI%20Basilea%20Christ%20Cathedral!5e0!3m2!1sen!2sid!4v1738648825850!5m2!1sen!2sid"
 venue.start_time = Time.new(2025, 06, 07, 11, 0, 0, 0)
 venue.end_time = Time.new(2025, 06, 07, 13, 0, 0, 0)
+venue.max_attendees = 70
 venue.save!
+
+# prepare wedding
+wedding = Weddings.new
+wedding.couple_1 = 'Nicky'
+wedding.couple_2 = 'Nova'
+wedding.story = 'Our love began in 2019 and still feels new all the time.'
+wedding.hashtag = '#NickyAndNovaWedding'
+wedding.venue_id = venue.id
+wedding.save!
 
 # prepare guest list
 guest1 = Guest.new
@@ -29,7 +39,8 @@ guest2.save!
 # prepare an invitation for guest 1 and guest 2
 invitation = Invitation.new
 invitation.id = SecureRandom.uuid
-invitation.venue_id = venue.id
+invitation.participant = 2
+invitation.wedding_id = wedding.id
 invitation.save!
 
 # append guest1 and guest2 into our invitation
