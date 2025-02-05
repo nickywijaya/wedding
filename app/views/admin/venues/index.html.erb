@@ -1,0 +1,31 @@
+<!-- app/views/admin/venues/index.html.erb -->
+
+<%= stylesheet_link_tag "admin" %>
+
+<h1>Venue Listings</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Venue</th>
+      <th>Address</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @venues.each_with_index do |venue, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= venue.name %></td>
+        <td><%= venue.address %></td>
+        <td><%= venue.start_time.strftime("%B %d, %Y") %></td>
+        <td><%= venue.end_time.strftime("%B %d, %Y") %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_venue_path(venue), class: 'btn btn-primary' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -3,6 +3,12 @@ Rails.application.routes.draw do
 
   get '/healthz' => 'health#index'
 
+
+  namespace :admin, path: '_adminz' do
+    resources :venues
+  end
+
+
   namespace :invitations do
     scope :books do
       get '/' => 'books#index'
