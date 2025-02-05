@@ -1,5 +1,5 @@
 class Venue < ApplicationRecord
   self.table_name = "venues"
 
-  has_one :invitations, class_name: 'Invitation', foreign_key: :venue_id
+  has_one :wedding, class_name: 'Weddings'
 end
