@@ -2,6 +2,8 @@ class Admin::WeddingsController < ActionController::Base
   respond_to? :html
   before_action :load_resource, only: [:edit, :update]
 
+  layout 'admin'
+
   def index
     @weddings = Weddings.all
   rescue StandardError => e

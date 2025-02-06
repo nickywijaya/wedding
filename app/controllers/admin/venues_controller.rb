@@ -2,6 +2,8 @@ class Admin::VenuesController < ActionController::Base
   respond_to? :html
   before_action :load_resource, only: [:edit, :update]
 
+  layout 'admin'
+
   def index
     @venues = Venue.all
   rescue StandardError => e
