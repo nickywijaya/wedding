@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Boxicons CSS -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Admin page</title>
+
+    <%= stylesheet_link_tag 'navbar', media: 'all' %>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- navbar -->
+        <nav class="navbar">
+          <div class="logo_item">
+            <i class="bx bx-menu" id="sidebarOpen"></i>
+              <span class="navlink_icon">
+                <i class="bx bx-sidebar"></i>
+                  Wedding Admin
+              </span>
+          </div>
+          <div class="search_bar">
+            <input type="text" placeholder="Dummy Search" />
+          </div>
+          <div class="navbar_content">
+            <i class="bi bi-grid"></i>
+            <i class='bx bx-sun' id="darkLight"></i>
+            <i class='bx bx-bell' ></i>
+            <img src="images/profile.jpg" alt="" class="profile" />
+          </div>
+        </nav>
+      </div>
+      <div class="row">
+          <div class="col-md-2">
+            <!-- sidebar -->
+            <nav class="sidebar">
+              <div class="menu_content">
+                <ul class="menu_items">
+                  <div class="menu_title menu_dahsboard"></div>
+                  <!-- duplicate or remove this li tag if you want to add or remove navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                    <div class="nav_link submenu_item">
+                      <span class="navlink_icon">
+                        <i class="bx bx-cog"></i>
+                      </span>
+                      <span class="navlink">Settings</span>
+                      <i class="bx bx-chevron-right arrow-left"></i>
+                    </div>
+                    <ul class="menu_items submenu">
+                      <a href=<%= admin_weddings_path %> class="nav_link sublink">
+                        <span class="navlink_icon">
+                          <i class="bx bx-bible"></i>
+                        </span>
+                        Weddings
+                      </a>
+                      <a href=<%= admin_venues_path %> class="nav_link sublink">
+                        <span class="navlink_icon">
+                          <i class="bx bx-building-house"></i>
+                        </span>
+                        Venues
+                      </a>
+                    </ul>
+                  </li>
+                  <!-- end -->
+                  <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                    <div class="nav_link submenu_item">
+                      <span class="navlink_icon">
+                        <i class="bx bx-user-circle"></i>
+                      </span>
+                      <span class="navlink">Invitations</span>
+                      <i class="bx bx-chevron-right arrow-left"></i>
+                    </div>
+                    <ul class="menu_items submenu">
+                      <a href=<%= admin_invitations_path %> class="nav_link sublink">
+                        <span class="navlink_icon">
+                          <i class="bx bx-envelope"></i>
+                        </span>
+                        Invitations
+                      </a>
+                      <a href=<%= admin_guests_path %> class="nav_link sublink">
+                        <span class="navlink_icon">
+                          <i class="bx bx-user"></i>
+                        </span>
+                        Guests
+                      </a>
+                    </ul>
+                  </li>
+                  <!-- end -->
+                </ul>
+                <!-- Sidebar Open / Close -->
+                <div class="bottom_content">
+                  <div class="bottom expand_sidebar">
+                    <span> Expand</span>
+                    <i class='bx bx-log-in' ></i>
+                  </div>
+                  <div class="bottom collapse_sidebar">
+                    <span> Collapse</span>
+                    <i class='bx bx-log-out'></i>
+                  </div>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          <div class="col-md-9">
+              <%= yield %> <!-- This is where the content will be injected -->
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+const body = document.querySelector("body");
+const darkLight = document.querySelector("#darkLight");
+const sidebar = document.querySelector(".sidebar");
+const submenuItems = document.querySelectorAll(".submenu_item");
+const sidebarOpen = document.querySelector("#sidebarOpen");
+const sidebarClose = document.querySelector(".collapse_sidebar");
+const sidebarExpand = document.querySelector(".expand_sidebar");
+sidebarOpen.addEventListener("click", () => sidebar.classList.toggle("close"));
+sidebarClose.addEventListener("click", () => {
+  sidebar.classList.add("close", "hoverable");
+});
+sidebarExpand.addEventListener("click", () => {
+  sidebar.classList.remove("close", "hoverable");
+});
+sidebar.addEventListener("mouseenter", () => {
+  if (sidebar.classList.contains("hoverable")) {
+    sidebar.classList.remove("close");
+  }
+});
+sidebar.addEventListener("mouseleave", () => {
+  if (sidebar.classList.contains("hoverable")) {
+    sidebar.classList.add("close");
+  }
+});
+darkLight.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  if (body.classList.contains("dark")) {
+    document.setI
+    darkLight.classList.replace("bx-sun", "bx-moon");
+  } else {
+    darkLight.classList.replace("bx-moon", "bx-sun");
+  }
+});
+submenuItems.forEach((item, index) => {
+  item.addEventListener("click", () => {
+    item.classList.toggle("show_submenu");
+    submenuItems.forEach((item2, index2) => {
+      if (index !== index2) {
+        item2.classList.remove("show_submenu");
+      }
+    });
+  });
+});
+if (window.innerWidth < 768) {
+  sidebar.classList.add("close");
+} else {
+  sidebar.classList.remove("close");
+}
+</script>

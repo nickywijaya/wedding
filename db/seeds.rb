@@ -18,8 +18,8 @@ venue.save!
 
 # prepare wedding
 wedding = Weddings.new
-wedding.couple_1 = 'Nicky'
-wedding.couple_2 = 'Nova'
+wedding.groom = 'Nicky'
+wedding.bride = 'Nova'
 wedding.story = 'Our love began in 2019 and still feels new all the time.'
 wedding.hashtag = '#NickyAndNovaWedding'
 wedding.venue_id = venue.id

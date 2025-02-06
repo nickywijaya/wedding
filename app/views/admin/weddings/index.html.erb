@@ -1,0 +1,39 @@
+<!-- app/views/admin/weddings/index.html.erb -->
+
+<%= stylesheet_link_tag "admin" %>
+
+<div class="row align-items-center mb-5 mt-5">
+  <h1 class="text-center">Weddings</h1>
+</div>
+
+<div class="row">
+  <table class="table table-striped table-bordered table-hover">
+      <tr>
+        <th>#</th>
+        <th>Hashtag</th>
+        <th>Venue</th>
+        <th>Groom</th>
+        <th>Bride</th>
+        <th>Current Attendees</th>
+        <th>Story</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @weddings.each_with_index do |wedding, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= wedding.hashtag %></td>
+          <td><%= wedding.venue.name %></td>
+          <td><%= wedding.groom %></td>
+          <td><%= wedding.bride %></td>
+          <td><%= wedding.current_attendees %></td>
+          <td><%= wedding.story %></td>
+          <td>
+            <%= link_to 'Edit', edit_admin_wedding_path(wedding), class: 'btn btn-primary' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
