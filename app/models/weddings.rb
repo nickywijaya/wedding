@@ -6,4 +6,8 @@ class Weddings < ApplicationRecord
   has_many :invitations, class_name: 'Invitation', foreign_key: :wedding_id
   has_many :invitation_guests, class_name: 'InvitationGuest', through: :invitations
   has_many :guests, class_name: 'Guest', through: :invitation_guests
+
+  def current_attendees
+    self.invitations&.sum(:participant)
+  end
 end

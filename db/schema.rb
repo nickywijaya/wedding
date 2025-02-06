@@ -47,12 +47,11 @@ ActiveRecord::Schema.define(version: 2025_02_05_095612) do
   end
 
   create_table "weddings", id: { type: :bigint, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
-    t.string "couple_1"
-    t.string "couple_2"
+    t.string "groom"
+    t.string "bride"
     t.string "story"
     t.string "hashtag"
     t.integer "venue_id"
-    t.integer "attendees"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
