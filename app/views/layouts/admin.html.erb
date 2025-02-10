@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="turbolinks-visit-control" content="reload">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
     <!-- Boxicons CSS -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Admin page</title>
 
     <%= stylesheet_link_tag 'navbar', media: 'all' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="container-fluid">
@@ -29,7 +33,7 @@
             <i class="bi bi-grid"></i>
             <i class='bx bx-sun' id="darkLight"></i>
             <i class='bx bx-bell' ></i>
-            <img src="images/profile.jpg" alt="" class="profile" />
+            <%# <img src="images/profile.jpg" alt="" class="profile" /> %>
           </div>
         </nav>
       </div>
