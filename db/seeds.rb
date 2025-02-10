@@ -29,11 +29,17 @@ wedding.save!
 guest1 = Guest.new
 guest1.name = "Milky"
 guest1.gender = 0
+guest1.contact = "085939976117"
+guest1.contact_source = 0
+guest1.from_groom = true
 guest1.save!
 
 guest2 = Guest.new
 guest2.name = "Yadi"
 guest2.gender = 1
+guest2.contact = "williamyadi.96"
+guest2.contact_source = 1
+guest2.from_groom = true
 guest2.save!
 
 # prepare an invitation for guest 1 and guest 2

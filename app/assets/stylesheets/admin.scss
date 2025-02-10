@@ -17,32 +17,6 @@ th {
   background-color: #f4f4f4;
 }
 
-.btn {
-  padding: 5px 10px;
-  margin: 2px;
-  text-decoration: none;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-secondary {
-  background-color: #6c757d;
-  color: white;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: white;
-}
-
-.btn-success {
-  background-color: #28a745;
-  color: white;
-}
-
 // form section
 .form-group {
   margin-bottom: 1rem;
@@ -65,7 +39,7 @@ th {
 }
 
 .btn-secondary {
-  background-color: #6c757d;
+  background-color: #007bff;
 }
 
 /* Modal Styles */
@@ -117,8 +91,12 @@ th {
   border-radius: 5px;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #ff0000;
 }
 
 /* Remove default link styles */
