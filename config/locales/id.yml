@@ -1,11 +1,13 @@
 id:
   services:
     missing_attributes: '%{attribute} tidak ditemukan'
-    venue_services:
-      missing_attributes: '%{attribute} tidak boleh kosong'
     errors:
       action_forbidden: Tidak dapat melakukan action tersebut
       params_invalid: 'Parameter %{field} tidak valid'
       params_invalid_with_message: 'Parameter %{field} %{message}'
+    guest_services:
+      missing_attributes: '%{attribute} tidak boleh kosong'
+    venue_services:
+      missing_attributes: '%{attribute} tidak boleh kosong'
     wedding_services:
       missing_attributes: '%{attribute} tidak boleh kosong'

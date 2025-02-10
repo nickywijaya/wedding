@@ -52,10 +52,10 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :source, "Guest Contact Source" %>
-      <%= form.select :source,
+      <%= form.label :contact_source, "Guest Contact Source" %>
+      <%= form.select :contact_source,
                       Guest::CONTACT_SOURCE.keys.map { |key| [Guest::CONTACT_SOURCE[key], key] },
-                      { include_blank: "Select Source", required: true, selected: @guest.contact_source },
+                      { include_blank: "Select Source", required: true },
                       class: "form-control" %>
     </div>
 

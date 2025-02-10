@@ -10,39 +10,35 @@ class Admin::GuestsController < ActionController::Base
     render json: { message: e, status: 500 }
   end
 
-  def edit
-  rescue StandardError => e
-    render json: { message: e, status: 500 }
-  end
-
-  def update
-    # TO-DO: implement GuestService.update(@guest, update_attributes)
-    #GuestService.update(@guests, update_attributes)
-
-    redirect_to admin_guests_path, notice: 'Guest updated successfully'
-  rescue StandardError => e
-    render json: { message: e, status: 500 }
-  end
-
   def new
+    @guest = Guest.new
   rescue StandardError => e
     render json: { message: e, status: 500 }
   end
 
   def create
-    # TO-DO: implement GuestService.create(@guest, update_attributes)
-    #GuestService.create(create_attributes)
+    GuestService.create(create_attributes)
 
     redirect_to admin_guests_path, notice: 'Guest created successfully'
   rescue StandardError => e
     render json: { message: e, status: 500 }
   end
 
-  def destroy
-    # TO-DO: implement GuestService.delete(@guest, update_attributes)
-    #GuestService.delete(@guest)
+  def edit
+  rescue StandardError => e
+    render json: { message: e, status: 500 }
+  end
 
-    binding.pry
+  def update
+    GuestService.update(@guest, update_attributes)
+
+    redirect_to admin_guests_path, notice: 'Guest updated successfully'
+  rescue StandardError => e
+    render json: { message: e, status: 500 }
+  end
+
+  def destroy
+    GuestService.delete(@guest)
 
     redirect_to admin_guests_path, notice: 'Guest deleted successfully'
   rescue StandardError => e
@@ -56,14 +52,34 @@ class Admin::GuestsController < ActionController::Base
   end
 
   def create_attributes
-    params.required(:guest)
+    attribute = params.required(:guest)
           .permit(:name,
-                  :gender).to_h
+                  :gender,
+                  :contact,
+                  :contact_source,
+                  :from_groom).to_h
+
+    # trasnform attributes
+    attribute["gender"] = attribute["gender"].to_i
+    attribute["contact_source"] = attribute["contact_source"].to_i
+    attribute["from_groom"] = (attribute["from_groom"] == "true") ? true : false
+
+    attribute
   end
 
   def update_attributes
-    params.required(:guest)
+    attribute = params.required(:guest)
           .permit(:name,
-                  :gender).to_h
+                  :gender,
+                  :contact,
+                  :contact_source,
+                  :from_groom).to_h
+
+    # trasnform attributes
+    attribute["gender"] = attribute["gender"].to_i
+    attribute["contact_source"] = attribute["contact_source"].to_i
+    attribute["from_groom"] = (attribute["from_groom"] == "true") ? true : false
+
+    attribute
   end
 end
