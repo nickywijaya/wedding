@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 2025_02_05_095612) do
   create_table "guests", id: { type: :bigint, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
     t.integer "gender", limit: 1, unsigned: true
+    t.string "contact"
+    t.integer "contact_source", limit: 1, unsigned: true
+    t.boolean "from_groom"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
