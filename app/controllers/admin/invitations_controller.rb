@@ -6,7 +6,7 @@ class Admin::InvitationsController < ActionController::Base
   layout 'admin'
 
   def index
-    @invitations = Invitation.all
+    @invitations = InvitationService.retrieve(index_attributes)
   rescue StandardError => e
     render json: { message: e, status: 500 }
   end
@@ -68,6 +68,15 @@ class Admin::InvitationsController < ActionController::Base
     uninvited_guests = Guest.left_outer_joins(:invitation_guests).where(invitation_guests: { guest_id: nil })
 
     @guests = uninvited_guests
+  end
+
+  def index_attributes
+    attribute = params.permit(:search).to_h
+
+    # trasnform attributes
+    attribute["search"] = attribute["search"].to_s.strip
+
+    attribute
   end
 
   def create_attributes

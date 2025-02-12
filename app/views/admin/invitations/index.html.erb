@@ -17,7 +17,7 @@
       <tr>
         <th colspan="7" class="text-center">
           <%= form_tag admin_invitations_path, method: :get, class: 'form-inline d-flex justify-content-center' do %>
-            <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: "Search by name", style: "width: 250px;" %>
+            <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: "Search by guest", style: "width: 250px;" %>
             <%= submit_tag 'Search', class: 'btn btn-primary mr-2' %>
           <% end %>
         </th>

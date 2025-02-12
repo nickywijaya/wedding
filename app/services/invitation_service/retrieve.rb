@@ -15,7 +15,7 @@ module InvitationService
       if params[:search].present?
         Invitation.joins(:invitation_guests)
                   .joins("INNER JOIN guests ON guests.id = invitation_guests.guest_id")
-                  .where("guests.name LIKE ?", "%#{name}%")
+                  .where("guests.name LIKE ?", "%#{params[:search]}%")
       else
         Invitation.all
       end
