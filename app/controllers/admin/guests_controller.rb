@@ -1,6 +1,6 @@
 class Admin::GuestsController < ActionController::Base
   respond_to? :html
-  before_action :load_resource, only: [:edit, :update, :destroy, :show]
+  before_action :load_resource, only: [:edit, :update, :destroy]
 
   layout 'admin'
 

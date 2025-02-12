@@ -7,6 +7,8 @@ id:
       params_invalid_with_message: 'Parameter %{field} %{message}'
     guest_services:
       missing_attributes: '%{attribute} tidak boleh kosong'
+    invitation_services:
+      missing_attributes: '%{attribute} tidak boleh kosong'
     venue_services:
       missing_attributes: '%{attribute} tidak boleh kosong'
     wedding_services:

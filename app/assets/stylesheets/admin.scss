@@ -1,8 +1,10 @@
 /* app/assets/stylesheets/application.css */
 
 @import "bootstrap";
+@import "select2/dist/css/select2.min.css";
 
 // listing section
+// ================================================================================
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -18,6 +20,7 @@ th {
 }
 
 // form section
+// ================================================================================
 .form-group {
   margin-bottom: 1rem;
 }
@@ -43,6 +46,7 @@ th {
 }
 
 /* Modal Styles */
+// ================================================================================
 .modal {
   display: none; /* Initially hidden */
   position: fixed;
@@ -82,6 +86,7 @@ th {
 }
 
 /* Button styles */
+// ================================================================================
 .btn {
   background-color: #007bff;
   color: white;
@@ -100,6 +105,7 @@ th {
 }
 
 /* Remove default link styles */
+// ================================================================================
 .no-style-link {
   text-decoration: none;  /* Removes underline */
   color: inherit;         /* Inherits the color from the parent element (you can also specify your own color) */
@@ -108,4 +114,28 @@ th {
 .no-style-link:hover {
   text-decoration: none;  /* Ensures no underline on hover */
   color: inherit;         /* Ensures no color change on hover (or set a custom hover color if you prefer) */
+}
+
+// select2 custom css
+// ================================================================================
+/* Change the selected option background color */
+.select2-selection__choice {
+  background-color: #007bff !important; /* Blue background for selected option */
+  color: white !important; /* White text on the selected option */
+}
+
+/* Change the selected option when the dropdown is open */
+.select2-results__option[aria-selected="true"] {
+  background-color: #007bff !important; /* Blue background */
+  color: white !important; /* White text */
+}
+
+/* Optional: Style the selected option when hovering over it */
+.select2-selection__choice:hover {
+  background-color: #0056b3 !important; /* Darker blue on hover */
+}
+
+/* Optional: Style the selected option when hovering over it in the dropdown */
+.select2-results__option[aria-selected="true"]:hover {
+  background-color: #0056b3 !important; /* Darker blue on hover */
 }
