@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "admin" %>
+
+<div class="row align-items-center mb-5 mt-5">
+  <div class="col-sm-1">
+    <a href=<%= admin_invitations_path %> class="no-style-link">
+      <span>
+        <i class="bx bx-left-arrow-alt"></i>
+      </span>
+      Back
+    </a>
+  </div>
+  <div class="col-sm-11">
+    <h1 class="text-center">Create Invitation</h1>
+  </div>
+</div>
+
+<div class="row align-items-center mb-5 mt-5">
+  <%= form_with model: @invitation, url: admin_invitations_path do |form| %>
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :wedding_id, "Select Wedding" %>
+      <%= form.select :wedding_id,
+                      Weddings.all.map { |wedding| [wedding.hashtag, wedding.id] },  # This will display the hashtag in the select box and submit the wedding.id
+                      { include_blank: "Select Wedding", required: true },
+                      class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :guest_ids, "Add Guests" %>
+      <!-- Question mark icon with tooltip -->
+      <span data-toggle="tooltip" data-placement="top" title="Select one or more guests to invite.">
+        <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+      </span>
+    </div>
+
+    <div class="form-group">
+      <%= form.select :guest_ids, @guests.collect { |guest| [guest.name, guest.id] }, {}, { class: 'form-control select2', multiple: true, style: "width: 100%;" } %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Create", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

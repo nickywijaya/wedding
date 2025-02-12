@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :invitations do
     scope :books do
       get '/' => 'books#index'
-      get '/:id' => 'books#show'
+      get '/:id' => 'books#show', as: 'show'
     end
   end
 end

@@ -1,11 +1,11 @@
 class Admin::GuestsController < ActionController::Base
   respond_to? :html
-  before_action :load_resource, only: [:edit, :update, :destroy, :show]
+  before_action :load_resource, only: [:edit, :update, :destroy]
 
   layout 'admin'
 
   def index
-    @guests = Guest.all
+    @guests = GuestService.retrieve(index_attributes)
   rescue StandardError => e
     render json: { message: e, status: 500 }
   end
@@ -49,6 +49,15 @@ class Admin::GuestsController < ActionController::Base
 
   def load_resource
     @guest = Guest.find(params[:id])
+  end
+
+  def index_attributes
+    attribute = params.permit(:search).to_h
+
+    # trasnform attributes
+    attribute["search"] = attribute["search"].to_s.strip
+
+    attribute
   end
 
   def create_attributes

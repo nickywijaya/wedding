@@ -1,3 +1,7 @@
+//= require jquery
+//= require select2
+//= require_tree .
+
 document.addEventListener("DOMContentLoaded", () => {
   // Parallax scroll effect
   function parallaxScroll() {

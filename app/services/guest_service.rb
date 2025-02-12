@@ -18,6 +18,7 @@ module GuestService
 
   module_function
   def create(*args) GuestService::Create.new(*args).call; end
+  def retrieve(*args) GuestService::Retrieve.new(*args).call; end
   def update(*args) GuestService::Update.new(*args).call; end
   def delete(*args) GuestService::Delete.new(*args).call; end
 end
