@@ -16,78 +16,16 @@
 
 <div class="row align-items-center mb-5 mt-5">
   <%= form_with model: @invitation, url: admin_invitations_path do |form| %>
-
-    <div class="form-group">
-      <%= form.label :name, "Invitation Name" %>
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :gender, "Invitation Gender" %>
-
-      <div class="form-check">
-        <%= form.radio_button :gender, 0, class: "form-check-input" %>
-        <%= form.label :gender, "Female", value: 1, class: "form-check-label" %>
-      </div>
-
-      <div class="form-check">
-        <%= form.radio_button :gender, 1, class: "form-check-input" %>
-        <%= form.label :gender, "Male", value: 0, class: "form-check-label" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :contact, "Invitation Contact" %>
-      <%= form.text_field :contact, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :contact_source, "Invitation Contact Source" %>
-      <%= form.select :contact_source,
-                      Invitation::CONTACT_SOURCE.keys.map { |key| [Invitation::CONTACT_SOURCE[key], key] },
-                      { include_blank: "Select Source", required: true },
-                      class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :from_groom, "Invitation Relation" %>
-
-      <div class="form-check">
-        <%= form.radio_button :from_groom, true, class: "form-check-input" %>
-        <%= form.label :from_groom, "Groom", value: true, class: "form-check-label" %>
-      </div>
-
-      <div class="form-check">
-        <%= form.radio_button :from_groom, false, class: "form-check-input" %>
-        <%= form.label :from_groom, "Bride", value: false, class: "form-check-label" %>
-      </div>
-    </div>
-  </div>
-
-    <div class="form-group">
-      <%= form.submit "Create", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-</div>
-
-<div class="row align-items-center mb-5 mt-5">
-  <%= form_with model: @invitation, url: admin_invitations_path do |form| %>
-    <% if @invitation.errors.any? %>
-      <div class="error-messages">
-        <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
-        <ul>
-          <% @invitation.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <%= flash[:error] %>
       </div>
     <% end %>
 
     <div class="form-group">
       <%= form.label :wedding_id, "Select Wedding" %>
       <%= form.select :wedding_id,
-                      Wedding.all.map { |wedding| [wedding.hashtag, wedding.id] },  # This will display the hashtag in the select box and submit the wedding.id
+                      Weddings.all.map { |wedding| [wedding.hashtag, wedding.id] },  # This will display the hashtag in the select box and submit the wedding.id
                       { include_blank: "Select Wedding", required: true },
                       class: "form-control" %>
     </div>
@@ -105,43 +43,7 @@
     </div>
 
     <div class="form-group">
-      <%= form.submit "Update", class: "btn btn-primary" %>
+      <%= form.submit "Create", class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
-
-<script>
-  // Initialize Select2 for the select input
-  document.addEventListener('DOMContentLoaded', function() {
-    const selectElements = document.querySelectorAll('.select2');
-
-    selectElements.forEach(function(select) {
-      // Create a placeholder option
-      const placeholderOption = document.createElement('option');
-      placeholderOption.textContent = "Select or Remove a Guest";
-      placeholderOption.disabled = true;
-      placeholderOption.selected = true;
-      select.insertBefore(placeholderOption, select.firstChild);
-
-      // Allow clearing the selection
-      const clearButton = document.createElement('button');
-      clearButton.textContent = 'Remove All Guests';
-      clearButton.classList.add('btn', 'btn-primary', 'center');  // Add the classes
-
-      // Prevent form submission if 'No' is clicked in the confirmation prompt
-      clearButton.addEventListener('click', function(event) {
-        const confirmClear = confirm("Are you sure you want to remove all guests?");
-
-        if (!confirmClear) {
-          event.preventDefault();  // Prevent form submission
-          return; // Exit function if user clicked "No"
-        }
-
-        // If confirmed, clear the selection
-        select.selectedIndex = -1;  // Clear the selection
-      });
-
-      select.parentNode.insertBefore(clearButton, select.nextSibling);
-    });
-  });
-</script>

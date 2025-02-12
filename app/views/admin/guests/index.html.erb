@@ -29,6 +29,7 @@
         <th>Contact Info</th>
         <th>Contact Source</th>
         <th>Guest Source</th>
+        <th>Invitation</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -41,6 +42,11 @@
           <td><%= guest.contact %></td>
           <td><%= guest.fetch_contact_source %></td>
           <td><%= guest.fetch_guest_source %></td>
+          <td>
+            <% if guest.fetch_invitation.present? %>
+              <%= link_to guest.fetch_invitation, invitations_show_path(guest.fetch_invitation) %>
+            <% end %>
+          </td>
           <td>
             <%= link_to 'Edit', edit_admin_guest_path(guest), class: 'btn btn-primary' %>
             <%= link_to "Delete", admin_guest_path(guest), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>

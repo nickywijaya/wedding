@@ -45,17 +45,6 @@
 
 <div class="row align-items-center mb-5 mt-5">
   <%= form_with model: @invitation, url: admin_invitation_path(@invitation), method: :patch, local: true do |form| %>
-    <% if @invitation.errors.any? %>
-      <div class="error-messages">
-        <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
-        <ul>
-          <% @invitation.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="form-group">
       <%= form.label :wedding_id, "Select Wedding" %>
       <%= form.select :wedding_id,
@@ -86,32 +75,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  // Initialize Select2 for the select input
-  document.addEventListener('DOMContentLoaded', function() {
-    const selectElements = document.querySelectorAll('.select2');
-
-    selectElements.forEach(function(select) {
-      // Allow clearing the selection
-      const clearButton = document.createElement('button');
-      clearButton.textContent = 'Remove All Guests';
-      clearButton.classList.add('btn', 'btn-primary', 'center');  // Add the classes
-
-      // Prevent form submission if 'No' is clicked in the confirmation prompt
-      clearButton.addEventListener('click', function(event) {
-        const confirmClear = confirm("Are you sure you want to remove all guests?");
-
-        if (!confirmClear) {
-          event.preventDefault();  // Prevent form submission
-          return; // Exit function if user clicked "No"
-        }
-
-        // If confirmed, clear the selection
-        select.selectedIndex = -1;  // Clear the selection
-      });
-
-      select.parentNode.insertBefore(clearButton, select.nextSibling);
-    });
-  });
-</script>

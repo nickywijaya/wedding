@@ -16,6 +16,18 @@ module InvitationService
     end
   end
 
+  class WeddingNotFound < InvitationError
+    def initialize
+      super(I18n.t('services.invitation_services.wedding_not_found'))
+    end
+  end
+
+  class EmptyGuest < InvitationError
+    def initialize
+      super(I18n.t('services.invitation_services.empty_guest'))
+    end
+  end
+
   module_function
   def create(*args) InvitationService::Create.new(*args).call; end
   def retrieve(*args) InvitationService::Retrieve.new(*args).call; end

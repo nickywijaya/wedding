@@ -14,10 +14,18 @@ module InvitationService
     def perform
       ActiveRecord::Base.transaction do
         # create invitation
-        invitation = Invitation.new(params)
+        invitation = Invitation.new
+        invitation.id = SecureRandom.uuid
+        invitation.wedding_id = params[:wedding_id]
         invitation.save!
 
-        # create invitation guest!
+        # create invitation guest
+        params[:guest_ids].each do |guest_id|
+          invitation_guest = InvitationGuest.new
+          invitation_guest.invitation_id = invitation.id
+          invitation_guest.guest_id = guest_id
+          invitation_guest.save!
+        end
       end
     rescue StandardError => e
       raise e
@@ -26,15 +34,12 @@ module InvitationService
     private
 
     def validate
-      raise InvitationService::MissingAttributes.new(:venue) if params.nil?
+      raise InvitationService::MissingAttributes.new(:params) if params.nil?
 
       raise InvitationService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
 
-      raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:name].nil?
-      raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:gender].nil?
-      raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:contact].nil?
-      raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:contact_source].nil?
-      raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:from_groom].nil?
+      raise InvitationService::WeddingNotFound.new if params[:wedding_id].to_i.zero?
+      raise InvitationService::EmptyGuest.new if params[:guest_ids].blank?
     end
   end
 end

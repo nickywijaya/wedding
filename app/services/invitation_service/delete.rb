@@ -14,6 +14,9 @@ module InvitationService
     def perform
       ActiveRecord::Base.transaction do
         # delete invitation guest
+        invitation.invitation_guests.each do |invitation_guest|
+          invitation_guest.destroy!
+        end
 
         # delete invitation
         invitation.destroy!

@@ -9,6 +9,8 @@ id:
       missing_attributes: '%{attribute} tidak boleh kosong'
     invitation_services:
       missing_attributes: '%{attribute} tidak boleh kosong'
+      wedding_not_found: 'Wedding harus di isi'
+      empty_guest: 'Tamu tidak boleh kosong'
     venue_services:
       missing_attributes: '%{attribute} tidak boleh kosong'
     wedding_services:

@@ -1,7 +1,7 @@
 class Admin::InvitationsController < ActionController::Base
   respond_to? :html
   before_action :load_resource, only: [:edit, :update, :destroy]
-  before_action :load_eligible_guests, only: [:edit, :new]
+  before_action :load_uninvited_guests, only: [:edit, :new]
 
   layout 'admin'
 
@@ -18,35 +18,44 @@ class Admin::InvitationsController < ActionController::Base
   end
 
   def create
-    # TO-DO: implement this!
-    # InvitationService.create(create_attributes)
+    InvitationService.create(create_attributes)
 
     redirect_to admin_invitations_path, notice: 'Invitation created successfully'
+  rescue InvitationService::InvalidServiceParameter, InvitationService::InvitationError => e
+    flash[:warning] = e.message
+    redirect_to new_admin_invitation_path
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to new_admin_invitation_path
   end
 
   def edit
+    selected_guests = @invitation.guests
+
+    @guests = selected_guests + @guests
   rescue StandardError => e
     render json: { message: e, status: 500 }
   end
 
   def update
-    # TO-DO: implement this!
-    # InvitationService.update(updated_attributes)
+    InvitationService.update(@invitation, update_attributes)
 
     redirect_to admin_invitations_path, notice: 'Invitation updated successfully'
+  rescue InvitationService::InvalidServiceParameter => e
+    flash[:warning] = e.message
+    redirect_to new_admin_invitation_path
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to new_admin_invitation_path
   end
 
   def destroy
-    # TO-DO: implement this!
-    # InvitationService.delete(@guest)
+    InvitationService.delete(@invitation)
 
     redirect_to admin_invitations_path, notice: 'Invitation deleted successfully'
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to new_admin_invitation_path
   end
 
   private
@@ -55,11 +64,10 @@ class Admin::InvitationsController < ActionController::Base
     @invitation = Invitation.find(params[:id])
   end
 
-  def load_eligible_guests
-    selected_guests = @invitation.guests
+  def load_uninvited_guests
     uninvited_guests = Guest.left_outer_joins(:invitation_guests).where(invitation_guests: { guest_id: nil })
 
-    @guests = selected_guests + uninvited_guests
+    @guests = uninvited_guests
   end
 
   def create_attributes

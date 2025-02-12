@@ -6,7 +6,7 @@ module InvitationService
 
     before_perform :validate
 
-    # Guest, Hash => Any
+    # Invitation, Hash => Any
     def initialize(invitation, params)
       @invitation = invitation
       @params = params
@@ -14,11 +14,26 @@ module InvitationService
 
     def perform
       ActiveRecord::Base.transaction do
-        # update invitation guest
-        # TO-DO: check the guest!
+        # check the updated guest data
+        old_guest_ids = invitation.guests.pluck(:id)
+
+        if old_guest_ids.sort != params[:guest_ids].sort
+          # delete the old one
+          invitation.invitation_guests.each do |invitation_guest|
+            invitation_guest.destroy!
+          end
+
+          params[:guest_ids].each do |guest_id|
+            invitation_guest = InvitationGuest.new
+            invitation_guest.invitation_id = invitation.id
+            invitation_guest.guest_id = guest_id
+            invitation_guest.save!
+          end
+        end
 
         # update invitation
-        invitation.update(params)
+        invitation.wedding_id = params[:wedding_id]
+        invitation.comments = params[:comments]
         invitation.save!
       end
     rescue StandardError => e
@@ -34,11 +49,8 @@ module InvitationService
       raise InvitationService::InvalidServiceParameter.new(:invitation) unless invitation.is_a? Invitation
       raise InvitationService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
 
-      # raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:name].nil?
-      # raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:gender].nil?
-      # raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:contact].nil?
-      # raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:contact_source].nil?
-      # raise InvitationService::InvalidServiceParameter.new(:params_name) if params[:from_groom].nil?
+      raise InvitationService::WeddingNotFound.new if params[:wedding_id].to_i.zero?
+      raise InvitationService::EmptyGuest.new if params[:guest_ids].blank?
     end
   end
 end

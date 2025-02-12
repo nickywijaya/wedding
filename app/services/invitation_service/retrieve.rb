@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module GuestService
+module InvitationService
   class Retrieve < Services::Base
     attr_accessor :params
 
@@ -13,9 +13,11 @@ module GuestService
 
     def perform
       if params[:search].present?
-        Guest.where('name LIKE ?', "%#{params[:search].to_s}%")
+        Invitation.joins(:invitation_guests)
+                  .joins("INNER JOIN guests ON guests.id = invitation_guests.guest_id")
+                  .where("guests.name LIKE ?", "%#{name}%")
       else
-        Guest.all
+        Invitation.all
       end
     rescue StandardError => e
       raise e
@@ -24,9 +26,9 @@ module GuestService
     private
 
     def validate
-      raise GuestService::MissingAttributes.new(:params) if params.nil?
+      raise InvitationService::MissingAttributes.new(:params) if params.nil?
 
-      raise GuestService::InvalidServiceParameter.new(:params_search) unless params[:search].is_a? String
+      raise InvitationService::InvalidServiceParameter.new(:params_search) unless params[:search].is_a? String
     end
   end
 end
