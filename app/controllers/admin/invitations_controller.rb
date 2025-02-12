@@ -8,13 +8,15 @@ class Admin::InvitationsController < ActionController::Base
   def index
     @invitations = InvitationService.retrieve(index_attributes)
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_invitations_path
   end
 
   def new
     @invitation = Invitation.new
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_invitations_path
   end
 
   def create
@@ -34,7 +36,8 @@ class Admin::InvitationsController < ActionController::Base
 
     @guests = selected_guests + @guests
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_invitations_path
   end
 
   def update
@@ -43,10 +46,10 @@ class Admin::InvitationsController < ActionController::Base
     redirect_to admin_invitations_path, notice: 'Invitation updated successfully'
   rescue InvitationService::InvalidServiceParameter => e
     flash[:warning] = e.message
-    redirect_to new_admin_invitation_path
+    redirect_to edit_admin_invitation_path
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to new_admin_invitation_path
+    redirect_to edit_admin_invitation_path
   end
 
   def destroy
@@ -55,7 +58,7 @@ class Admin::InvitationsController < ActionController::Base
     redirect_to admin_invitations_path, notice: 'Invitation deleted successfully'
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to new_admin_invitation_path
+    redirect_to admin_invitations_path
   end
 
   private
