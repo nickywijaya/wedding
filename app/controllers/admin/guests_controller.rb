@@ -7,13 +7,15 @@ class Admin::GuestsController < ActionController::Base
   def index
     @guests = GuestService.retrieve(index_attributes)
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_guests_path
   end
 
   def new
     @guest = Guest.new
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_guests_path
   end
 
   def create
@@ -21,12 +23,14 @@ class Admin::GuestsController < ActionController::Base
 
     redirect_to admin_guests_path, notice: 'Guest created successfully'
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to new_admin_guest_path
   end
 
   def edit
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    lash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_guests_path
   end
 
   def update
@@ -34,7 +38,8 @@ class Admin::GuestsController < ActionController::Base
 
     redirect_to admin_guests_path, notice: 'Guest updated successfully'
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to edit_admin_guest_path
   end
 
   def destroy
@@ -42,7 +47,8 @@ class Admin::GuestsController < ActionController::Base
 
     redirect_to admin_guests_path, notice: 'Guest deleted successfully'
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    lash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_guests_path
   end
 
   private

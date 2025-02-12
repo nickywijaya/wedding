@@ -28,11 +28,11 @@ module GuestService
       raise GuestService::InvalidServiceParameter.new(:guest) unless guest.is_a? Guest
       raise GuestService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
 
-      raise GuestService::InvalidServiceParameter.new(:params_name) if params[:name].nil?
-      raise GuestService::InvalidServiceParameter.new(:params_name) if params[:gender].nil?
-      raise GuestService::InvalidServiceParameter.new(:params_name) if params[:contact].nil?
-      raise GuestService::InvalidServiceParameter.new(:params_name) if params[:contact_source].nil?
-      raise GuestService::InvalidServiceParameter.new(:params_name) if params[:from_groom].nil?
+      raise GuestService::InvalidServiceParameter.new(:name) if params[:name].nil?
+      raise GuestService::InvalidServiceParameter.new(:gender) if params[:gender].nil?
+      raise GuestService::InvalidServiceParameter.new(:contact) if params[:contact].nil?
+      raise GuestService::InvalidServiceParameter.new(:contact_source) if params[:contact_source].nil?
+      raise GuestService::InvalidServiceParameter.new(:guest_relation) if params[:from_groom].nil?
     end
   end
 end
