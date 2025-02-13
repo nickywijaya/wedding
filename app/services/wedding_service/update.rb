@@ -22,11 +22,14 @@ module WeddingService
     private
 
     def validate
-      raise VenueService::MissingAttributes.new(:wedding) if wedding.nil?
-      raise VenueService::MissingAttributes.new(:params) if params.nil?
+      raise WeddingService::MissingAttributes.new(:wedding) if wedding.nil?
+      raise WeddingService::MissingAttributes.new(:params) if params.nil?
 
-      raise VenueService::InvalidServiceParameter.new(:wedding) unless wedding.is_a? Weddings
-      raise VenueService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
+      raise WeddingService::InvalidServiceParameter.new(:wedding) unless wedding.is_a? Weddings
+      raise WeddingService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
+
+      raise WeddingService::InvalidServiceParameterWithMessage.new(:hashtag, 'tidak boleh kosong') if params[:hashtag].blank?
+      raise WeddingService::InvalidServiceParameterWithMessage.new(:story, 'tidak boleh kosong') if params[:story].blank?
     end
   end
 end
