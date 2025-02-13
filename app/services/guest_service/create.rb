@@ -23,7 +23,7 @@ module GuestService
     private
 
     def validate
-      raise GuestService::MissingAttributes.new(:guest) if params.nil?
+      raise GuestService::MissingAttributes.new(:params) if params.nil?
 
       raise GuestService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
 

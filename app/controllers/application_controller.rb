@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 
   # Redirect to logout page after sign out
   def after_sign_in_path_for(resource)
-    admin_home_index_url # This will redirect to the admin dashbboard page
+    admin_root_url # This will redirect to the admin dashbboard page
   end
 end
