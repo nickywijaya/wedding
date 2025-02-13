@@ -1,5 +1,4 @@
-class Admin::InvitationsController < ActionController::Base
-  before_action :authenticate_user!
+class Admin::InvitationsController < AdminController
   before_action :load_resource, only: [:edit, :update, :destroy]
   before_action :load_uninvited_guests, only: [:edit, :new]
 

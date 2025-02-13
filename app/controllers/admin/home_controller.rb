@@ -1,6 +1,4 @@
-class Admin::HomeController < ActionController::Base
-  before_action :authenticate_user!
-
+class Admin::HomeController < AdminController
   respond_to? :html
   layout 'admin'
 

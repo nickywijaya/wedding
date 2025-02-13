@@ -1,5 +1,4 @@
-class Admin::VenuesController < ActionController::Base
-  before_action :authenticate_user!
+class Admin::VenuesController < AdminController
   before_action :load_resource, only: [:edit, :update]
 
   respond_to? :html

@@ -1,5 +1,4 @@
-class Admin::GuestsController < ActionController::Base
-  before_action :authenticate_user!
+class Admin::GuestsController < AdminController
   before_action :load_resource, only: [:edit, :update, :destroy]
 
   respond_to? :html
