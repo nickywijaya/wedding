@@ -22,6 +22,9 @@ class Admin::GuestsController < ActionController::Base
     GuestService.create(create_attributes)
 
     redirect_to admin_guests_path, notice: 'Guest created successfully'
+  rescue GuestService::GuestError => e
+    flash[:warning] = e.message
+    redirect_to new_admin_guest_path
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to new_admin_guest_path
@@ -29,7 +32,7 @@ class Admin::GuestsController < ActionController::Base
 
   def edit
   rescue StandardError => e
-    lash[:error] = "Tetap tenang tetap semangat"
+    flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_guests_path
   end
 
@@ -37,6 +40,9 @@ class Admin::GuestsController < ActionController::Base
     GuestService.update(@guest, update_attributes)
 
     redirect_to admin_guests_path, notice: 'Guest updated successfully'
+  rescue GuestService::GuestError => e
+    flash[:warning] = e.message
+    redirect_to edit_admin_guest_path
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to edit_admin_guest_path
@@ -47,7 +53,7 @@ class Admin::GuestsController < ActionController::Base
 
     redirect_to admin_guests_path, notice: 'Guest deleted successfully'
   rescue StandardError => e
-    lash[:error] = "Tetap tenang tetap semangat"
+    flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_guests_path
   end
 
@@ -60,41 +66,27 @@ class Admin::GuestsController < ActionController::Base
   def index_attributes
     attribute = params.permit(:search).to_h
 
-    # trasnform attributes
+    # transform attributes
     attribute["search"] = attribute["search"].to_s.strip
 
     attribute
   end
 
   def create_attributes
-    attribute = params.required(:guest)
+    params.required(:guest)
           .permit(:name,
                   :gender,
                   :contact,
                   :contact_source,
                   :from_groom).to_h
-
-    # trasnform attributes
-    attribute["gender"] = attribute["gender"].to_i
-    attribute["contact_source"] = attribute["contact_source"].to_i
-    attribute["from_groom"] = (attribute["from_groom"] == "true") ? true : false
-
-    attribute
   end
 
   def update_attributes
-    attribute = params.required(:guest)
+    params.required(:guest)
           .permit(:name,
                   :gender,
                   :contact,
                   :contact_source,
                   :from_groom).to_h
-
-    # trasnform attributes
-    attribute["gender"] = attribute["gender"].to_i
-    attribute["contact_source"] = attribute["contact_source"].to_i
-    attribute["from_groom"] = (attribute["from_groom"] == "true") ? true : false
-
-    attribute
   end
 end

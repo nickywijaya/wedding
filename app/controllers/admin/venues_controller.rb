@@ -42,7 +42,7 @@ class Admin::VenuesController < ActionController::Base
                         :map_src,
                         :max_attendees).to_h
 
-    # trasnform attributes
+    # transform attributes
     attribute[:max_attendees] = attribute[:max_attendees].to_i
 
     attribute

@@ -76,7 +76,7 @@ class Admin::InvitationsController < ActionController::Base
   def index_attributes
     attribute = params.permit(:search).to_h
 
-    # trasnform attributes
+    # transform attributes
     attribute["search"] = attribute["search"].to_s.strip
 
     attribute
@@ -88,7 +88,7 @@ class Admin::InvitationsController < ActionController::Base
                   guest_ids: []
                 ).to_h
 
-    # trasnform attributes
+    # transform attributes
     attribute[:wedding_id] = attribute[:wedding_id].to_i
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
 
@@ -102,7 +102,7 @@ class Admin::InvitationsController < ActionController::Base
                   guest_ids: []
                 ).to_h
 
-    # trasnform attributes
+    # transform attributes
     attribute[:wedding_id] = attribute[:wedding_id].to_i
     attribute[:comments] = attribute[:comments].to_s
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
