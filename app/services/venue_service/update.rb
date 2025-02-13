@@ -25,8 +25,13 @@ module VenueService
       raise VenueService::MissingAttributes.new(:venue) if venue.nil?
       raise VenueService::MissingAttributes.new(:params) if params.nil?
 
-      raise VenueService::InvalidServiceParameter.new(:params) unless venue.is_a? Venue
+      raise VenueService::InvalidServiceParameter.new(:venue) unless venue.is_a? Venue
       raise VenueService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
+
+      raise VenueService::InvalidServiceParameterWithMessage.new(:name, 'tidak boleh kosong') if params[:name].blank?
+      raise VenueService::InvalidServiceParameterWithMessage.new(:address, 'tidak boleh kosong') if params[:address].blank?
+      raise VenueService::InvalidServiceParameterWithMessage.new(:map_src, 'tidak boleh kosong') if params[:map_src].blank?
+      raise VenueService::InvalidServiceParameterWithMessage.new(:max_attendees, 'harus lebih dari 0') if params[:max_attendees].zero?
     end
   end
 end
