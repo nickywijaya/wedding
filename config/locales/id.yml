@@ -1,4 +1,15 @@
 id:
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: 'Hello everybody!'
+        user_subject: 'Hello User! Please confirm your email'
+      reset_password_instructions:
+        subject: 'Reset instructions'
+    registrations:
+      signed_up: 'Kamu telah berhasil terdaftar'
+    sessions:
+      signed_in: 'Kamu telah berhasil login'
   services:
     missing_attributes: '%{attribute} tidak ditemukan'
     errors:

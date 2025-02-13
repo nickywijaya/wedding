@@ -1,8 +1,9 @@
 class Admin::InvitationsController < ActionController::Base
-  respond_to? :html
+  before_action :authenticate_user!
   before_action :load_resource, only: [:edit, :update, :destroy]
   before_action :load_uninvited_guests, only: [:edit, :new]
 
+  respond_to? :html
   layout 'admin'
 
   def index

@@ -1,7 +1,8 @@
 class Admin::GuestsController < ActionController::Base
-  respond_to? :html
+  before_action :authenticate_user!
   before_action :load_resource, only: [:edit, :update, :destroy]
 
+  respond_to? :html
   layout 'admin'
 
   def index
