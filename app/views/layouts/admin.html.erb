@@ -20,7 +20,7 @@
         <!-- navbar -->
         <nav class="navbar">
           <div class="logo_item">
-            <%= link_to admin_home_index_url, class: 'logo_item', style: 'text-decoration: none; color: inherit;' do %>
+            <%= link_to admin_root_url, class: 'logo_item', style: 'text-decoration: none; color: inherit;' do %>
             <i class="bx bx-menu" id="sidebarOpen"></i>
             <span class="">
               <i class="bx bx-sidebar"></i>
@@ -53,7 +53,7 @@
                       <span class="navlink_icon">
                         <i class="bx bx-cog"></i>
                       </span>
-                      <span class="navlink">Settings</span>
+                      <span class="navlink">Configurations</span>
                       <i class="bx bx-chevron-right arrow-left"></i>
                     </div>
                     <ul class="menu_items submenu">
@@ -91,9 +91,29 @@
                       </a>
                       <a href=<%= admin_guests_path %> class="nav_link sublink">
                         <span class="navlink_icon">
-                          <i class="bx bx-user"></i>
+                          <i class="bx bxs-user-detail"></i>
                         </span>
                         Guests
+                      </a>
+                    </ul>
+                  </li>
+                  <!-- end -->
+                  <!-- duplicate this li tag if you want to add or remove  navlink with submenu -->
+                  <!-- start -->
+                  <li class="item">
+                    <div class="nav_link submenu_item">
+                      <span class="navlink_icon">
+                        <i class="bx bx-code-block"></i>
+                      </span>
+                      <span class="navlink">Administrator</span>
+                      <i class="bx bx-chevron-right arrow-left"></i>
+                    </div>
+                    <ul class="menu_items submenu">
+                      <a href=<%= admin_users_path %> class="nav_link sublink">
+                        <span class="navlink_icon">
+                          <i class="bx bxs-user-account"></i>
+                        </span>
+                        Accounts
                       </a>
                     </ul>
                   </li>

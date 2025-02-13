@@ -9,7 +9,7 @@ class Admin::InvitationsController < AdminController
     @invitations = InvitationService.retrieve(index_attributes)
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_invitations_path
+    redirect_to admin_root_url
   end
 
   def new
@@ -22,7 +22,7 @@ class Admin::InvitationsController < AdminController
   def create
     InvitationService.create(create_attributes)
 
-    redirect_to admin_invitations_path, notice: 'Invitation created successfully'
+    redirect_to admin_invitations_path, notice: 'Sukses menambah undangan'
   rescue InvitationService::InvitationError => e
     flash[:warning] = e.message
     redirect_to new_admin_invitation_path
@@ -43,7 +43,7 @@ class Admin::InvitationsController < AdminController
   def update
     InvitationService.update(@invitation, update_attributes)
 
-    redirect_to admin_invitations_path, notice: 'Invitation updated successfully'
+    redirect_to admin_invitations_path, notice: 'Sukses mengubah data undangan'
   rescue InvitationService::InvitationError => e
     flash[:warning] = e.message
     redirect_to edit_admin_invitation_path
@@ -55,7 +55,7 @@ class Admin::InvitationsController < AdminController
   def destroy
     InvitationService.delete(@invitation)
 
-    redirect_to admin_invitations_path, notice: 'Invitation deleted successfully'
+    redirect_to admin_invitations_path, notice: 'Sukses menghapus undangan'
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_invitations_path
@@ -74,7 +74,7 @@ class Admin::InvitationsController < AdminController
   end
 
   def index_attributes
-    attribute = params.permit(:search).to_h
+    attribute = params.permit(:search. :commit).to_h
 
     # transform attributes
     attribute["search"] = attribute["search"].to_s.strip

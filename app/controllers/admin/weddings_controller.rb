@@ -8,7 +8,7 @@ class Admin::WeddingsController < AdminController
     @weddings = Weddings.all
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_weddings_path
+    redirect_to admin_root_url
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::WeddingsController < AdminController
   def update
     WeddingService.update(@wedding, update_attributes)
 
-    redirect_to admin_weddings_path, notice: 'Wedding updated successfully'
+    redirect_to admin_weddings_path, notice: 'Sukses mengubah data perkawinan'
   rescue WeddingService::WeddingError => e
     flash[:warning] = e.message
     redirect_to edit_admin_wedding_path

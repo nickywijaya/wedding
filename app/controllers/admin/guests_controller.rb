@@ -8,7 +8,7 @@ class Admin::GuestsController < AdminController
     @guests = GuestService.retrieve(index_attributes)
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_guests_path
+    redirect_to admin_root_url
   end
 
   def new
@@ -21,7 +21,7 @@ class Admin::GuestsController < AdminController
   def create
     GuestService.create(create_attributes)
 
-    redirect_to admin_guests_path, notice: 'Guest created successfully'
+    redirect_to admin_guests_path, notice: 'Sukses menambah tamu'
   rescue GuestService::GuestError => e
     flash[:warning] = e.message
     redirect_to new_admin_guest_path
@@ -39,7 +39,7 @@ class Admin::GuestsController < AdminController
   def update
     GuestService.update(@guest, update_attributes)
 
-    redirect_to admin_guests_path, notice: 'Guest updated successfully'
+    redirect_to admin_guests_path, notice: 'Sukses mengubah data tamu'
   rescue GuestService::GuestError => e
     flash[:warning] = e.message
     redirect_to edit_admin_guest_path
@@ -51,7 +51,7 @@ class Admin::GuestsController < AdminController
   def destroy
     GuestService.delete(@guest)
 
-    redirect_to admin_guests_path, notice: 'Guest deleted successfully'
+    redirect_to admin_guests_path, notice: 'Sukses menghapus tamu'
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_guests_path
@@ -64,7 +64,7 @@ class Admin::GuestsController < AdminController
   end
 
   def index_attributes
-    attribute = params.permit(:search).to_h
+    attribute = params.permit(:search, :commit).to_h
 
     # transform attributes
     attribute["search"] = attribute["search"].to_s.strip

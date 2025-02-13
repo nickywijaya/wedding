@@ -8,7 +8,7 @@ class Admin::VenuesController < AdminController
     @venues = Venue.all
   rescue StandardError => e
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_venues_path
+    redirect_to admin_root_url
   end
 
   def edit
@@ -20,7 +20,7 @@ class Admin::VenuesController < AdminController
   def update
     VenueService.update(@venue, update_attributes.with_indifferent_access)
 
-    redirect_to admin_venues_path, notice: 'Venue updated successfully'
+    redirect_to admin_venues_path, notice: 'Sukses mengubah data venue'
   rescue VenueService::VenueError => e
     flash[:warning] = e.message
     redirect_to edit_admin_venue_path
