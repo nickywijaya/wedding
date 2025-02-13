@@ -23,7 +23,7 @@ class Admin::InvitationsController < ActionController::Base
     InvitationService.create(create_attributes)
 
     redirect_to admin_invitations_path, notice: 'Invitation created successfully'
-  rescue InvitationService::InvalidServiceParameter, InvitationService::InvitationError => e
+  rescue InvitationService::InvitationError => e
     flash[:warning] = e.message
     redirect_to new_admin_invitation_path
   rescue StandardError => e
@@ -44,7 +44,7 @@ class Admin::InvitationsController < ActionController::Base
     InvitationService.update(@invitation, update_attributes)
 
     redirect_to admin_invitations_path, notice: 'Invitation updated successfully'
-  rescue InvitationService::InvalidServiceParameter => e
+  rescue InvitationService::InvitationError => e
     flash[:warning] = e.message
     redirect_to edit_admin_invitation_path
   rescue StandardError => e
