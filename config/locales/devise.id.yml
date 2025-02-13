@@ -1,16 +1,4 @@
 id:
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              blank: "wajib diisi"
-              taken: "sudah terdaftar, mohon gunakan alamat email yang lain"
-            password:
-              blank: "wajib diisi"
-            password_confirmation:
-              confirmation: "wajib sama"
   devise:
     confirmations:
       confirmed: "Alamat email Anda telah berhasil dikonfirmasi."
@@ -73,19 +61,3 @@ id:
       not_saved:
         one: "1 kesalahan mencegah %{resource} ini disimpan:"
         other: "%{count} kesalahan mencegah %{resource} ini disimpan:"
-  services:
-    missing_attributes: '%{attribute} tidak ditemukan'
-    errors:
-      action_forbidden: Tidak dapat melakukan action tersebut
-      params_invalid: 'Parameter %{field} tidak valid'
-      params_invalid_with_message: 'Parameter %{field} %{message}'
-    guest_services:
-      missing_attributes: '%{attribute} tidak boleh kosong'
-    invitation_services:
-      missing_attributes: '%{attribute} tidak boleh kosong'
-      wedding_not_found: 'Wedding harus di isi'
-      empty_guest: 'Tamu tidak boleh kosong'
-    venue_services:
-      missing_attributes: '%{attribute} tidak boleh kosong'
-    wedding_services:
-      missing_attributes: '%{attribute} tidak boleh kosong'

@@ -1,7 +1,7 @@
-class Admin::WeddingsController < ActionController::Base
-  respond_to? :html
+class Admin::WeddingsController < AdminController
   before_action :load_resource, only: [:edit, :update]
 
+  respond_to? :html
   layout 'admin'
 
   def index

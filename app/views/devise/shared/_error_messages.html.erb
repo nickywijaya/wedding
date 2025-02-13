@@ -1,0 +1,22 @@
+<%# app/views/devise/shared/_error_messages.html.erb %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-warning">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if resource.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

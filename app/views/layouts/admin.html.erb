@@ -20,14 +20,16 @@
         <!-- navbar -->
         <nav class="navbar">
           <div class="logo_item">
+            <%= link_to admin_home_index_url, class: 'logo_item', style: 'text-decoration: none; color: inherit;' do %>
             <i class="bx bx-menu" id="sidebarOpen"></i>
-              <span class="navlink_icon">
-                <i class="bx bx-sidebar"></i>
-                  Wedding Admin
-              </span>
+            <span class="">
+              <i class="bx bx-sidebar"></i>
+              Wedding Admin
+            </span>
+          <% end %>
           </div>
-          <div class="search_bar">
-            <input type="text" placeholder="Dummy Search" />
+          <div class="text-center">
+            <p>Welcome, <%= current_user.email %></p>
           </div>
           <div class="navbar_content">
             <i class="bi bi-grid"></i>
@@ -103,10 +105,12 @@
                     <span> Expand</span>
                     <i class='bx bx-log-in' ></i>
                   </div>
-                  <div class="bottom collapse_sidebar">
-                    <span> Collapse</span>
-                    <i class='bx bx-log-out'></i>
-                  </div>
+                    <div class="bottom collapse_sidebar">
+                      <span> Collapse</span>
+                      <%= link_to destroy_user_session_path, method: :delete, id: "logoutIcon", class: "logout-icon" do %>
+                        <i class='bx bx-log-out'></i>
+                      <% end %>
+                    </div>
                 </div>
               </div>
             </nav>
