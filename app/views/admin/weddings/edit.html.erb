@@ -16,17 +16,6 @@
 
 <div class="row align-items-center mb-5 mt-5">
   <%= form_with model: @wedding, url: admin_wedding_path(@wedding), method: :patch, local: true do |form| %>
-    <% if @wedding.errors.any? %>
-      <div class="error-messages">
-        <h2><%= pluralize(@wedding.errors.count, "error") %> prohibited this wedding from being saved:</h2>
-        <ul>
-          <% @wedding.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="form-group">
       <%= form.label :hashtag, "Wedding Hashtag" %>
       <%= form.text_field :hashtag, class: "form-control" %>

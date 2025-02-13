@@ -7,20 +7,26 @@ class Admin::WeddingsController < ActionController::Base
   def index
     @weddings = Weddings.all
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_weddings_path
   end
 
   def edit
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to admin_weddings_path
   end
 
   def update
     WeddingService.update(@wedding, update_attributes)
 
     redirect_to admin_weddings_path, notice: 'Wedding updated successfully'
+  rescue WeddingService::WeddingError => e
+    flash[:warning] = e.message
+    redirect_to edit_admin_wedding_path
   rescue StandardError => e
-    render json: { message: e, status: 500 }
+    flash[:error] = "Tetap tenang tetap semangat"
+    redirect_to edit_admin_wedding_path
   end
 
   private

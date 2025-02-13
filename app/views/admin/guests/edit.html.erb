@@ -16,17 +16,6 @@
 
 <div class="row align-items-center mb-5 mt-5">
   <%= form_with model: @guest, url: admin_guest_path(@guest), method: :patch, local: true do |form| %>
-    <% if @guest.errors.any? %>
-      <div class="error-messages">
-        <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
-        <ul>
-          <% @guest.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <div class="form-group">
       <%= form.label :name, "Guest Name" %>
       <%= form.text_field :name, class: "form-control" %>

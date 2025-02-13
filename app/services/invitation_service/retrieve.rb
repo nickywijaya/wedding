@@ -28,7 +28,7 @@ module InvitationService
     def validate
       raise InvitationService::MissingAttributes.new(:params) if params.nil?
 
-      raise InvitationService::InvalidServiceParameter.new(:params_search) unless params[:search].is_a? String
+      raise InvitationService::InvalidServiceParameter.new(:name) unless params[:search].is_a? String
     end
   end
 end

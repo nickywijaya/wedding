@@ -26,7 +26,7 @@ module GuestService
     def validate
       raise GuestService::MissingAttributes.new(:params) if params.nil?
 
-      raise GuestService::InvalidServiceParameter.new(:params_search) unless params[:search].is_a? String
+      raise GuestService::InvalidServiceParameter.new(:name) unless params[:search].is_a? String
     end
   end
 end
