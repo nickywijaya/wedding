@@ -6,7 +6,6 @@ class Admin::WeddingsController < AdminController
 
   def index
     @weddings = Weddings.all
-    100/0
   rescue StandardError => e
     session[:error_message] = e.message
     session[:error_backtrace] = e.backtrace.take(3)
