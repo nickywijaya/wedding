@@ -7,6 +7,7 @@ class CreateVenuesTable < ActiveRecord::Migration[5.2]
       t.datetime :start_time
       t.datetime :end_time
       t.integer :max_attendees
+      t.integer :venue_type, unsigned: true, limit: 1
 
       t.timestamps
     end

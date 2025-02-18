@@ -3,14 +3,23 @@ class Admin::HomeController < AdminController
   layout 'admin'
 
   def index
-   # TO-DO: next MR - implement this!
+    @wedding = Weddings.first
 
-    @progress_1 = 75  # 75% for the first bar
-    @progress_2 = 50  # 50% for the second bar
-    @progress_3 = 25  # 25% for the third bar
-    @progress_4 = 90  # 90% for the fourth bar
+    @venue_holy_matrimony = @wedding.venues.holy_matrimony
+    @venue_reception = @wedding.venues.reception
   rescue StandardError => e
+    session[:error_message] = e.message
+    session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_root_url # TO-DO: we need an error page for admin to avoid too many redirection error!
+    redirect_to admin_error_url
+  end
+
+  def error
+    @error_message = session[:error_message]
+    @error_backtrace = session[:error_backtrace]
+
+    # Clear the session values after using them
+    session.delete(:error_message)
+    session.delete(:error_backtrace)
   end
 end

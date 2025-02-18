@@ -32,6 +32,7 @@ module VenueService
       raise VenueService::InvalidServiceParameterWithMessage.new(:address, 'tidak boleh kosong') if params[:address].blank?
       raise VenueService::InvalidServiceParameterWithMessage.new(:map_src, 'tidak boleh kosong') if params[:map_src].blank?
       raise VenueService::InvalidServiceParameterWithMessage.new(:max_attendees, 'harus lebih dari 0') if params[:max_attendees].zero?
+      raise VenueService::InvalidServiceParameterWithMessage.new(:venue_type, 'tidak boleh kosong') if params[:venue_type].blank?
     end
   end
 end

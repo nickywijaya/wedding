@@ -17,6 +17,9 @@ module InvitationService
         invitation = Invitation.new
         invitation.id = SecureRandom.uuid
         invitation.wedding_id = params[:wedding_id]
+        invitation.participant = params[:participant]
+        invitation.attendance_type = params[:attendance_type]
+        invitation.with_family = params[:with_family]
         invitation.save!
 
         # create invitation guest

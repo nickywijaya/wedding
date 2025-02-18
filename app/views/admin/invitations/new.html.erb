@@ -31,6 +31,33 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :attendance_type, "Attendance Type" %>
+      <%= form.select :attendance_type,
+                      Invitation::ATTENDANCE_TYPE.keys.map { |key| [Invitation::ATTENDANCE_TYPE[key], key] },
+                      { include_blank: "Select Attendance Type", required: true },
+                      class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :participant, "Participant" %>
+      <%= form.number_field :participant, step: 1, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :with_family, "With Family?" %>
+
+      <div class="form-check">
+        <%= form.radio_button :with_family, true, checked: @invitation.with_family == true, class: "form-check-input" %>
+        <%= form.label :with_family, "Yes", value: true, class: "form-check-label" %>
+      </div>
+
+      <div class="form-check">
+        <%= form.radio_button :with_family, false, checked: @invitation.with_family == false, class: "form-check-input" %>
+        <%= form.label :with_family, "No", value: false, class: "form-check-label" %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= form.label :guest_ids, "Add Guests" %>
       <!-- Question mark icon with tooltip -->
       <span data-toggle="tooltip" data-placement="top" title="Select one or more guests to invite.">

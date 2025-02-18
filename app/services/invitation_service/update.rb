@@ -34,6 +34,9 @@ module InvitationService
         # update invitation
         invitation.wedding_id = params[:wedding_id]
         invitation.comments = params[:comments]
+        invitation.participant = params[:participant]
+        invitation.attendance_type = params[:attendance_type]
+        invitation.with_family = params[:with_family]
         invitation.save!
       end
     rescue StandardError => e
@@ -49,6 +52,7 @@ module InvitationService
       raise InvitationService::InvalidServiceParameter.new(:invitation) unless invitation.is_a? Invitation
       raise InvitationService::InvalidServiceParameter.new(:params) unless params.is_a? Hash
 
+      raise InvitationService::InvalidServiceParameter.new(:param_attendance_type) if params[:attendance_type].blank?
       raise InvitationService::WeddingNotFound.new if params[:wedding_id].to_i.zero?
       raise InvitationService::EmptyGuest.new if params[:guest_ids].blank?
     end

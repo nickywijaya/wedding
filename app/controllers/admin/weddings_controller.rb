@@ -7,8 +7,10 @@ class Admin::WeddingsController < AdminController
   def index
     @weddings = Weddings.all
   rescue StandardError => e
+    session[:error_message] = e.message
+    session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_root_url
+    redirect_to admin_error_url
   end
 
   def edit

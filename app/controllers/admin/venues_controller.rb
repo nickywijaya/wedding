@@ -7,8 +7,10 @@ class Admin::VenuesController < AdminController
   def index
     @venues = Venue.all
   rescue StandardError => e
+    session[:error_message] = e.message
+    session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
-    redirect_to admin_root_url
+    redirect_to admin_error_url
   end
 
   def edit
@@ -40,7 +42,8 @@ class Admin::VenuesController < AdminController
                 .permit(:name,
                         :address,
                         :map_src,
-                        :max_attendees).to_h
+                        :max_attendees,
+                        :venue_type).to_h
 
     # transform attributes
     attribute[:max_attendees] = attribute[:max_attendees].to_i

@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   devise_for :users, path: '_auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
   namespace :admin, path: '_adminz' do
-    get '/' => 'home#index', as: 'root'
 
-    resources :home
+    # home controller, only display index and error. no resources
+    get '/' => 'home#index', as: 'root'
+    get '/error' => 'home#error', as: 'error'
 
     resources :venues
     resources :weddings
