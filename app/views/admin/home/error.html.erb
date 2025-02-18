@@ -1,0 +1,35 @@
+<!-- app/views/admin/guests/index.html.erb -->
+
+<%= stylesheet_link_tag "admin" %>
+
+<div class="row align-items-center mb-5 mt-5">
+  <div class="col-sm-12">
+    <h1 class="text-center">Error!!!</h1>
+  </div>
+</div>
+
+<div class="container mt-5">
+
+  <% if @error_message.present? %>
+    <div class="alert alert-danger">
+      <h4 class="alert-heading">An Error Occurred</h4>
+      <p><strong>Error message:</strong> <%= @error_message %></p>
+
+      <% if @error_backtrace.present? %>
+        <h5>Backtrace:</h5>
+        <ul>
+          <% @error_backtrace.each do |line| %>
+            <li><%= line %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <p>We are working on fixing this issue. Please try again later.</p>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <h4 class="alert-heading">Everything is fine!</h4>
+      <p><strong>There's no error found. You can sit back and relax and don't forget to chill!</strong></p>
+      <p>Keep working!</p>
+    </div>
+  <% end %>
+</div>
