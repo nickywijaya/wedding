@@ -189,3 +189,28 @@ th {
   color: #555;
   margin-top: 10px;
 }
+
+/*  Styling for Scrollable Comment Section */
+.scrollable-comments {
+  max-height: 300px; /* Adjust the height to your preference */
+  overflow-y: auto;  /* Makes it scrollable */
+  border-top: 1px solid #ccc;  /* Optional border */
+  padding-top: 10px;  /* Optional padding */
+}
+
+.comment {
+  margin-bottom: 10px; /* Space between comments */
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.2); /* Slight white background for the comments */
+  border-radius: 5px; /* Optional rounded corners */
+}
+
+.comment h5 {
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.comment p {
+  font-size: 0.9rem;
+  white-space: pre-wrap; /* Preserve line breaks in the comment */
+}

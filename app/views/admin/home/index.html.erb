@@ -307,6 +307,30 @@
     </div>
   </div>
 
+  <!-- Comments Section -->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white">
+      <div class="card-header text-center">
+        All Comments
+      </div>
+
+      <div class="card-body">
+        <!-- Scrollable comment section -->
+        <div class="scrollable-comments">
+          <!-- Iterate through the comments and display them -->
+          <% @wedding.invitations.each do |invitation| %>
+            <% if invitation.comments.present? %>
+              <div class="comment bg-light text-black">
+                <h5><%= invitation.guests&.pluck(:name)&.join(", ") %> - <%= invitation.attending ? 'Attending' : 'Not Attending' %></h5>
+                <p><%= invitation.comments %></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- Include this in your index.html.erb file -->
