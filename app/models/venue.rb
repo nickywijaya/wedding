@@ -25,11 +25,19 @@ class Venue < ApplicationRecord
     VENUE_TYPE[self.venue_type.to_s.to_sym]
   end
 
-  def fetch_attended_attendees
+  def fetch_aggregated_attendees
     if self.venue_type == VENUE_TYPE_ENUM[:reception]
       self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:reception], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).sum(&:participant)
     else
       self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).sum(&:participant)
+    end
+  end
+
+  def fetch_attended_attendees
+    if self.venue_type == VENUE_TYPE_ENUM[:reception]
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:reception], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(attending: true).sum(&:participant)
+    else
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(attending: true).sum(&:participant)
     end
   end
 

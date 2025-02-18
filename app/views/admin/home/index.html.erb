@@ -22,7 +22,7 @@
         <div class="row">
 
           <!-- Holy Matrinomy Not Confirmed Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card bg-light p-3">
               <h5 class="card-title text-center">Not Confirmed
                 <span data-toggle="tooltip" data-placement="top" title="How many person that still not reserved this event through given invitation">
@@ -60,7 +60,7 @@
           </div>
 
           <!-- Holy Matrinomy Attending Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card bg-light p-3">
               <h5 class="card-title text-center">Attending
                 <span data-toggle="tooltip" data-placement="top" title="How many person that are attend to this event">
@@ -98,7 +98,7 @@
           </div>
 
           <!-- Holy Matrinomy Absent Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card bg-light p-3">
               <h5 class="card-title text-center">Absent
                 <span data-toggle="tooltip" data-placement="top" title="How many person that will not attend to this event">
@@ -135,6 +135,44 @@
             </div>
           </div>
 
+          <!-- Holy Matrinomy Invitation Aggreagte -->
+          <div class="col-md-12 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Invitations
+                <span data-toggle="tooltip" data-placement="top" title="How many invitations created, aggregated all the attending status">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_aggregated_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_aggregated_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_aggregated_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_aggregated_attendees %> / <%= @venue_holy_matrimony.max_attendees %>
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -152,7 +190,7 @@
         <div class="row">
 
           <!-- Reception Not Confirmed Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card bg-light p-3">
               <h5 class="card-title text-center">Not Confirmed
                 <span data-toggle="tooltip" data-placement="top" title="How many person that still not reserved this event through given invitation">
@@ -190,7 +228,7 @@
           </div>
 
           <!-- Reception Attending Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card bg-light p-3">
               <h5 class="card-title text-center">Attending
                 <span data-toggle="tooltip" data-placement="top" title="How many person that are attend to this event">
@@ -229,7 +267,7 @@
           </div>
 
           <!-- Reception Absent Participant -->
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3">
             <div class="card p-3">
               <h5 class="card-title bg-light text-center">Absent
                 <span data-toggle="tooltip" data-placement="top" title="How many person that will not attend to this event">
@@ -262,6 +300,44 @@
               </div>
               <p class="card-text text-center">
                 <%= @venue_reception.fetch_absent_attendees %> / <%= @venue_reception.max_attendees %>
+              </p>
+            </div>
+          </div>
+
+          <!-- Holy Matrinomy Invitation Aggreagte -->
+          <div class="col-md-12 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Invitations
+                <span data-toggle="tooltip" data-placement="top" title="How many invitations created, aggregated all the attending status">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_aggregated_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_reception.fetch_aggregated_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_aggregated_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_aggregated_attendees %> / <%= @venue_reception.max_attendees %>
               </p>
             </div>
           </div>
