@@ -17,6 +17,7 @@
         <th>Max Attendees</th>
         <th>Start Time</th>
         <th>End Time</th>
+        <th>Type</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -25,11 +26,12 @@
         <tr>
           <td><%= index + 1 %></td>
           <td><%= venue.name %></td>
-          <td><%= venue.wedding.hashtag %></td>
+          <td><%= venue.weddings&.first&.hashtag %></td>
           <td><%= venue.address %></td>
           <td><%= venue.max_attendees %></td>
           <td><%= venue.start_time.strftime("%b %d, %Y %I:%M %p") %></td>
           <td><%= venue.end_time.strftime("%b %d, %Y %I:%M %p") %></td>
+          <td><%= venue.fetch_venue_type %></td>
           <td>
             <%= link_to 'Edit', edit_admin_venue_path(venue), class: 'btn btn-primary' %>
           </td>

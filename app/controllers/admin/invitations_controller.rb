@@ -85,12 +85,18 @@ class Admin::InvitationsController < AdminController
   def create_attributes
     attribute = params.required(:invitation)
           .permit(:wedding_id,
+                  :participant,
+                  :attendance_type,
+                  :with_family,
                   guest_ids: []
                 ).to_h
 
     # transform attributes
     attribute[:wedding_id] = attribute[:wedding_id].to_i
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
+    attribute[:attendance_type] = attribute[:attendance_type].to_i
+    attribute[:with_family] = (attribute[:with_family].to_s == "true") ? true : false
+    attribute[:participant] = attribute[:guest_ids].count if attribute[:participant].to_i.zero?
 
     attribute
   end
@@ -99,6 +105,9 @@ class Admin::InvitationsController < AdminController
     attribute = params.required(:invitation)
           .permit(:wedding_id,
                   :comments,
+                  :participant,
+                  :attendance_type,
+                  :with_family,
                   guest_ids: []
                 ).to_h
 
@@ -106,6 +115,9 @@ class Admin::InvitationsController < AdminController
     attribute[:wedding_id] = attribute[:wedding_id].to_i
     attribute[:comments] = attribute[:comments].to_s
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
+    attribute[:attendance_type] = attribute[:attendance_type].to_i
+    attribute[:with_family] = (attribute[:with_family].to_s == "true") ? true : false
+    attribute[:participant] = attribute[:guest_ids].count if attribute[:participant].to_i.zero?
 
     attribute
   end

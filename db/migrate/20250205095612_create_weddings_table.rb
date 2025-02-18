@@ -5,7 +5,6 @@ class CreateWeddingsTable < ActiveRecord::Migration[5.2]
       t.string :bride
       t.string :story
       t.string :hashtag
-      t.integer :venue_id
 
       t.timestamps
     end

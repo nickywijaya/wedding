@@ -40,7 +40,8 @@ class Admin::VenuesController < AdminController
                 .permit(:name,
                         :address,
                         :map_src,
-                        :max_attendees).to_h
+                        :max_attendees,
+                        :venue_type).to_h
 
     # transform attributes
     attribute[:max_attendees] = attribute[:max_attendees].to_i
