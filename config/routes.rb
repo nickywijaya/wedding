@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   namespace :admin, path: '_adminz' do
     get '/' => 'home#index', as: 'root'
 
-    resources :home
+    resources :home do
+      get '/error' => 'home#error', as: 'error'
+    end
 
     resources :venues
     resources :weddings

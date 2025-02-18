@@ -9,169 +9,339 @@
 </div>
 
 <div class="container mt-5">
-  <div class="row-custom justify-content-between mb-3">
 
-    <!-- Reception Participant -->
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5 class="card-title text-center">Reception Participant</h5>
-        <div class="progress-circle" data-percent="75">
-          <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
-            <path class="circle-bg"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  stroke-width="3"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-            <path class="circle"
-                  fill="none"
-                  stroke="#4db8ff"
-                  stroke-width="3"
-                  stroke-dasharray="75, 100"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-          </svg>
-          <div class="percentage">
-            <%= @progress_1 %>%
+  <!-- Holy Matrimony Participants Section-->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white">
+      <div class="card-header text-center">
+        Holy Matrimony Participants
+      </div>
+
+      <div class="card-body">
+        <!-- Main Row for Cards -->
+        <div class="row">
+
+          <!-- Holy Matrinomy Not Confirmed Participant -->
+          <div class="col-md-4">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Not Confirmed
+                <span data-toggle="tooltip" data-placement="top" title="How many person that still not reserved this event through given invitation">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_not_confirmed_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_not_confirmed_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_not_confirmed_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_not_confirmed_attendees %> / <%= @venue_holy_matrimony.max_attendees %>
+              </p>
+            </div>
           </div>
+
+          <!-- Holy Matrinomy Attending Participant -->
+          <div class="col-md-4">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Attending
+                <span data-toggle="tooltip" data-placement="top" title="How many person that are attend to this event">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_attended_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_attended_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_attended_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_attended_attendees %> / <%= @venue_holy_matrimony.max_attendees %>
+              </p>
+            </div>
+          </div>
+
+          <!-- Holy Matrinomy Absent Participant -->
+          <div class="col-md-4">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Absent
+                <span data-toggle="tooltip" data-placement="top" title="How many person that will not attend to this event">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_absent_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_absent_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_absent_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_absent_attendees %> / <%= @venue_holy_matrimony.max_attendees %>
+              </p>
+            </div>
+          </div>
+
         </div>
-        <p class="card-text text-center">TBA</p>
       </div>
     </div>
+  </div>
 
-    <!-- Holy Matrimony Participant -->
-    <div class="col-md-6">
-      <div class="card p-3">
-        <h5 class="card-title text-center">Holy Matrimony Participant</h5>
-        <div class="progress-circle" data-percent="50">
-          <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
-            <path class="circle-bg"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  stroke-width="3"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-            <path class="circle"
-                  fill="none"
-                  stroke="#4db8ff"
-                  stroke-width="3"
-                  stroke-dasharray="50, 100"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-          </svg>
-          <div class="percentage">
-            <%= @progress_2 %>%
+  <!-- Reception Participants Section-->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white ">
+      <div class="card-header text-center">
+        Reception Participants
+      </div>
+
+      <div class="card-body">
+        <!-- Main Row for Cards -->
+        <div class="row">
+
+          <!-- Reception Not Confirmed Participant -->
+          <div class="col-md-4">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Not Confirmed
+                <span data-toggle="tooltip" data-placement="top" title="How many person that still not reserved this event through given invitation">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_not_confirmed_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_reception.fetch_not_confirmed_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_not_confirmed_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_not_confirmed_attendees %> / <%= @venue_reception.max_attendees %>
+              </p>
+            </div>
           </div>
+
+          <!-- Reception Attending Participant -->
+          <div class="col-md-4">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Attending
+                <span data-toggle="tooltip" data-placement="top" title="How many person that are attend to this event">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_attended_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_reception.fetch_attended_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_attended_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_attended_attendees %> / <%= @venue_reception.max_attendees %>
+              </p>
+            </div>
+          </div>
+
+          <!-- Reception Absent Participant -->
+          <div class="col-md-4">
+            <div class="card p-3">
+              <h5 class="card-title bg-light text-center">Absent
+                <span data-toggle="tooltip" data-placement="top" title="How many person that will not attend to this event">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_absent_attendees %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= @venue_reception.fetch_absent_attendees %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_absent_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_absent_attendees %> / <%= @venue_reception.max_attendees %>
+              </p>
+            </div>
+          </div>
+
         </div>
-        <p class="card-text text-center">TBA</p>
       </div>
     </div>
   </div>
 
-  <div class="row-custom justify-content-between mb-3">
-
-    <!-- TBA -->
-    <div class="col-md-3 mx-1">
-      <div class="card p-3">
-        <h5 class="card-title text-center">TODO: Change ME!</h5>
-        <div class="progress-circle" data-percent="75">
-          <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
-            <path class="circle-bg"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  stroke-width="3"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-            <path class="circle"
-                  fill="none"
-                  stroke="#4db8ff"
-                  stroke-width="3"
-                  stroke-dasharray="75, 100"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-          </svg>
-          <div class="percentage">
-            <%= @progress_1 %>%
-          </div>
-        </div>
-        <p class="card-text text-center">TBA</p>
+  <!-- Event Time Left Section -->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white ">
+      <div class="card-header text-center">
+        Time left
       </div>
-    </div>
 
-    <!-- TBA -->
-    <div class="col-md-5 mx-1">
-      <div class="card p-3">
-        <h5 class="card-title text-center">TODO: Change ME!</h5>
-        <div class="progress-circle" data-percent="50">
-          <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
-            <path class="circle-bg"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  stroke-width="3"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-            <path class="circle"
-                  fill="none"
-                  stroke="#4db8ff"
-                  stroke-width="3"
-                  stroke-dasharray="50, 100"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-          </svg>
-          <div class="percentage">
-            <%= @progress_2 %>%
-          </div>
-        </div>
-        <p class="card-text text-center">This is a description for progress bar 2. Shows mid-level progress.</p>
-      </div>
-    </div>
+      <div class="card-body">
+        <!-- Main Row for Cards -->
+        <div class="row">
 
-    <!-- TBA -->
-    <div class="col-md-3 mx-1">
-      <div class="card p-3">
-        <h5 class="card-title text-center">TODO: Change ME!</h5>
-        <div class="progress-circle" data-percent="25">
-          <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
-            <path class="circle-bg"
-                  fill="none"
-                  stroke="#e6e6e6"
-                  stroke-width="3"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-            <path class="circle"
-                  fill="none"
-                  stroke="#4db8ff"
-                  stroke-width="3"
-                  stroke-dasharray="25, 100"
-                  d="M18 2.0845
-                     a 15.9155 15.9155 0 1 1 0 31.831
-                     a 15.9155 15.9155 0 1 1 0 -31.831"
-            ></path>
-          </svg>
-          <div class="percentage">
-            <%= @progress_3 %>%
+          <!-- Holy Matrimony -->
+          <div class="col-md-6">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Holy Matrimony</h5>
+              <p class="card-text text-center" id="countdown-holy-matrimony">
+                <!-- Initial countdown will be rendered here by JavaScript -->
+              </p>
+            </div>
           </div>
+
+          <!-- Reception -->
+          <div class="col-md-6">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Reception</h5>
+              <p class="card-text text-center" id="countdown-reception">
+                <!-- Initial countdown will be rendered here by JavaScript -->
+              </p>
+            </div>
+          </div>
+
         </div>
-        <p class="card-text text-center">TBA</p>
       </div>
     </div>
   </div>
+
 </div>
+
+<!-- Include this in your index.html.erb file -->
+<script>
+  function updateCountdown() {
+    // Get the target date from the Rails instance variable passed via ERB
+    var targetDateHolyMatrimony = new Date("<%= @venue_holy_matrimony.start_time.strftime('%B %d, %Y %H:%M:%S') %>").getTime();
+    var targetDateReception = new Date("<%= @venue_reception.start_time.strftime('%B %d, %Y %H:%M:%S') %>").getTime();
+
+    var now = new Date().getTime();
+    var timeLeftHolyMatrimony = targetDateHolyMatrimony - now;
+    var timeLeftReception = targetDateReception - now;
+
+    if (timeLeftHolyMatrimony <= 0) {
+      document.getElementById("countdown-holy-matrimony").innerHTML = "Time's up!";
+      clearInterval(interval);
+    } else if (timeLeftReception <= 0) {
+      document.getElementById("countdown-reception").innerHTML = "Time's up!";
+      clearInterval(interval);
+    } else {
+      var daysHM = Math.floor(timeLeftHolyMatrimony / (1000 * 60 * 60 * 24));
+      var hoursHM = Math.floor((timeLeftHolyMatrimony % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutesHM = Math.floor((timeLeftHolyMatrimony % (1000 * 60 * 60)) / (1000 * 60));
+      var secondsHM = Math.floor((timeLeftHolyMatrimony % (1000 * 60)) / 1000);
+
+      var daysR = Math.floor(timeLeftReception / (1000 * 60 * 60 * 24));
+      var hoursR = Math.floor((timeLeftReception % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutesR = Math.floor((timeLeftReception % (1000 * 60 * 60)) / (1000 * 60));
+      var secondsR = Math.floor((timeLeftReception % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-holy-matrimony").innerHTML = daysHM + " Days " + hoursHM + " Hours " + minutesHM + " Minutes " + secondsHM + " Seconds ";
+      document.getElementById("countdown-reception").innerHTML = daysR + " Days " + hoursR + " Hours " + minutesR + " Minutes " + secondsR + " Seconds ";
+    }
+  }
+
+  // Update the countdown every second
+  var interval = setInterval(updateCountdown, 1000);
+</script>
