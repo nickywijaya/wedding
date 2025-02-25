@@ -8,8 +8,9 @@ class Invitations::BooksController < ActionController::Base
     invitation = Invitation.find params[:id]
 
     # pass required variables for erb templating
+    @wedding = invitation.wedding
     @guests = invitation.guests.pluck(:name).join(" & ")
-    @venue = invitation.wedding&.venue
+    @venue = invitation.wedding.venues.holy_matrimony
 
     # TO-DO: should be inside the database instead of hardcoded
     @couple_story = "We met in college and immediately connected over our shared love for adventure. After years of traveling together, we decided it was time to get married!"
