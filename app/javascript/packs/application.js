@@ -11,11 +11,6 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-
-import './main.js';
-// import './google_map.js';
-
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
