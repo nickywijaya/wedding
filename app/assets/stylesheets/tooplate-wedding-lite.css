@@ -413,7 +413,7 @@ strong {
 -----------------------------------------*/
 .hero-container {
   background-color: #d9d8d6;
-  background-image: image-url('backgrounds/couple-hugging-laughing-near-wall.png');
+  background-image: url('couple-hugging-laughing-near-wall.png');
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: var(--border-radius-small);
@@ -563,7 +563,7 @@ strong {
   RSVP
 -----------------------------------------*/
 .rsvp-section {
-  background-image: image-url('closeup-shot-newlywed-couple-sitting-bench.jpg');
+  background-image: url('closeup-shot-newlywed-couple-sitting-bench.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -651,7 +651,7 @@ strong {
   SITE FOOTER
 -----------------------------------------*/
 .site-footer {
-  background-image: image-url('young-asian-pregnant-couple-using-laptop.jpeg');
+  background-image: url('young-asian-pregnant-couple-using-laptop.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   padding-top: 150px;
