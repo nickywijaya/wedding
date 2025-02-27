@@ -9,7 +9,7 @@ class Invitations::BooksController < ActionController::Base
 
     # pass required variables for erb templating
     @guests = invitation.guests.pluck(:name).join(" & ")
-    @venue = invitation.wedding&.venue
+    #@venue = invitation.wedding&.venue
 
     # TO-DO: should be inside the database instead of hardcoded
     @couple_story = "We met in college and immediately connected over our shared love for adventure. After years of traveling together, we decided it was time to get married!"
