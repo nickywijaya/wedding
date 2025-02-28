@@ -1,38 +1,37 @@
 
   (function ($) {
-  
-  "use strict";
 
-    // PRE LOADER
-    $(window).load(function(){
-      $('.preloader').fadeOut(1000); // set duration in brackets    
-    });
+    "use strict";
 
-    // NAVBAR
-    $('.navbar-nav .nav-link').click(function(){
-        $(".navbar-collapse").collapse('hide');
-    });
+      // PRE LOADER
+      $(window).on('load', function(){
+        $('.preloader').fadeOut(1000); // set duration in brackets
+      });
 
-    // CUSTOM LINK
-    $('.custom-link').click(function(){
-    var el = $(this).attr('href');
-    var elWrapped = $(el);
-    var header_height = $('.navbar').height() + 10;
+      // NAVBAR
+      $('.navbar-nav .nav-link').click(function(){
+          $(".navbar-collapse").collapse('hide');
+      });
 
-    scrollToDiv(elWrapped,header_height);
-    return false;
+      // CUSTOM LINK
+      $('.custom-link').click(function(){
+      var el = $(this).attr('href');
+      var elWrapped = $(el);
+      var header_height = $('.navbar').height() + 10;
 
-    function scrollToDiv(element,navheight){
-      var offset = element.offset();
-      var offsetTop = offset.top;
-      var totalScroll = offsetTop-navheight;
+      scrollToDiv(elWrapped,header_height);
+      return false;
 
-      $('body,html').animate({
-      scrollTop: totalScroll
-      }, 300);
-  }
-});
-    
-  })(window.jQuery);
+      function scrollToDiv(element,navheight){
+        var offset = element.offset();
+        var offsetTop = offset.top;
+        var totalScroll = offsetTop-navheight;
 
+        $('body,html').animate({
+        scrollTop: totalScroll
+        }, 300);
+    }
+  });
+
+    })(window.jQuery);
 

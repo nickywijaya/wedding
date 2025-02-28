@@ -3,22 +3,30 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-import $ from './jquery.min';
-window.jQuery = $;
-window.$ = $;
+// import $ from './jquery.min';
+// window.jQuery = $;
+// window.$ = $;
+
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
+
+import Popper from 'popper.js';
+import 'bootstrap/dist/js/bootstrap.min.js';
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-// import './bootstrap.min'
-// import './click-scroll'
-// import './custom'
-// import './magnific-popup-options'
-// import './magnific-popup.min'
-// import './sticky'
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import './jquery.min'
+import 'css/site.scss'
+import './bootstrap.min'
+import './click-scroll'
+import './jquery.magnific-popup.min'
+import './magnific-popup-options'
+import './jquery.sticky'
+import './custom'
