@@ -9729,7 +9729,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .bg-gallery {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), image-url('gallery.jpg'), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('~images/gallery.jpg'), no-repeat center center;
   background-size: cover;
 }
 
