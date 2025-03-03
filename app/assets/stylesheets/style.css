@@ -99,7 +99,7 @@ h1, h2, h3, h4, h5, h6, figure {
   }
 }
 .fh5co-nav #fh5co-logo {
-  font-size: 40px;
+  font-size: 15px;
   margin: 0;
   padding: 0;
   line-height: 40px;
@@ -443,7 +443,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-event .event-wrap .event-col {
   width: 50%;
   float: left;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 #fh5co-counter {
@@ -841,8 +841,8 @@ form label {
 #fh5co-header .display-tc h1,
 #fh5co-counter .display-tc h1,
 .fh5co-cover .display-tc h1 {
-  margin-bottom: 0px;
-  font-size: 100px;
+  margin-bottom: 10px;
+  font-size: 75px;
   line-height: 1.5;
   font-family: "Sacramento", Arial, serif;
 }
