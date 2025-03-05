@@ -25,6 +25,8 @@
 </head>
 <body>
   <div class="fh5co-loader"></div>
+
+  <!-- Navigation section: START -->
   <div id="page">
     <nav class="fh5co-nav" role="navigation">
       <div class="container">
@@ -37,6 +39,9 @@
         </div>
       </div>
     </nav>
+    <!-- Navigation section: END -->
+
+    <!-- First section page with background and countdown: START -->
     <header id="fh5co-header" class="fh5co-cover" role="banner"
         style="background-image: url(<%= asset_path('img_bg_2.jpg') %>);"
         data-stellar-background-ratio="0.5">
@@ -46,8 +51,8 @@
           <div class="col-md-8 col-md-offset-2 text-center">
             <div class="display-t">
               <div class="display-tc animate-box" data-animate-effect="fadeIn">
-                <h1>The Wedding of</h1>
-                <h1>Nicky & Nova</h1>
+                <h1>The Wedding of Nicky & Nova</h1>
+                <h2>June 7, 2025</h2>
                 <div class="simply-countdown simply-countdown-one" style="margin-top:30px"></div>
                 <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
               </div>
@@ -56,6 +61,9 @@
         </div>
       </div>
     </header>
+    <!-- First section page with background and countdown: END -->
+
+    <!-- Second section page with guest invitation and couple description: START -->
     <div id="fh5co-couple">
       <div class="container">
         <div class="row">
@@ -88,6 +96,9 @@
 			</div>
       </div>
     </div>
+    <!-- Second section page with guest invitation and couple description: END -->
+
+    <!-- Third section page with location description: START -->
     <div id="fh5co-event" class="fh5co-bg" style="background-image: url(<%= asset_path('img_bg_3.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
@@ -194,6 +205,9 @@
         </div>
       </div>
     </div>
+    <!-- Third section page with location description: END -->
+
+    <!-- Fourth section page with couple story: START -->
     <div id="fh5co-couple-story">
       <div class="container">
         <div class="row">
@@ -244,6 +258,9 @@
         </div>
       </div>
     </div>
+    <!-- Fourth section page with couple story: END -->
+
+    <!-- Fifth section page with our photo galleries: START -->
     <div id="fh5co-gallery" class="fh5co-section-gray">
       <div class="container">
         <div class="row">
@@ -324,6 +341,9 @@
         </div>
       </div>
     </div>
+    <!-- Fifth section page with our photo galleries: END -->
+
+    <!-- TO-DO - I think we can remove this? or replace with our live guest count? but it is too little to show: START -->
     <div id="fh5co-counter" class="fh5co-bg fh5co-counter" style="background-image: url(<%= asset_path('img_bg_5.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
@@ -355,6 +375,9 @@
         </div>
       </div>
     </div>
+    <!-- TO-DO - I think we can remove this? or replace with our live guest count? but it is too little to show: END -->
+
+    <!-- Sixth section page with all of invitees comments: START -->
     <div id="fh5co-testimonial">
       <div class="container">
         <div class="row">
@@ -388,6 +411,9 @@
         </div>
       </div>
     </div>
+    <!-- Sixth section page with all of invitees comments: END -->
+
+    <!-- TO-DO - I think we can remove this? or replace with another stuff perhaps?: START -->
     <div id="fh5co-services" class="fh5co-section-gray">
       <div class="container">
         <div class="row animate-box">
@@ -426,6 +452,9 @@
         </div>
       </div>
     </div>
+    <!-- TO-DO - I think we can remove this? or replace with another stuff perhaps?: END -->
+
+    <!-- Seventh section page with the RSVP: START -->
     <div id="fh5co-started" class="fh5co-bg" style="background-image: url(<%= asset_path('img_bg_4.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
@@ -452,6 +481,9 @@
         </div>
       </div>
     </div>
+    <!-- Seventh section page with the RSVP: END -->
+
+    <!-- Eighth section page for the footer: START -->
     <footer id="fh5co-footer" role="contentinfo">
       <div class="container">
         <div class="row copyright">
@@ -475,11 +507,13 @@
         </div>
       </div>
     </footer>
-  </div>
-	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<!-- Simply Countdown CDN -->
-	<script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script>
+    <!-- Eighth section page for the footer: END -->
 
+  </div>
+
+  <!-- Script related section: START -->
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script>
   <script>
     var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
 
@@ -498,5 +532,7 @@
         enableUtc: false
     });
   </script>
+  <!-- Script related section: END -->
+
 </body>
 </html>
