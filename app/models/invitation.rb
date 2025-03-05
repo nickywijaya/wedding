@@ -18,8 +18,26 @@ class Invitation < ApplicationRecord
     :both => 2 # invited to both event
   }
 
+  class << self
+    def fetch_filled_comments(limit)
+      self.where.not(comments: [nil, '']).limit(limit)
+    end
+  end
+
   def fetch_attendance_type
     ATTENDANCE_TYPE[self.attendance_type.to_s.to_sym]
+  end
+
+  def is_holy_matrimony_invited?
+    self.attendance_type == 0
+  end
+
+  def is_reception_invited?
+    self.attendance_type == 1
+  end
+
+  def is_both_events_invited?
+    self.attendance_type == 2
   end
 
   def fetch_attending_info
