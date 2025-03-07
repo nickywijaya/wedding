@@ -13,12 +13,12 @@ window.$ = window.JQuery = JQuery;
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
-import Rails from "@rails/ujs"
+// import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
-Rails.start()
+// Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 

@@ -79,6 +79,8 @@ id:
       action_forbidden: Tidak dapat melakukan action tersebut
       params_invalid: 'Parameter %{field} tidak valid'
       params_invalid_with_message: 'Parameter %{field} %{message}'
+    book_services:
+      missing_attributes: '%{attribute} tidak boleh kosong'
     guest_services:
       missing_attributes: '%{attribute} tidak boleh kosong'
     invitation_services:

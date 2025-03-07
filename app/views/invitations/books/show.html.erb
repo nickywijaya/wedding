@@ -458,27 +458,51 @@
     <div id="fh5co-started" class="fh5co-bg" style="background-image: url(<%= asset_path('img_bg_4.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
+
+      <% if @invitation.comments.present? || !@invitation.attending.nil? %>
+        <!-- Show thank you page! -->
+        <div class="row animate-box">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+            <h2>Thank you for your reservation!</h2>
+            <p>It means a lot for us for your presence</p>
+          </div>
+        </div>
+      <% else %>
+        <!-- Show RSVP form -->
         <div class="row animate-box">
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
             <h2>Are You Attending?</h2>
-            <p>Please Fill-up the form to notify you that you're attending. Thanks.</p>
+            <p>Please fill out the form to notify us that you're attending. Thanks.</p>
           </div>
         </div>
+
         <div class="row animate-box">
           <div class="col-md-10 col-md-offset-1">
-            <form class="form-inline">
+            <%= form_with(url: invitations_create_path(id: @invitation.id), method: :post, local: true) do |form| %>
               <div class="col-md-4 col-sm-4">
                 <div class="form-group">
-                  <label for="comment" class="sr-only">Comment</label>
-                  <textarea class="form-control" id="comment" rows="4" placeholder="Wish you both all the happiness in the world!!"></textarea>
+                  <%= form.label :comments, class: 'sr-only' %>
+                  <%= form.text_area :comments, class: 'form-control', rows: 4, placeholder: "Wish you both all the happiness in the world!!" %>
                 </div>
               </div>
+
+              <!-- Add radio buttons for attendance -->
               <div class="col-md-4 col-sm-4">
-                <button type="submit" class="btn btn-default btn-block">I am Attending</button>
+                <div class="form-group">
+                  <%= form.label :attending, "Will you be attending?", class: 'white-text' %><br>
+                  <%= form.radio_button :attending, 'yes', required: true %> <%= form.label :attending_yes, 'Yes, I am attending', class: 'white-text' %><br>
+                  <%= form.radio_button :attending, 'no', required: true %> <%= form.label :attending_no, 'No, I am not attending', class: 'white-text' %>
+                </div>
               </div>
-            </form>
+
+              <div class="col-md-4 col-sm-4">
+                <%= form.submit 'Submit', class: 'btn btn-default btn-block' %>
+              </div>
+            <% end %>
           </div>
         </div>
+
+      <% end %>
       </div>
     </div>
     <!-- Seventh section page with the RSVP: END -->

@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     scope :books do
       get '/' => 'books#index'
       get '/:id' => 'books#show', as: 'show'
+
+      post '/:id' => 'books#create', as: 'create'
     end
   end
 end

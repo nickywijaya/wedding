@@ -148,9 +148,9 @@
 			responsiveClass: true,
 			nav: false,
 			dots: true,
-			smartSpeed: 500,
+			smartSpeed: 800,
 			autoHeight: true,
-			autoplay: true
+			autoplay: true,
 		});
 	};
 
