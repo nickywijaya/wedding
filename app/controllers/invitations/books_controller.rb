@@ -1,4 +1,4 @@
-class Invitations::BooksController < ApplicationController
+class Invitations::BooksController < ActionController::Base
   respond_to? :html
   before_action :load_resource, only: [:show, :create]
 

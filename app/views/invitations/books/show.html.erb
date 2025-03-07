@@ -390,21 +390,33 @@
           <div class="row">
             <div class="col-md-12 animate-box">
               <div class="wrap-testimony">
-                <div class="owl-carousel-fullwidth">
-                  <% @invtitaion_comments.each do |invitation| %>
-                    <div class="item">
-                      <div class="testimony-slide active text-center">
-                        <figure>
-                          <img src="<%= asset_path('couple-1.jpg') %>">
-                        </figure>
-                        <span><%= invitation.guests.pluck(:name).join(" & ") %></span>
-                        <blockquote>
-                          <p><%= invitation.comments %></p>
-                        </blockquote>
+                <% if @invtitaion_comments.count > 2 %>
+
+                  <!--show all comments -->
+
+                  <div class="owl-carousel-fullwidth">
+                    <% @invtitaion_comments.each do |invitation| %>
+                      <div class="item">
+                        <div class="testimony-slide active text-center">
+                          <figure>
+                            <img src="<%= asset_path('couple-1.jpg') %>">
+                          </figure>
+                          <span><%= invitation.guests.pluck(:name).join(" & ") %></span>
+                          <blockquote>
+                            <p><%= invitation.comments %></p>
+                          </blockquote>
+                        </div>
                       </div>
-                    </div>
-                  <% end %>
+                    <% end %>
                 </div>
+                <% else %>
+
+                  <!--persuade invitees to add some comment! -->
+
+                  <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <span>Be the first to wish the groom and bride a happiness!</span>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
