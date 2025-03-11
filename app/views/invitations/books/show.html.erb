@@ -19,6 +19,7 @@
   <meta name="twitter:card" content="">
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -26,21 +27,7 @@
 <body>
   <div class="fh5co-loader"></div>
 
-  <!-- Navigation section: START -->
   <div id="page">
-    <nav class="fh5co-nav" role="navigation">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div id="fh5co-logo">
-                Hello!
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- Navigation section: END -->
-
     <!-- First section page with background and countdown: START -->
     <header id="fh5co-header" class="fh5co-cover" role="banner"
         style="background-image: url(<%= asset_path('img_bg_2.jpg') %>);"
@@ -52,13 +39,13 @@
             <div class="display-t">
               <div class="display-tc animate-box" data-animate-effect="fadeIn">
                 <h1>The Wedding of Nicky & Nova</h1>
-                <h2>June 7, 2025</h2>
+                <h2 class="caveat-info">June 7, 2025</h2>
                 <div class="simply-countdown simply-countdown-one" style="margin-top:30px"></div>
                 <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
 
                 <!-- TO-DO: fix the position and wording -->
-                <h2><%= @guests%></h2>
-                <p>We invited you to celebrate our wedding</p>
+                <h2 class="caveat-guest">Hi, <%= @guests %></h2>
+                <h2 class="caveat-info">You are invited!</h2>
               </div>
             </div>
           </div>
