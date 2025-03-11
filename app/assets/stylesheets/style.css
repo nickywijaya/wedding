@@ -823,6 +823,10 @@ form label {
   font-weight: normal !important;
 }
 
+.white-text {
+  color: white !important;
+}
+
 #fh5co-header .display-tc,
 #fh5co-counter .display-tc,
 .fh5co-cover .display-tc {
