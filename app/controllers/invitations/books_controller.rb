@@ -12,6 +12,7 @@ class Invitations::BooksController < ActionController::Base
     @guests = @invitation.guests.pluck(:name).join(" & ")
     @wedding = @invitation.wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
+    @calendar_url = generate_calendar_url
   rescue ActiveRecord::RecordNotFound
     render json: { message: "Tidak ditemukan woy!", status: 422 }
   end
@@ -39,7 +40,17 @@ class Invitations::BooksController < ActionController::Base
 
     attribute
   end
+
+  def generate_calendar_url
+    calendar_hash = {
+      text: "The Wedding Of Nicky & Nova",
+      dates: "20250607T040000Z/20250607T060000Z",
+      details: "You are invited to attend the holy matrimony of Nicky & Nova Wedding",
+      location: "GBI Basilea Christ Cathedral (https://g.co/kgs/iTL9qDT)"
+    }
+    query_string = calendar_hash.to_query
+
+    base_url = "https://calendar.google.com/calendar/r/eventedit?"
+    return base_url + query_string
+  end
 end
-
-
-
