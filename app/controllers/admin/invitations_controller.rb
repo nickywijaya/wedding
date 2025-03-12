@@ -90,6 +90,7 @@ class Admin::InvitationsController < AdminController
                   :participant,
                   :attendance_type,
                   :with_family,
+                  :with_partner,
                   guest_ids: []
                 ).to_h
 
@@ -98,6 +99,7 @@ class Admin::InvitationsController < AdminController
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
     attribute[:attendance_type] = attribute[:attendance_type].to_i
     attribute[:with_family] = (attribute[:with_family].to_s == "true") ? true : false
+    attribute[:with_partner] = (attribute[:with_partner].to_s == "true") ? true : false
     attribute[:participant] = attribute[:guest_ids].count if attribute[:participant].to_i.zero?
 
     attribute
@@ -110,6 +112,7 @@ class Admin::InvitationsController < AdminController
                   :participant,
                   :attendance_type,
                   :with_family,
+                  :with_partner,
                   guest_ids: []
                 ).to_h
 
@@ -119,6 +122,7 @@ class Admin::InvitationsController < AdminController
     attribute[:guest_ids] = attribute[:guest_ids].map(&:to_i).reject { |x| x.zero? }
     attribute[:attendance_type] = attribute[:attendance_type].to_i
     attribute[:with_family] = (attribute[:with_family].to_s == "true") ? true : false
+    attribute[:with_partner] = (attribute[:with_partner].to_s == "true") ? true : false
     attribute[:participant] = attribute[:guest_ids].count if attribute[:participant].to_i.zero?
 
     attribute

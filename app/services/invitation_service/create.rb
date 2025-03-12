@@ -20,6 +20,7 @@ module InvitationService
         invitation.participant = params[:participant]
         invitation.attendance_type = params[:attendance_type]
         invitation.with_family = params[:with_family]
+        invitation.with_partner = params[:with_partner]
         invitation.save!
 
         # create invitation guest

@@ -58,6 +58,20 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :with_partner, "With Partner?" %>
+
+      <div class="form-check">
+        <%= form.radio_button :with_partner, true, checked: @invitation.with_partner == true, class: "form-check-input" %>
+        <%= form.label :with_partner, "Yes", value: true, class: "form-check-label" %>
+      </div>
+
+      <div class="form-check">
+        <%= form.radio_button :with_partner, false, checked: @invitation.with_partner == false, class: "form-check-input" %>
+        <%= form.label :with_partner, "No", value: false, class: "form-check-label" %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= form.label :guest_ids, "Add Guests" %>
       <!-- Question mark icon with tooltip -->
       <span data-toggle="tooltip" data-placement="top" title="Select one or more guests to invite.">

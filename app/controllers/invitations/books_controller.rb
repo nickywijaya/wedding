@@ -5,13 +5,18 @@ class Invitations::BooksController < ActionController::Base
   MAX_DISPLAYED_COMMENTS = 25
 
   def index
+    # pass required variables for erb templating
+    @wedding = Weddings.first
+    @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
+    @calendar_url = generate_calendar_url
   end
 
   def show
     # pass required variables for erb templating
-    @guests = @invitation.guests.pluck(:name).join(" & ")
+    @guests = generate_guests
     @wedding = @invitation.wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
+    @calendar_url = generate_calendar_url
   rescue ActiveRecord::RecordNotFound
     render json: { message: "Tidak ditemukan woy!", status: 422 }
   end
@@ -19,7 +24,7 @@ class Invitations::BooksController < ActionController::Base
   def create
     BookService.book(@invitation, create_attributes)
 
-    redirect_to invitations_show_path(@invitation), notice: 'Sukses RSVP, Thanks!'
+    redirect_to invitations_show_path(@invitation)
   rescue ActiveRecord::RecordNotFound
     render json: { message: "Tidak ditemukan woy!", status: 422 }
   end
@@ -31,15 +36,40 @@ class Invitations::BooksController < ActionController::Base
   end
 
   def create_attributes
-    attribute = params.permit(:comments).to_h
+    attribute = params.permit(:comments,
+                              :attending).to_h
 
     # transform attributes
     attribute[:comments] = attribute[:comments].to_s.strip
-    attribute[:attending] = true # TO-DO: use a radio button to confirm attending or not
+    attribute[:attending] = (attribute[:attending].to_s == "yes") ? true : false
 
     attribute
   end
+
+  def generate_guests
+    guest = ""
+
+    if @invitation.with_partner?
+      guest = @invitation.guests.first.name + " & Partner"
+    elsif @invitation.with_family?
+      guest= @invitation.guests.first.name + " & Family"
+    else
+      guest = @invitation.guests.pluck(:name).join(" & ")
+    end
+
+    return guest
+  end
+
+  def generate_calendar_url
+    calendar_hash = {
+      text: "The Wedding Of Nicky & Nova",
+      dates: "20250607T040000Z/20250607T060000Z",
+      details: "You are invited to attend the holy matrimony of Nicky & Nova Wedding",
+      location: "GBI Basilea Christ Cathedral (https://g.co/kgs/iTL9qDT)"
+    }
+    query_string = calendar_hash.to_query
+
+    base_url = "https://calendar.google.com/calendar/r/eventedit?"
+    return base_url + query_string
+  end
 end
-
-
-

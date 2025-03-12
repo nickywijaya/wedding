@@ -26,7 +26,6 @@ ActiveStorage.start()
 import './jquery.min'
 import 'css/site.scss'
 import './bootstrap.min'
-//import './google_map'
 import './jquery.countTo'
 import './jquery.easing.1.3'
 import './jquery.magnific-popup.min'

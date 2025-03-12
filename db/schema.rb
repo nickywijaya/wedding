@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_02_18_093000) do
+ActiveRecord::Schema.define(version: 2025_03_11_163500) do
 
   create_table "guests", id: { type: :bigint, unsigned: true }, charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2025_02_18_093000) do
     t.boolean "with_family"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "with_partner"
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|

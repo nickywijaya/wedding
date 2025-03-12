@@ -1,3 +1,391 @@
-<%# TO-DO: better index page! %>
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The wedding of Nicky & Nova</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The wedding of Nicky & Nova">
+  <meta name="keywords" content="The wedding of Nicky & Nova">
+  <meta name="author" content="VincentiusNicky">
+  <meta property="og:title" content="">
+  <meta property="og:image" content="">
+  <meta property="og:url" content="">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:image" content="">
+  <meta name="twitter:url" content="">
+  <meta name="twitter:card" content="">
+  <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
-You found me!
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+
+</head>
+<body>
+  <div class="fh5co-loader"></div>
+
+  <div id="page">
+    <!-- First section page with background and countdown: START -->
+    <header id="fh5co-header" class="fh5co-cover" role="banner"
+        style="background-image: url(<%= asset_path('img_bg_2.jpg') %>);"
+        data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+            <div class="display-t">
+              <div class="display-tc animate-box" data-animate-effect="fadeIn">
+                <h1>The Wedding of Nicky & Nova</h1>
+                <h2 class="caveat-info">June 7, 2025</h2>
+                <div class="simply-countdown simply-countdown-one" style="margin-top:30px"></div>
+                <p><a href="<%= @calendar_url %>" class="btn btn-default btn-sm">Save the date</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- First section page with background and countdown: END -->
+
+    <!-- Second section page with guest invitation and couple description: START -->
+    <div id="fh5co-couple">
+      <div class="container">
+        <div class="couple-wrap animate-box">
+				<div class="couple-half">
+					<div class="groom">
+						<img class="img-responsive" src="<%= asset_path('groom.jpg') %>" />
+					</div>
+					<div class="desc-groom">
+						<h3>Vincentius Nicky</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+					</div>
+				</div>
+				<p class="heart text-center"><i class="icon-heart2"></i></p>
+				<div class="couple-half">
+					<div class="bride">
+						<img class="img-responsive" src="<%= asset_path('bride.jpg') %>" />
+					</div>
+					<div class="desc-bride">
+						<h3>Nova Belina</h3>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
+					</div>
+				</div>
+			</div>
+      </div>
+    </div>
+    <!-- Second section page with guest invitation and couple description: END -->
+
+    <!-- Third section page with location description: START -->
+    <div id="fh5co-event" class="fh5co-bg" style="background-image: url(<%= asset_path('img_bg_3.jpg') %>);">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+            <span>The Wedding of Nicky & Nova</span>
+            <h2>Location</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="display-t">
+            <div class="display-tc">
+              <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-6 col-sm-6 text-center">
+                      <div class="event-wrap animate-box">
+                      <h3>Holy Matrimony</h3>
+                      <div class="event-col">
+                        <span>
+                          <%= @wedding.venues.holy_matrimony.start_time.strftime("%I:%M %p") %>
+                        </span>
+                      </div>
+                      <div class="event-col">
+                        <span>
+                          <%= @wedding.venues.holy_matrimony.start_time.strftime("%B %d, %Y") %>
+                        </span>
+                      </div>
+                      <p>
+                        We are invite you to our holy matrimony session @GBI Basilea Christ Cathedral. It is our honor to have you attend this session as is cruical event for both of us
+                      </p>
+
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#locationModalHolyMatrimony">
+                        See Location
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Modal section to show maps to user when a location is clicked -->
+
+                  <div class="modal fade" id="locationModalHolyMatrimony" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="locationModalLabel">GBI Basilea Christ Cathedral</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <iframe src="<%= @wedding.venues.holy_matrimony.map_src %>" width="325" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Third section page with location description: END -->
+
+    <!-- Fourth section page with couple story: START -->
+    <div id="fh5co-couple-story">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+            <span>We Love Each Other</span>
+            <h2>Our Story</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-md-offset-0">
+            <ul class="timeline animate-box">
+              <li class="animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-1.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">First We Met</h3><span class="date">November 10, 2019</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>On this very day, it was love at first sight. On the outside, they shared smiles and laughter, but deep within, a warmth blossomed between them. Silent yet undeniable. On one occasion He suggested they make this moment happen more often, and she responded with the most powerful one-syllable word in the English language: "Yes." It felt like the beginning of a fairy tale, unfolding before their eyes </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">Officially In A Relationship</h3><span class="date">December 15, 2019</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>As the days passed, both of them carried on with their lives, yet something was shifting between them. He couldn't bear the thought of losing her. On that particular day, a whirlwind of emotions swept over him—confusion, fear, and uncertainty. But deep down, he could no longer hide from the truth. With a trembling heart, he finally confessed his feelings. To his relief, she smiled, and in that moment, he knew: she felt the same </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">First Chirstmas</h3><span class="date">December 25, 2019</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>It may sound like a dream to experience a white Christmas in a tropical country, where snow is nothing more than a distant fantasy. But there are no mere words that can truly capture the magic of celebrating the holiday with someone who holds a special place in your heart. In the end, he couldn’t help but feel incredibly lucky that day, while she knew, deep down, it was the best Christmas she had ever had </p>
+                  </div>
+                </div>
+              </li>
+              <li class="animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-3.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">In A Relationship</h3><span class="date">January 1, 2016</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fourth section page with couple story: END -->
+
+    <!-- Fifth section page with our photo galleries: START -->
+    <div id="fh5co-gallery" class="fh5co-section-gray">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
+            <span>Our Memories</span>
+            <h2>Wedding Gallery</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+          </div>
+        </div>
+        <div class="row row-bottom-padded-md">
+          <div class="col-md-12">
+            <ul id="fh5co-gallery-list">
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-1.jpg') %>);">
+                <a href="#">
+                <div class="case-studies-summary">
+                  <span>14 Photos</span>
+                  <h2>Two Glas of Juice</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-2.jpg') %>);">
+                <a href="#" class="color-2">
+                <div class="case-studies-summary">
+                  <span>30 Photos</span>
+                  <h2>Timer starts now!</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-3.jpg') %>);">
+                <a href="#" class="color-3">
+                <div class="case-studies-summary">
+                  <span>90 Photos</span>
+                  <h2>Beautiful sunset</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-4.jpg') %>);">
+                <a href="#" class="color-4">
+                <div class="case-studies-summary">
+                  <span>12 Photos</span>
+                  <h2>Company Conference Room</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-5.jpg') %>);">
+                <a href="#" class="color-3">
+                <div class="case-studies-summary">
+                  <span>50 Photos</span>
+                  <h2>Useful baskets</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-6.jpg') %>);">
+                <a href="#" class="color-4">
+                <div class="case-studies-summary">
+                  <span>45 Photos</span>
+                  <h2>Skater man in the road</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-7.jpg') %>);">
+                <a href="#" class="color-4">
+                <div class="case-studies-summary">
+                  <span>35 Photos</span>
+                  <h2>Two Glas of Juice</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-8.jpg') %>);">
+                <a href="#" class="color-5">
+                <div class="case-studies-summary">
+                  <span>90 Photos</span>
+                  <h2>Timer starts now!</h2>
+                </div></a>
+              </li>
+              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-9.jpg') %>);">
+                <a href="#" class="color-6">
+                <div class="case-studies-summary">
+                  <span>56 Photos</span>
+                  <h2>Beautiful sunset</h2>
+                </div></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fifth section page with our photo galleries: END -->
+
+    <!-- Sixth section page with all of invitees comments: START -->
+    <div id="fh5co-testimonial">
+      <div class="container">
+        <div class="row">
+          <div class="row animate-box">
+            <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+              <span>Best Wishes</span>
+              <h2>Friends Wishes</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 animate-box">
+              <div class="wrap-testimony">
+                <% if @invtitaion_comments.count > 2 %>
+
+                  <!--show all comments -->
+
+                  <div class="owl-carousel-fullwidth">
+                    <% @invtitaion_comments.each do |invitation| %>
+                      <div class="item">
+                        <div class="testimony-slide active text-center">
+                          <figure>
+                            <img src="<%= asset_path('couple-1.jpg') %>">
+                          </figure>
+                          <span><%= invitation.guests.pluck(:name).join(" & ") %></span>
+                          <blockquote>
+                            <p><%= invitation.comments %></p>
+                          </blockquote>
+                        </div>
+                      </div>
+                    <% end %>
+                </div>
+                <% else %>
+
+                  <!--persuade invitees to add some comment! -->
+
+                  <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+                    <span>Be the first to wish the groom and bride a happiness!</span>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Sixth section page with all of invitees comments: END -->
+
+    <!-- Seventh section page for the footer: START -->
+    <footer id="fh5co-footer" role="contentinfo">
+      <div class="container">
+        <div class="row copyright">
+          <div class="col-md-12 text-center">
+            <p><small class="block">The wedding of Nicky & Nova</small> <small class="block">Designed by <a href="https://www.instagram.com/vincentiusnickywijaya" target="_blank">VincentiusNicky</a></small></p>
+            <ul class="fh5co-social-icons">
+              <li>
+                <a href="#"></a>
+              </li>
+              <li>
+                <a href="#"></a>
+              </li>
+              <li>
+                <a href="#"></a>
+              </li>
+              <li>
+                <a href="#"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Seventh section page for the footer: END -->
+
+  </div>
+
+  <!-- Script related section: START -->
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script>
+  <script>
+    var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
+
+    // default example
+    simplyCountdown('.simply-countdown-one', {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate()
+    });
+
+    //jQuery example
+    $('#simply-countdown-losange').simplyCountdown({
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate(),
+        enableUtc: false
+    });
+  </script>
+  <!-- Script related section: END -->
+
+</body>
+</html>

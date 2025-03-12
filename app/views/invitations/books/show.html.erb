@@ -19,6 +19,7 @@
   <meta name="twitter:card" content="">
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
   <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 
@@ -26,21 +27,7 @@
 <body>
   <div class="fh5co-loader"></div>
 
-  <!-- Navigation section: START -->
   <div id="page">
-    <nav class="fh5co-nav" role="navigation">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div id="fh5co-logo">
-                Hello!
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <!-- Navigation section: END -->
-
     <!-- First section page with background and countdown: START -->
     <header id="fh5co-header" class="fh5co-cover" role="banner"
         style="background-image: url(<%= asset_path('img_bg_2.jpg') %>);"
@@ -52,13 +39,18 @@
             <div class="display-t">
               <div class="display-tc animate-box" data-animate-effect="fadeIn">
                 <h1>The Wedding of Nicky & Nova</h1>
-                <h2>June 7, 2025</h2>
+                <h2 class="caveat-info">June 7, 2025</h2>
                 <div class="simply-countdown simply-countdown-one" style="margin-top:30px"></div>
-                <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p>
+                <p><a href="<%= @calendar_url %>" class="btn btn-default btn-sm">Save the date</a></p>
 
-                <!-- TO-DO: fix the position and wording -->
-                <h2><%= @guests%></h2>
-                <p>We invited you to celebrate our wedding</p>
+                <h2 class="caveat-guest">Hi, <%= @guests %></h2>
+                <% if @invitation.attending.nil? %>
+                  <h2 class="caveat-info">You are invited!</h2>
+                <% elsif @invitation.attending? %>
+                  <h2 class="caveat-info">We are so pleased that you could attend, thank you for being here!</h2>
+                <% else  %>
+                  <h2 class="caveat-info">Thank you for letting us know, we completely understand</h2>
+                <% end %>
               </div>
             </div>
           </div>
@@ -221,10 +213,10 @@
                 <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-1.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h3 class="timeline-title">First We Meet</h3><span class="date">December 25, 2015</span>
+                    <h3 class="timeline-title">First We Met</h3><span class="date">November 10, 2019</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <p>On this very day, it was love at first sight. On the outside, they shared smiles and laughter, but deep within, a warmth blossomed between them. Silent yet undeniable. On one occasion He suggested they make this moment happen more often, and she responded with the most powerful one-syllable word in the English language: "Yes." It felt like the beginning of a fairy tale, unfolding before their eyes </p>
                   </div>
                 </div>
               </li>
@@ -232,10 +224,21 @@
                 <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h3 class="timeline-title">First Date</h3><span class="date">December 28, 2015</span>
+                    <h3 class="timeline-title">Officially In A Relationship</h3><span class="date">December 15, 2019</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <p>As the days passed, both of them carried on with their lives, yet something was shifting between them. He couldn't bear the thought of losing her. On that particular day, a whirlwind of emotions swept over him—confusion, fear, and uncertainty. But deep down, he could no longer hide from the truth. With a trembling heart, he finally confessed his feelings. To his relief, she smiled, and in that moment, he knew: she felt the same </p>
+                  </div>
+                </div>
+              </li>
+              <li class="timeline-inverted animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">First Chirstmas</h3><span class="date">December 25, 2019</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>It may sound like a dream to experience a white Christmas in a tropical country, where snow is nothing more than a distant fantasy. But there are no mere words that can truly capture the magic of celebrating the holiday with someone who holds a special place in your heart. In the end, he couldn’t help but feel incredibly lucky that day, while she knew, deep down, it was the best Christmas she had ever had </p>
                   </div>
                 </div>
               </li>
@@ -425,7 +428,7 @@
                 <div class="form-group">
                   <%= form.label :attending, "Will you be attending?", class: 'white-text' %><br>
                   <%= form.radio_button :attending, 'yes', required: true %> <%= form.label :attending_yes, 'Yes, I am attending', class: 'white-text' %><br>
-                  <%= form.radio_button :attending, 'no', required: true %> <%= form.label :attending_no, 'No, I am not attending', class: 'white-text' %>
+                  <%= form.radio_button :attending, 'no', required: true %> <%= form.label :attending_no, "I’m sorry, but I won’t be able to attend", class: 'white-text' %>
                 </div>
               </div>
 
