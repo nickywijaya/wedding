@@ -5,6 +5,10 @@ class Invitations::BooksController < ActionController::Base
   MAX_DISPLAYED_COMMENTS = 25
 
   def index
+    # pass required variables for erb templating
+    @wedding = Weddings.first
+    @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
+    @calendar_url = generate_calendar_url
   end
 
   def show
@@ -20,7 +24,7 @@ class Invitations::BooksController < ActionController::Base
   def create
     BookService.book(@invitation, create_attributes)
 
-    redirect_to invitations_show_path(@invitation), notice: 'Sukses RSVP, Thanks!'
+    redirect_to invitations_show_path(@invitation)
   rescue ActiveRecord::RecordNotFound
     render json: { message: "Tidak ditemukan woy!", status: 422 }
   end
@@ -32,11 +36,12 @@ class Invitations::BooksController < ActionController::Base
   end
 
   def create_attributes
-    attribute = params.permit(:comments).to_h
+    attribute = params.permit(:comments,
+                              :attending).to_h
 
     # transform attributes
     attribute[:comments] = attribute[:comments].to_s.strip
-    attribute[:attending] = true # TO-DO: use a radio button to confirm attending or not
+    attribute[:attending] = (attribute[:attending].to_s == "yes") ? true : false
 
     attribute
   end

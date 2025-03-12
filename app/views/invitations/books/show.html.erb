@@ -44,7 +44,13 @@
                 <p><a href="<%= @calendar_url %>" class="btn btn-default btn-sm">Save the date</a></p>
 
                 <h2 class="caveat-guest">Hi, <%= @guests %></h2>
-                <h2 class="caveat-info">You are invited!</h2>
+                <% if @invitation.attending.nil? %>
+                  <h2 class="caveat-info">You are invited!</h2>
+                <% elsif @invitation.attending? %>
+                  <h2 class="caveat-info">We are so pleased that you could attend, thank you for being here!</h2>
+                <% else  %>
+                  <h2 class="caveat-info">Thank you for letting us know, we completely understand</h2>
+                <% end %>
               </div>
             </div>
           </div>
@@ -411,7 +417,7 @@
                 <div class="form-group">
                   <%= form.label :attending, "Will you be attending?", class: 'white-text' %><br>
                   <%= form.radio_button :attending, 'yes', required: true %> <%= form.label :attending_yes, 'Yes, I am attending', class: 'white-text' %><br>
-                  <%= form.radio_button :attending, 'no', required: true %> <%= form.label :attending_no, 'No, I am not attending', class: 'white-text' %>
+                  <%= form.radio_button :attending, 'no', required: true %> <%= form.label :attending_no, "I’m sorry, but I won’t be able to attend", class: 'white-text' %>
                 </div>
               </div>
 
