@@ -852,14 +852,14 @@ form label {
 }
 
 .fh5co-cover .display-tc .caveat-guest {
-  font-size: 50px !important;
+  font-size: xx-large !important;
   line-height: 1.5;
   margin-bottom: 0 !important;
   font-family: "Caveat";
 }
 
 .fh5co-cover .display-tc .caveat-info {
-  font-size: 30px !important;
+  font-size: large !important;
   line-height: 1.5;
   font-family: "Caveat";
 }

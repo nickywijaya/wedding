@@ -9,7 +9,7 @@ class Invitations::BooksController < ActionController::Base
 
   def show
     # pass required variables for erb templating
-    @guests = @invitation.guests.pluck(:name).join(" & ")
+    @guests = generate_guests
     @wedding = @invitation.wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
@@ -39,6 +39,20 @@ class Invitations::BooksController < ActionController::Base
     attribute[:attending] = true # TO-DO: use a radio button to confirm attending or not
 
     attribute
+  end
+
+  def generate_guests
+    guest = ""
+
+    if @invitation.with_partner?
+      guest = @invitation.guests.first.name + " & Partner"
+    elsif @invitation.with_family?
+      guest= @invitation.guests.first.name + " & Family"
+    else
+      guest = @invitation.guests.pluck(:name).join(" & ")
+    end
+
+    return guest
   end
 
   def generate_calendar_url
