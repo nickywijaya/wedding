@@ -6,9 +6,11 @@ class Invitations::BooksController < ActionController::Base
 
   def index
     # pass required variables for erb templating
-    @wedding = Weddings.first
+    @wedding = Weddings.first # hardcoded to display some information to the wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
+  rescue StandardError
+    redirect_to error_path
   end
 
   def show
@@ -17,16 +19,16 @@ class Invitations::BooksController < ActionController::Base
     @wedding = @invitation.wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Tidak ditemukan woy!", status: 422 }
+  rescue StandardError, ActiveRecord::RecordNotFound
+    redirect_to error_path
   end
 
   def create
     BookService.book(@invitation, create_attributes)
 
     redirect_to invitations_show_path(@invitation)
-  rescue ActiveRecord::RecordNotFound
-    render json: { message: "Tidak ditemukan woy!", status: 422 }
+  rescue StandardError, ActiveRecord::RecordNotFound
+    redirect_to error_path
   end
 
   private
