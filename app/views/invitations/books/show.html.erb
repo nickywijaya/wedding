@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<%# <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script> %>
 
 </head>
 <body>
@@ -203,14 +203,14 @@
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
             <span>We Love Each Other</span>
             <h2>Our Story</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <p>From the first spark between us to this unforgettable engagement, our love has been a beautiful journey of growing together, facing every challenge, and cherishing every joy along the way</p>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12 col-md-offset-0">
             <ul class="timeline animate-box">
               <li class="animate-box">
-                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-1.jpg') %>);"></div>
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('story-1-first-we-met.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
                     <h3 class="timeline-title">First We Met</h3><span class="date">November 10, 2019</span>
@@ -221,7 +221,7 @@
                 </div>
               </li>
               <li class="timeline-inverted animate-box">
-                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('story-2-in-a-relationship.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
                     <h3 class="timeline-title">Officially In A Relationship</h3><span class="date">December 15, 2019</span>
@@ -231,8 +231,8 @@
                   </div>
                 </div>
               </li>
-              <li class="timeline-inverted animate-box">
-                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-2.jpg') %>);"></div>
+              <li class="animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('story-3-first-chirstmas.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
                     <h3 class="timeline-title">First Chirstmas</h3><span class="date">December 25, 2019</span>
@@ -242,14 +242,25 @@
                   </div>
                 </div>
               </li>
-              <li class="animate-box">
-                <div class="timeline-badge" style="background-image: url(<%= asset_path('couple-3.jpg') %>);"></div>
+              <li class="timeline-inverted animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('story-4-first-anniversary.jpg') %>);"></div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <h3 class="timeline-title">In A Relationship</h3><span class="date">January 1, 2016</span>
+                    <h3 class="timeline-title">First Anniversary</h3><span class="date">December 15, 2020</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                    <p>Here's to many more anniversary to come</p>
+                  </div>
+                </div>
+              </li>
+              <li class="animate-box">
+                <div class="timeline-badge" style="background-image: url(<%= asset_path('story-5-finally-engaged.jpg') %>);"></div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <h3 class="timeline-title">Finally Engaged</h3><span class="date">December 15, 2024</span>
+                  </div>
+                  <div class="timeline-body">
+                    <p>Today marks our fifth anniversary, a day that holds a special place in our hearts. Both of them knew, without a doubt, that they were destined to be together. Unlike the anniversaries of the past, this one feels different. As they stood hand in hand, he nervously asked, "Will you marry me?" With tears of pure joy, she whispered, "Yes." In that moment, everything changed. They both knew they were ready to take their love to the next level and embrace the future together </p>
                   </div>
                 </div>
               </li>
@@ -365,7 +376,7 @@
                       <div class="item">
                         <div class="testimony-slide active text-center">
                           <figure>
-                            <img src="<%= asset_path('couple-1.jpg') %>">
+                            <img src="<%= asset_path('gallery-1.jpg') %>">
                           </figure>
                           <span><%= invitation.guests.pluck(:name).join(" & ") %></span>
                           <blockquote>
@@ -444,7 +455,58 @@
     </div>
     <!-- Seventh section page with the RSVP: END -->
 
-    <!-- Eighth section page for the footer: START -->
+    <!-- Eighth section page with the Wedding Gifts: START -->
+    <div id="fh5co-services" class="fh5co-section-gray">
+      <div class="container">
+
+        <div class="row animate-box">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+            <h2>Wedding Gifts</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+              <span class="icon">
+                <i class="icon-wallet"></i>
+              </span>
+              <div class="feature-copy">
+                <h3>Vincentius Nicky</h3>
+                <p>BANK BCA / 6040315738</p>
+              </div>
+            </div>
+
+            <div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+              <span class="icon">
+                <i class="icon-wallet"></i>
+              </span>
+              <div class="feature-copy">
+                <h3>Nova Belina</h3>
+                <p>BANK BCA / 8990739847</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-left animate-box text-center" data-animate-effect="fadeInRight">
+              <div class="container">
+                <div class="card">
+                  <blockquote class="blockquote mb-0">
+                    <p class="mb-0">Your presence and heartfelt blessings are the greatest gift we could ask for. If you would like to offer something more, we’ve provided a Digital Envelope to make it convenient for you. Thank you for being part of our special day</p>
+                    <footer class="blockquote-footer">Vincentius Nicky & Nova Belina</footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Eighth section page with the Wedding Gifts: END -->
+
+    <!-- Ninth section page for the footer: START -->
     <footer id="fh5co-footer" role="contentinfo">
       <div class="container">
         <div class="row copyright">
@@ -468,13 +530,13 @@
         </div>
       </div>
     </footer>
-    <!-- Eighth section page for the footer: END -->
+    <!-- Ninth section page for the footer: END -->
 
   </div>
 
   <!-- Script related section: START -->
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script>
+	<%# <script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script> %>
   <script>
     var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
 
@@ -494,6 +556,5 @@
     });
   </script>
   <!-- Script related section: END -->
-
 </body>
 </html>
