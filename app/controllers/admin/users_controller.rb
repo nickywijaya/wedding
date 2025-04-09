@@ -7,6 +7,7 @@ class Admin::UsersController < AdminController
   def index
   @users = UserService.retrieve(index_attributes)
   rescue StandardError => e
+    log_error(e, action_name)
     session[:error_message] = e.message
     session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
@@ -18,6 +19,7 @@ class Admin::UsersController < AdminController
 
     redirect_to admin_users_path, notice: 'Sukses mengkonfirmasi user'
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_users_path
   end
@@ -27,6 +29,7 @@ class Admin::UsersController < AdminController
 
     redirect_to admin_users_path, notice: 'Sukses menarik kembali akses admin user'
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_users_path
   end
@@ -36,6 +39,7 @@ class Admin::UsersController < AdminController
 
     redirect_to admin_users_path, notice: 'Sukses menghapus user'
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_users_path
   end

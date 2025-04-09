@@ -8,6 +8,7 @@ class Admin::InvitationsController < AdminController
   def index
     @invitations = InvitationService.retrieve(index_attributes)
   rescue StandardError => e
+    log_error(e, action_name)
     session[:error_message] = e.message
     session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
@@ -17,6 +18,7 @@ class Admin::InvitationsController < AdminController
   def new
     @invitation = Invitation.new
   rescue StandardError => e
+    log_error(e, action_name)
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_invitations_path
   end
@@ -26,9 +28,27 @@ class Admin::InvitationsController < AdminController
 
     redirect_to admin_invitations_path, notice: 'Sukses menambah undangan'
   rescue InvitationService::InvitationError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:warning] = e.message
     redirect_to new_admin_invitation_path
   rescue StandardError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to new_admin_invitation_path
   end
@@ -38,6 +58,7 @@ class Admin::InvitationsController < AdminController
 
     @guests = selected_guests + @guests
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_invitations_path
   end
@@ -47,9 +68,27 @@ class Admin::InvitationsController < AdminController
 
     redirect_to admin_invitations_path, notice: 'Sukses mengubah data undangan'
   rescue InvitationService::InvitationError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:warning] = e.message
     redirect_to edit_admin_invitation_path
   rescue StandardError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to edit_admin_invitation_path
   end
@@ -59,6 +98,7 @@ class Admin::InvitationsController < AdminController
 
     redirect_to admin_invitations_path, notice: 'Sukses menghapus undangan'
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_invitations_path
   end
