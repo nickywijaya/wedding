@@ -9,7 +9,14 @@ class Invitations::BooksController < ActionController::Base
     @wedding = Weddings.first # hardcoded to display some information to the wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
-  rescue StandardError
+  rescue StandardError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, 'index'],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT)
+      }
+    )
     redirect_to error_path
   end
 
