@@ -2,7 +2,7 @@
   "name": "wedding",
   "private": true,
   "engines": {
-    "node": "18.18.2"
+    "node": "22.11.0"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.18.6",
