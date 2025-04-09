@@ -10,4 +10,15 @@ class AdminController < ApplicationController
       redirect_to new_user_session_path, alert: "Mohon konfirmasikan akunmu terlebih dahulu, Hubungi admin untuk melakukan konfirmasi!"
     end
   end
+
+  def log_error(e, action, track_id=0)
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        track_id: track_id
+      }
+    )
+  end
 end

@@ -26,9 +26,9 @@ venue_holy_matrimony.save!
 
 # prepare venue_holy_matrimony - reception
 venue_reception = Venue.new
-venue_reception.name = 'Central Restaurant & Function Hall'
-venue_reception.address = 'Jl. Raya Serpong No.99B KM 10, Pd. Jagung, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15326'
-venue_reception.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.052948709142!2d106.65184409999999!3d-6.2567555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb989193070d%3A0x99618610de4f586a!2sCentral%20Restaurant%20%26%20Function%20Hall!5e0!3m2!1sen!2sid!4v1739844426994!5m2!1sen!2sid"
+venue_reception.name = 'Umatis Resto & Venue'
+venue_reception.address = 'BSD City, Kavling Taman Kota Barat Lot No.II.6, Sampora, Kec. Cisauk, Kabupaten Tangerang, Banten 15345'
+venue_reception.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.6711805879204!2d106.6495916!3d-6.306860099999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fb67fc0f1cf9%3A0x49e60e0c1e2a4a78!2sUmatis%20Resto%20%26%20Venue!5e0!3m2!1sen!2sid!4v1744184581722!5m2!1sen!2sid"
 venue_reception.start_time = Time.new(2025, 06, 07, 18, 0, 0, 0)
 venue_reception.end_time = Time.new(2025, 06, 07, 22, 0, 0, 0)
 venue_reception.max_attendees = 50

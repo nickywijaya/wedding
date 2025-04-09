@@ -8,8 +8,7 @@ class Admin::HomeController < AdminController
     @venue_holy_matrimony = @wedding.venues.holy_matrimony
     @venue_reception = @wedding.venues.reception
   rescue StandardError => e
-    session[:error_message] = e.message
-    session[:error_backtrace] = e.backtrace.take(3)
+    log_error(e, action_name)
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_error_url
   end

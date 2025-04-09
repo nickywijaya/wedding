@@ -7,6 +7,7 @@ class Admin::WeddingsController < AdminController
   def index
     @weddings = Weddings.all
   rescue StandardError => e
+    log_error(e, action_name)
     session[:error_message] = e.message
     session[:error_backtrace] = e.backtrace.take(3)
     flash[:error] = "Tetap tenang tetap semangat"
@@ -15,6 +16,7 @@ class Admin::WeddingsController < AdminController
 
   def edit
   rescue StandardError => e
+    log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to admin_weddings_path
   end
@@ -24,9 +26,27 @@ class Admin::WeddingsController < AdminController
 
     redirect_to admin_weddings_path, notice: 'Sukses mengubah data perkawinan'
   rescue WeddingService::WeddingError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:warning] = e.message
     redirect_to edit_admin_wedding_path
   rescue StandardError => e
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
+
     flash[:error] = "Tetap tenang tetap semangat"
     redirect_to edit_admin_wedding_path
   end

@@ -9,7 +9,8 @@ class Invitations::BooksController < ActionController::Base
     @wedding = Weddings.first # hardcoded to display some information to the wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
-  rescue StandardError
+  rescue StandardError => e
+    log_error(e, action_name)
     redirect_to error_path
   end
 
@@ -20,6 +21,7 @@ class Invitations::BooksController < ActionController::Base
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
   rescue StandardError, ActiveRecord::RecordNotFound
+    log_error(e, action_name, params[:id])
     redirect_to error_path
   end
 
@@ -28,6 +30,14 @@ class Invitations::BooksController < ActionController::Base
 
     redirect_to invitations_show_path(@invitation)
   rescue StandardError, ActiveRecord::RecordNotFound
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action_name],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        params: params,
+      }
+    )
     redirect_to error_path
   end
 
@@ -73,5 +83,16 @@ class Invitations::BooksController < ActionController::Base
 
     base_url = "https://calendar.google.com/calendar/r/eventedit?"
     return base_url + query_string
+  end
+
+  def log_error(e, action, track_id=0)
+    Rails.logger.error(
+      tags: ['controller', self.class.name, action],
+      message: {
+        message: e.message,
+        stacktrace: e.backtrace.take(DEFAULT_BACKTRACE_LIMIT),
+        track_id: track_id
+      }
+    )
   end
 end
