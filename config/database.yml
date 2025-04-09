@@ -1,5 +1,5 @@
 default: &default
-  adapter:  mysql2
+  adapter:  postgresql
   encoding: utf8
   pool:     <%= ENV['DATABASE_POOL'] %>
   username: <%= ENV['DATABASE_USERNAME'] %>
@@ -21,3 +21,5 @@ test:
 production:
   <<: *default
   database: <%= ENV['DATABASE_NAME'] || 'wedding_production' %>
+  reconnect: true
+  prepared_statements: false
