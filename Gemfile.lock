@@ -98,7 +98,7 @@ GEM
       railties (>= 3.2)
     erubi (1.13.0)
     execjs (2.10.0)
-    ffi (1.17.0)
+    ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.6)
@@ -274,7 +274,7 @@ DEPENDENCIES
   webpacker (~> 5.0)
 
 RUBY VERSION
-   ruby 2.7.3p183
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.2.31
