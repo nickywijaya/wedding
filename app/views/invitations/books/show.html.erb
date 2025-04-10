@@ -21,6 +21,8 @@
   <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 	<%# <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script> %>
 
 </head>
@@ -535,7 +537,6 @@
   </div>
 
   <!-- Script related section: START -->
-	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<%# <script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script> %>
   <script>
     var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
