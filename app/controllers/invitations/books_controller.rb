@@ -20,7 +20,7 @@ class Invitations::BooksController < ActionController::Base
     @wedding = @invitation.wedding
     @invtitaion_comments = Invitation.fetch_filled_comments(MAX_DISPLAYED_COMMENTS).shuffle
     @calendar_url = generate_calendar_url
-  rescue StandardError, ActiveRecord::RecordNotFound
+  rescue StandardError
     log_error(e, action_name, params[:id])
     redirect_to error_path
   end
@@ -29,7 +29,7 @@ class Invitations::BooksController < ActionController::Base
     BookService.book(@invitation, create_attributes)
 
     redirect_to invitations_show_path(@invitation)
-  rescue StandardError, ActiveRecord::RecordNotFound
+  rescue StandardError
     Rails.logger.error(
       tags: ['controller', self.class.name, action_name],
       message: {
@@ -45,6 +45,9 @@ class Invitations::BooksController < ActionController::Base
 
   def load_resource
     @invitation = Invitation.find params[:id]
+  rescue StandardError, ActiveRecord::RecordNotFound => e
+    log_error(e, action_name, params[:id])
+    redirect_to error_path
   end
 
   def create_attributes
