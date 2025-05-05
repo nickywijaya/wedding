@@ -71,6 +71,7 @@ invitation.wedding_id = wedding.id
 invitation.attendance_type = Invitation::ATTENDANCE_TYPE_ENUM[:both]
 invitation.attending = true
 invitation.with_family = false
+invitation.sent = false
 invitation.comments = "Congrats ya kalian berdua lovebird!!"
 invitation.save!
 
