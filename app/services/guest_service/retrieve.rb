@@ -12,11 +12,16 @@ module GuestService
     end
 
     def perform
-      if params[:search].present?
-        Guest.where('name LIKE ?', "%#{params[:search].to_s}%")
-      else
-        Guest.all
+      data = Guest.all
+
+      data = data.where('name ILIKE ?', "%#{params[:search].to_s}%") if params[:search].present?
+
+      if params[:guest_source].present?
+        from_groom = (params[:guest_source] == 'groom')
+        data = data.where("from_groom = ?", from_groom)
       end
+
+      data
     rescue StandardError => e
       raise e
     end
