@@ -40,8 +40,9 @@
               <div class="display-tc animate-box" data-animate-effect="fadeIn">
                 <h1>The Wedding of Nicky & Nova</h1>
                 <h2 class="caveat-info">June 7, 2025</h2>
-                <div class="simply-countdown simply-countdown-one" style="margin-top:30px"></div>
-                <p><a href="<%= @calendar_url %>" class="btn btn-default btn-sm">Save the date</a></p>
+
+                <div class="simply-countdown simply-countdown-one" style="margin-top:70%"></div>
+                <p><a href="<%= @calendar_url %>" class="btn btn-default btn-sm" >Save the date</a></p>
               </div>
             </div>
           </div>
@@ -54,32 +55,32 @@
     <div id="fh5co-couple">
       <div class="container">
         <div class="couple-wrap animate-box">
-				<div class="couple-half">
-					<div class="groom">
-						<img class="img-responsive" src="<%= asset_path('groom.jpg') %>" />
-					</div>
-					<div class="desc-groom">
-						<h3>Vincentius Nicky</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-					</div>
-				</div>
-				<p class="heart text-center"><i class="icon-heart2"></i></p>
-				<div class="couple-half">
-					<div class="bride">
-						<img class="img-responsive" src="<%= asset_path('bride.jpg') %>" />
-					</div>
-					<div class="desc-bride">
-						<h3>Nova Belina</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</p>
-					</div>
-				</div>
+          <div class="couple-half">
+            <div class="groom">
+              <img class="img-responsive" src="<%= asset_path('groom.jpg') %>" />
+            </div>
+            <div class="desc-groom">
+              <h3>Vincentius Nicky</h3>
+              <p>He is a software engineer who has a passion for both cars and keeping things spotless. He finds joy in detailing his car, organizing drawers, and somehow even enjoys vacuuming</p>
+            </div>
+          </div>
+          <p class="heart text-center"><i class="icon-heart2"></i></p>
+          <div class="couple-half">
+            <div class="bride">
+              <img class="img-responsive" src="<%= asset_path('bride.jpg') %>" />
+            </div>
+            <div class="desc-bride">
+              <h3>Nova Belina</h3>
+              <p>She works in finance and loves expressing herself through cooking. Her kitchen experiments often lead to delicious meals, and Nicky is always happy to be the taste tester and cleanup crew</p>
+            </div>
+          </div>
+        </div>
 			</div>
-      </div>
     </div>
     <!-- Second section page with guest invitation and couple description: END -->
 
     <!-- Third section page with location description: START -->
-    <div id="fh5co-event" class="fh5co-bg" style="background-image: url(<%= asset_path('img_bg_3.jpg') %>);">
+    <div id="fh5co-event" class="fh5co-bg" style="background-image: url(<%= asset_path('gbi_basilea.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
@@ -146,9 +147,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-            <span>We Love Each Other</span>
-            <h2>Our Story</h2>
-            <p>From the first spark between us to this unforgettable engagement, our love has been a beautiful journey of growing together, facing every challenge, and cherishing every joy along the way</p>
+            <span>Where It Begins</span>
+            <h2>Our Love Journey</h2>
+            <p>
+              Together, they bring out the best in each other. She brings the flavor and creativity, while He brings calm and order. They’ve built a home full of warmth, respect, and a lot of love.
+
+              <br>
+              <br>
+
+              Now they’re ready to celebrate this next chapter with the people who matter most. Thank you for being part of their journey
+            </p>
           </div>
         </div>
         <div class="row">
@@ -194,7 +202,7 @@
                     <h3 class="timeline-title">First Anniversary</h3><span class="date">December 15, 2020</span>
                   </div>
                   <div class="timeline-body">
-                    <p>Here's to many more anniversary to come</p>
+                    <p>A year ago, we began this journey together, and it's been filled with laughter, adventures, and unforgettable moments. We've grown stronger as a couple, learning and sharing along the way. Our first anniversary is just the start of many more years of love and memories ahead</p>
                   </div>
                 </div>
               </li>
@@ -230,65 +238,23 @@
           <div class="col-md-12">
             <ul id="fh5co-gallery-list">
               <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-1.jpg') %>);">
-                <a href="#">
+                <a>
                 <div class="case-studies-summary">
                   <span>14 Photos</span>
                   <h2>Two Glas of Juice</h2>
                 </div></a>
               </li>
               <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-2.jpg') %>);">
-                <a href="#" class="color-2">
+                <a class="color-2">
                 <div class="case-studies-summary">
                   <span>30 Photos</span>
                   <h2>Timer starts now!</h2>
                 </div></a>
               </li>
               <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-3.jpg') %>);">
-                <a href="#" class="color-3">
+                <a class="color-3">
                 <div class="case-studies-summary">
                   <span>90 Photos</span>
-                  <h2>Beautiful sunset</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-4.jpg') %>);">
-                <a href="#" class="color-4">
-                <div class="case-studies-summary">
-                  <span>12 Photos</span>
-                  <h2>Company Conference Room</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-5.jpg') %>);">
-                <a href="#" class="color-3">
-                <div class="case-studies-summary">
-                  <span>50 Photos</span>
-                  <h2>Useful baskets</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-6.jpg') %>);">
-                <a href="#" class="color-4">
-                <div class="case-studies-summary">
-                  <span>45 Photos</span>
-                  <h2>Skater man in the road</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-7.jpg') %>);">
-                <a href="#" class="color-4">
-                <div class="case-studies-summary">
-                  <span>35 Photos</span>
-                  <h2>Two Glas of Juice</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-8.jpg') %>);">
-                <a href="#" class="color-5">
-                <div class="case-studies-summary">
-                  <span>90 Photos</span>
-                  <h2>Timer starts now!</h2>
-                </div></a>
-              </li>
-              <li class="one-third animate-box" data-animate-effect="fadeIn" style="background-image: url(<%= asset_path('gallery-9.jpg') %>);">
-                <a href="#" class="color-6">
-                <div class="case-studies-summary">
-                  <span>56 Photos</span>
                   <h2>Beautiful sunset</h2>
                 </div></a>
               </li>
@@ -321,7 +287,16 @@
                       <div class="item">
                         <div class="testimony-slide active text-center">
                           <figure>
-                            <img src="<%= asset_path('couple-1.jpg') %>">
+                            <% if invitation.guests.pluck(:gender).uniq == [0] %>
+                              <!-- show female avatar icon -->
+                              <img src="<%= asset_path('female-avatar.jpeg') %>">
+                            <% elsif invitation.guests.pluck(:gender).uniq == [1] %>
+                              <!-- show male avatar icon -->
+                              <img src="<%= asset_path('male-avatar.jpeg') %>">
+                            <% else invitation.guests.pluck(:gender).uniq == [1] %>
+                              <!-- show group avatar icon -->
+                              <img src="<%= asset_path('group-avatar.jpg') %>">
+                            <% end %>
                           </figure>
                           <span><%= invitation.guests.pluck(:name).join(" & ") %></span>
                           <blockquote>
@@ -347,7 +322,58 @@
     </div>
     <!-- Sixth section page with all of invitees comments: END -->
 
-    <!-- Seventh section page for the footer: START -->
+    <!-- Seventh section page with the Wedding Gifts: START -->
+    <div id="fh5co-services" class="fh5co-section-gray">
+      <div class="container">
+
+        <div class="row animate-box">
+          <div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
+            <h2>Wedding Gifts</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+              <span class="icon">
+                <i class="icon-wallet"></i>
+              </span>
+              <div class="feature-copy">
+                <h3>Vincentius Nicky</h3>
+                <p>BANK BCA / 6040315738</p>
+              </div>
+            </div>
+
+            <div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+              <span class="icon">
+                <i class="icon-wallet"></i>
+              </span>
+              <div class="feature-copy">
+                <h3>Nova Belina</h3>
+                <p>BANK BCA / 8990739847</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="feature-left animate-box text-center" data-animate-effect="fadeInRight">
+              <div class="container">
+                <div class="card">
+                  <blockquote class="blockquote mb-0">
+                    <p class="mb-0">Your presence and heartfelt blessings are the greatest gift we could ask for. If you would like to offer something more, we’ve provided a Digital Envelope to make it convenient for you. Thank you for being part of our special day</p>
+                    <footer class="blockquote-footer">Vincentius Nicky & Nova Belina</footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Seventh section page with the Wedding Gifts: END -->
+
+    <!-- Eighth section page for the footer: START -->
     <footer id="fh5co-footer" role="contentinfo">
       <div class="container">
         <div class="row copyright">
@@ -371,7 +397,7 @@
         </div>
       </div>
     </footer>
-    <!-- Seventh section page for the footer: END -->
+    <!-- Eighth section page for the footer: END -->
 
   </div>
 
