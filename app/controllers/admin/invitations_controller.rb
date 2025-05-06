@@ -116,11 +116,12 @@ class Admin::InvitationsController < AdminController
   end
 
   def index_attributes
-    attribute = params.permit(:search, :guest_source, :commit).to_h
+    attribute = params.permit(:search, :guest_source, :attendance_type, :commit).to_h
 
     # transform attributes
     attribute["search"] = attribute["search"].to_s.strip
     attribute["guest_source"] = attribute["guest_source"].to_s.strip
+    attribute["attendance_type"] = attribute["attendance_type"].to_i
 
     attribute
   end

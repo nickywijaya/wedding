@@ -25,6 +25,12 @@
                 include_blank: false
             %>
 
+            <%= select_tag :attendance_type,
+                options_for_select([['All', '-1'], ['Holy Matrimony', '0'], ['Reception', '1'], ['Both', '2']], params[:attendance_type]),
+                class: 'form-control mr-2',
+                include_blank: false
+            %>
+
             <%= submit_tag 'Search', class: 'btn btn-primary mr-2' %>
           <% end %>
         </th>
