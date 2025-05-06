@@ -43,7 +43,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_not_confirmed_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_confirmed_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -81,7 +81,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_attended_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_attended_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -119,7 +119,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_absent_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_absent_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -157,7 +157,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_aggregated_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_aggregated_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -211,7 +211,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_not_sent_invitation %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -249,7 +249,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_sent_invitation %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -305,7 +305,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_not_confirmed_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_not_confirmed_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -344,7 +344,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_attended_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_attended_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -382,7 +382,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_absent_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_absent_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -420,7 +420,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_aggregated_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_aggregated_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -474,7 +474,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_not_sent_invitation %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_not_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -512,7 +512,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_sent_invitation %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
