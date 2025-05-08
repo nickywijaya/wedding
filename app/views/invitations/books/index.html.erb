@@ -21,8 +21,7 @@
   <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-
+	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
   <div class="fh5co-loader"></div>
@@ -231,7 +230,6 @@
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
             <span>Our Memories</span>
             <h2>Wedding Gallery</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
           </div>
         </div>
         <div class="row row-bottom-padded-md">
@@ -402,8 +400,6 @@
   </div>
 
   <!-- Script related section: START -->
-	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-	<script src="https://cdn.rawgit.com/vincentgarreau/simplyCountdown.js/master/dist/simplyCountdown.min.js"></script>
   <script>
     var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
 
