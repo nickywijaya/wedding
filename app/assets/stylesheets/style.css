@@ -1394,7 +1394,7 @@ form label {
   height: 54px;
   border: none !important;
   background: #585657;
-  color: #fff;
+  color: #585657;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 400;
@@ -1695,7 +1695,7 @@ form label {
   border: 2px solid #ffffff;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background: #ffffff !important;
+  background: #0015ff !important;
   color: rgb(59, 56, 56);
   border-color: #ffffff !important;
 }
@@ -1705,6 +1705,26 @@ form label {
   border: 2px solid #F14E95;
 }
 .btn-primary.btn-outline:hover, .btn-primary.btn-outline:focus, .btn-primary.btn-outline:active {
+  background: #ffffff;
+  color: rgb(59, 59, 59);
+}
+
+.btn-web {
+  background: #ffffff !important;
+  color: rgb(59, 56, 56);
+  border: 2px solid #ffffff;
+}
+.btn-web:hover, .btn-web:focus, .btn-web:active {
+  background: #ffffff !important;
+  color: rgb(59, 56, 56);
+  border-color: #ffffff !important;
+}
+.btn-web.btn-outline {
+  background: transparent;
+  color: rgb(59, 59, 59);
+  border: 2px solid #F14E95;
+}
+.btn-web.btn-outline:hover, .btn-web.btn-outline:focus, .btn-web.btn-outline:active {
   background: #ffffff;
   color: rgb(59, 59, 59);
 }
