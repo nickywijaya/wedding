@@ -236,8 +236,10 @@
 
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-            <span>Our Memories</span>
-            <h2>Wedding Gallery</h2>
+            <blockquote class="blockquote">
+              <p class="mb-0">The best thing to hold onto in life is each other</p>
+              <footer class="blockquote-footer">Audery Hepburn</footer>
+            </blockquote>
           </div>
         </div>
 
@@ -246,21 +248,20 @@
         <div id="galleryCarousel" class="carousel slide" data-ride="carousel">
           <!-- Items -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-1.jpg') %>" alt="Image1">
-            </div>
+            <div class="carousel-inner" role="listbox">
+            <% images = [ 'gallery-1.jpg',
+                          'gallery-2.jpg',
+                          'gallery-3.jpg',
+                          'gallery-4.jpg',
+                          'gallery-5.jpg',
+                          'gallery-6.jpg'
+                        ]%>
 
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-2.jpg') %>" alt="Image2">
-            </div>
-
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-3.jpg') %>" alt="Image3">
-            </div>
-
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-4.jpg') %>" alt="Image4">
-            </div>
+            <% images.each_with_index do |image, index| %>
+              <div class="item <%= 'active' if index == 0 %>">
+                <img class="image-item-corousel" src="<%= asset_path(image) %>" alt="Image<%= index + 1 %>">
+              </div>
+            <% end %>
           </div>
 
           <!-- Controls -->
@@ -394,7 +395,7 @@
       <div class="container">
         <div class="row copyright">
           <div class="col-md-12 text-center">
-            <p><small class="block">The wedding of Nicky & Nova</small> <small class="block">Designed by <a href="https://www.instagram.com/vincentiusnickywijaya" target="_blank">VincentiusNicky</a></small></p>
+            <p><small class="block">The wedding of Nicky & Nova</small> <small class="block">Built by <a href="https://www.instagram.com/vincentiusnickywijaya" target="_blank">VincentiusNicky</a></small></p>
             <ul class="fh5co-social-icons">
               <li>
                 <a href="#"></a>

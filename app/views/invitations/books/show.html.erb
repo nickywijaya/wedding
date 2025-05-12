@@ -18,8 +18,8 @@
   <meta name="twitter:url" content="">
   <meta name="twitter:card" content="">
   <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
-  <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Italianno" rel="stylesheet">
 
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
@@ -291,8 +291,12 @@
 
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-            <span>Our Memories</span>
-            <h2>Wedding Gallery</h2>
+            <span></span>
+
+            <blockquote class="blockquote">
+              <p class="mb-0">The best thing to hold onto in life is each other</p>
+              <footer class="blockquote-footer">Audery Hepburn</footer>
+            </blockquote>
           </div>
         </div>
 
@@ -301,21 +305,19 @@
         <div id="galleryCarousel" class="carousel slide" data-ride="carousel">
           <!-- Items -->
           <div class="carousel-inner" role="listbox">
-            <div class="item active">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-1.jpg') %>" alt="Image1">
-            </div>
+            <% images = [ 'gallery-1.jpg',
+                          'gallery-2.jpg',
+                          'gallery-3.jpg',
+                          'gallery-4.jpg',
+                          'gallery-5.jpg',
+                          'gallery-6.jpg'
+                        ]%>
 
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-2.jpg') %>" alt="Image2">
-            </div>
-
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-3.jpg') %>" alt="Image3">
-            </div>
-
-            <div class="item">
-              <img class="image-item-corousel" src="<%= asset_path('gallery-4.jpg') %>" alt="Image4">
-            </div>
+            <% images.each_with_index do |image, index| %>
+              <div class="item <%= 'active' if index == 0 %>">
+                <img class="image-item-corousel" src="<%= asset_path(image) %>" alt="Image<%= index + 1 %>">
+              </div>
+            <% end %>
           </div>
 
           <!-- Controls -->
@@ -394,7 +396,7 @@
     <!-- Sixth section page with all of invitees comments: END -->
 
     <!-- Seventh section page with the RSVP: START -->
-    <div id="fh5co-started" class="fh5co-bg" style="background-image: url(<%= asset_path('reservation-bg.jpg') %>);">
+    <div id="fh5co-started" class="fh5co-bg" style="background-image: url(<%= asset_path('reservation-bg2.jpg') %>);">
       <div class="overlay"></div>
       <div class="container">
 
@@ -502,7 +504,7 @@
       <div class="container">
         <div class="row copyright">
           <div class="col-md-12 text-center">
-            <p><small class="block">The wedding of Nicky & Nova</small> <small class="block">Designed by <a href="https://www.instagram.com/vincentiusnickywijaya" target="_blank">VincentiusNicky</a></small></p>
+            <p><small class="block">The wedding of Nicky & Nova</small> <small class="block">Built by <a href="https://www.instagram.com/vincentiusnickywijaya" target="_blank">VincentiusNicky</a></small></p>
             <ul class="fh5co-social-icons">
               <li>
                 <a href="#"></a>
