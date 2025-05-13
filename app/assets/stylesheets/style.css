@@ -1089,33 +1089,44 @@ form label {
   font-size: 30px;
 }
 .couple-half .groom, .couple-half .bride {
-  float: left;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
   width: 150px;
   height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* optional: center the image */
 }
 .couple-half .groom img, .couple-half .bride img {
-  width: 150px;
-  height: 150px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
+
 @media screen and (max-width: 480px) {
   .couple-half .groom, .couple-half .bride {
     width: 100%;
     height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto; /* optional: center horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+
   .couple-half .groom img, .couple-half .bride img {
     width: 120px;
     height: 120px;
     margin: 0 auto;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
   }
 }
+
 .couple-half .groom {
   float: right;
   margin-right: 5px;
