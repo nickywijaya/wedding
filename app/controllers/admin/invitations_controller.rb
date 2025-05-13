@@ -116,10 +116,12 @@ class Admin::InvitationsController < AdminController
   end
 
   def index_attributes
-    attribute = params.permit(:search, :commit).to_h
+    attribute = params.permit(:search, :guest_source, :attendance_type, :commit).to_h
 
     # transform attributes
     attribute["search"] = attribute["search"].to_s.strip
+    attribute["guest_source"] = attribute["guest_source"].to_s.strip
+    attribute["attendance_type"] = attribute["attendance_type"].to_i
 
     attribute
   end
@@ -153,6 +155,7 @@ class Admin::InvitationsController < AdminController
                   :attendance_type,
                   :with_family,
                   :with_partner,
+                  :sent,
                   guest_ids: []
                 ).to_h
 
@@ -163,6 +166,7 @@ class Admin::InvitationsController < AdminController
     attribute[:attendance_type] = attribute[:attendance_type].to_i
     attribute[:with_family] = (attribute[:with_family].to_s == "true") ? true : false
     attribute[:with_partner] = (attribute[:with_partner].to_s == "true") ? true : false
+    attribute[:sent] = (attribute[:sent].to_s == "true") ? true : false
     attribute[:participant] = attribute[:guest_ids].count if attribute[:participant].to_i.zero?
 
     attribute

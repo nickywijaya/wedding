@@ -18,6 +18,13 @@
         <th colspan="8" class="text-center">
           <%= form_tag admin_guests_path, method: :get, class: 'form-inline d-flex justify-content-center' do %>
             <%= text_field_tag :search, params[:search], class: 'form-control mr-2', placeholder: "Search by name", style: "width: 250px;" %>
+
+            <%= select_tag :guest_source,
+                options_for_select([['All', ''], ['Groom', 'groom'], ['Bride', 'bride']], params[:guest_source]),
+                class: 'form-control mr-2',
+                include_blank: false
+            %>
+
             <%= submit_tag 'Search', class: 'btn btn-primary mr-2' %>
           <% end %>
         </th>
@@ -53,6 +60,9 @@
           </td>
         </tr>
       <% end %>
+      <tr>
+        <<td colspan="8" class="text-center" style="font-weight: bold;">Total Guest: <%= @guests.count %></td>
+      </tr>
     </tbody>
   </table>
 </div>

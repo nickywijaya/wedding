@@ -43,7 +43,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_not_confirmed_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_confirmed_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -81,7 +81,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_attended_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_attended_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -119,7 +119,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_absent_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_absent_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -135,11 +135,11 @@
             </div>
           </div>
 
-          <!-- Holy Matrinomy Invitation Aggreagte -->
+          <!-- Holy Matrinomy Total Participant Aggreagte -->
           <div class="col-md-12 mb-3">
             <div class="card bg-light p-3">
-              <h5 class="card-title text-center">Invitations
-                <span data-toggle="tooltip" data-placement="top" title="How many invitations created, aggregated all the attending status">
+              <h5 class="card-title text-center">Total Participants
+                <span data-toggle="tooltip" data-placement="top" title="How many guests created, aggregated all the attending status">
                   <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
                 </span>
               </h5>
@@ -157,7 +157,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_holy_matrimony.fetch_aggregated_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_aggregated_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -177,6 +177,100 @@
       </div>
     </div>
   </div>
+
+  <!-- Holy Matrimony Invitations Section-->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white">
+      <div class="card-header text-center">
+        Holy Matrimony Invitations
+      </div>
+
+      <div class="card-body">
+        <!-- Main Row for Cards -->
+        <div class="row">
+
+          <!-- Holy Matrinomy Invitation Not Sent -->
+          <div class="col-md-6 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Not Sent
+                <span data-toggle="tooltip" data-placement="top" title="How many invitation that are not sent yet">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_not_sent_invitation %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100) %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_not_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_not_sent_invitation %> / <%= @venue_holy_matrimony.fetch_total_invitations %>
+              </p>
+            </div>
+          </div>
+
+          <!-- Holy Matrinomy Invitation Sent -->
+          <div class="col-md-6 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Sent
+                <span data-toggle="tooltip" data-placement="top" title="How many invitation that are already sent">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_holy_matrimony.fetch_sent_invitation %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_holy_matrimony.fetch_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_holy_matrimony.fetch_sent_invitation %> / <%= @venue_holy_matrimony.fetch_total_invitations %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
 
   <!-- Reception Participants Section-->
   <div class="row justify-content-between mb-3">
@@ -211,7 +305,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_not_confirmed_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_not_confirmed_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -250,7 +344,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_attended_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_attended_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -288,7 +382,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_absent_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_absent_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -304,11 +398,11 @@
             </div>
           </div>
 
-          <!-- Holy Matrinomy Invitation Aggreagte -->
+          <!-- Reception Total Participant Aggreagte -->
           <div class="col-md-12 mb-3">
             <div class="card bg-light p-3">
-              <h5 class="card-title text-center">Invitations
-                <span data-toggle="tooltip" data-placement="top" title="How many invitations created, aggregated all the attending status">
+              <h5 class="card-title text-center">Total Participants
+                <span data-toggle="tooltip" data-placement="top" title="How many guests created, aggregated all the attending status">
                   <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
                 </span>
               </h5>
@@ -326,7 +420,7 @@
                         fill="none"
                         stroke="#4db8ff"
                         stroke-width="3"
-                        stroke-dasharray="<%= @venue_reception.fetch_aggregated_attendees %>, 100"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_aggregated_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
@@ -346,6 +440,100 @@
       </div>
     </div>
   </div>
+
+  <!-- Reception Invitations Section-->
+  <div class="row justify-content-between mb-3">
+    <div class="card bg-primary text-white">
+      <div class="card-header text-center">
+        Reception Invitations
+      </div>
+
+      <div class="card-body">
+        <!-- Main Row for Cards -->
+        <div class="row">
+
+          <!-- Holy Matrinomy Invitation Not Sent -->
+          <div class="col-md-6 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Not Sent
+                <span data-toggle="tooltip" data-placement="top" title="How many invitation that are not sent yet">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_not_sent_invitation %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_not_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_not_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_not_sent_invitation %> / <%= @venue_reception.fetch_total_invitations %>
+              </p>
+            </div>
+          </div>
+
+          <!-- Holy Matrinomy Invitation Sent -->
+          <div class="col-md-6 mb-3">
+            <div class="card bg-light p-3">
+              <h5 class="card-title text-center">Sent
+                <span data-toggle="tooltip" data-placement="top" title="How many invitation that are already sent">
+                  <i class="bx bx-info-circle" style="font-size: 1.2em; cursor: pointer;"></i>
+                </span>
+              </h5>
+              <div class="progress-circle" data-percent="<%= @venue_reception.fetch_sent_invitation %>">
+                <svg viewBox="0 0 36 36" class="circular-chart" style="transform: rotate(-90deg);">
+                  <path class="circle-bg"
+                        fill="none"
+                        stroke="#e6e6e6"
+                        stroke-width="3"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                  <path class="circle"
+                        fill="none"
+                        stroke="#4db8ff"
+                        stroke-width="3"
+                        stroke-dasharray="<%= ((@venue_reception.fetch_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        d="M18 2.0845
+                          a 15.9155 15.9155 0 1 1 0 31.831
+                          a 15.9155 15.9155 0 1 1 0 -31.831"
+                  ></path>
+                </svg>
+                <div class="percentage">
+                  <%= ((@venue_reception.fetch_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>%
+                </div>
+              </div>
+              <p class="card-text text-center">
+                <%= @venue_reception.fetch_sent_invitation %> / <%= @venue_reception.fetch_total_invitations %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
 
   <!-- Event Time Left Section -->
   <div class="row justify-content-between mb-3">
@@ -382,6 +570,9 @@
       </div>
     </div>
   </div>
+
+  <br>
+  <br>
 
   <!-- Comments Section -->
   <div class="row justify-content-between mb-3">

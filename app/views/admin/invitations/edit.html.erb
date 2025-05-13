@@ -100,6 +100,20 @@
     </div>
 
     <div class="form-group">
+      <%= form.label :sent, "Is Invitation Sent?" %>
+
+      <div class="form-check">
+        <%= form.radio_button :sent, true, checked: @invitation.sent == true, class: "form-check-input" %>
+        <%= form.label :sent, "Yes", value: true, class: "form-check-label" %>
+      </div>
+
+      <div class="form-check">
+        <%= form.radio_button :sent, false, checked: @invitation.sent == false, class: "form-check-input" %>
+        <%= form.label :sent, "No", value: false, class: "form-check-label" %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= form.label :guest_ids, "Update Guests" %>
       <!-- Question mark icon with tooltip -->
       <span data-toggle="tooltip" data-placement="top" title="Select one or more guests to invite. Use Ctrl or Shift to select multiple.">

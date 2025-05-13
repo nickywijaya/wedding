@@ -6254,4 +6254,24 @@ button.close {
   }
 }
 
+.carousel-control {
+  width: 10%; /* optional: make arrow click area larger */
+}
+
+.carousel-control .custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 35px; /* adjust size */
+}
+
+.image-item-corousel {
+  width: 100%;   /* Makes the image width fill the container */
+  object-fit: fill; /* Ensure the image scales properly */
+  max-width: 100%; /* Prevents the image from expanding beyond its natural size */
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   get '/healthz' => 'health#index'
   get '/error' => 'error#index', as: 'error'
 
-  # root to: "home#index"
+  # set redirector root to /invitations/books
+  root to: redirect('/invitations/books')
+
+  # modify devise path_names to avoid clash with existing
   devise_for :users, path: '_auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
 
   namespace :admin, path: '_adminz' do

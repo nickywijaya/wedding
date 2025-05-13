@@ -56,4 +56,28 @@ class Venue < ApplicationRecord
       self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(attending: nil).sum(&:participant)
     end
   end
+
+  def fetch_not_sent_invitation
+    if self.venue_type == VENUE_TYPE_ENUM[:reception]
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:reception], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(sent: false).count
+    else
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(sent: false).count
+    end
+  end
+
+  def fetch_sent_invitation
+    if self.venue_type == VENUE_TYPE_ENUM[:reception]
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:reception], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(sent: true).count
+    else
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).where(sent: true).count
+    end
+  end
+
+  def fetch_total_invitations
+    if self.venue_type == VENUE_TYPE_ENUM[:reception]
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:reception], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).count
+    else
+      self.invitations.where(attendance_type: [Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony], Invitation::ATTENDANCE_TYPE_ENUM[:both]]).count
+    end
+  end
 end
