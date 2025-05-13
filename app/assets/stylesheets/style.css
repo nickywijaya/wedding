@@ -1690,13 +1690,13 @@ form label {
 }
 
 .btn-primary {
-  background: #ffffff;
-  color: rgb(59, 56, 56);
+  background: #2544df;
+  color: rgb(255, 255, 255);
   border: 2px solid #ffffff;
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background: #0015ff !important;
-  color: rgb(59, 56, 56);
+  background: #0eb6e4 !important;
+  color: rgb(255, 255, 255);
   border-color: #ffffff !important;
 }
 .btn-primary.btn-outline {
