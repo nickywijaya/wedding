@@ -12,7 +12,7 @@ module InvitationService
     end
 
     def perform
-      if params[:search].present? || params[:guest_source].present? || params[:attendance_type] >= 0
+      if params[:search].present? || params[:guest_source].present? || params[:attendance_type].present?
         data = Invitation.joins(:invitation_guests)
                .joins("INNER JOIN guests ON guests.id = invitation_guests.guest_id")
 
