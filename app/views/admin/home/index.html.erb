@@ -41,16 +41,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_not_confirmed_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_not_confirmed_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_confirmed_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_not_confirmed_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_not_confirmed_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_not_confirmed_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -79,16 +79,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_attending_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_attending_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_attended_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_attending_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_attended_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_attending_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -117,16 +117,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_absent_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_absent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_absent_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_absent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_absent_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_absent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -155,16 +155,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_aggregated_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_aggregated_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_aggregated_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_aggregated_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_aggregated_attendees.to_f / @venue_holy_matrimony.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_aggregated_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -209,16 +209,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_invitation_not_sent_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_invitation_not_sent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_not_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_invitation_not_sent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_not_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_invitation_not_sent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -247,16 +247,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @holy_matrimony_invitation_sent_percentage > 100 ) ? "#fa0000" : ( @holy_matrimony_invitation_sent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_holy_matrimony.fetch_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @holy_matrimony_invitation_sent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_holy_matrimony.fetch_sent_invitation.to_f / @venue_holy_matrimony.fetch_total_invitations.to_f) * 100).round(2) %>%
+                  <%= @holy_matrimony_invitation_sent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -303,16 +303,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_not_confirmed_percentage > 100 ) ? "#fa0000" : ( @reception_not_confirmed_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_not_confirmed_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_not_confirmed_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_not_confirmed_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @reception_not_confirmed_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -342,16 +342,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_attending_percentage > 100 ) ? "#fa0000" : ( @reception_attending_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_attended_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_attending_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_attended_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @reception_attending_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -380,16 +380,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_absent_percentage > 100 ) ? "#fa0000" : ( @reception_absent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_absent_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_absent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_absent_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @reception_absent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -418,16 +418,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_aggregated_percentage > 100 ) ? "#fa0000" : ( @reception_aggregated_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_aggregated_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_aggregated_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_aggregated_attendees.to_f / @venue_reception.max_attendees.to_f) * 100).round(2) %>%
+                  <%= @reception_aggregated_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -472,16 +472,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_invitation_not_sent_percentage > 100 ) ? "#fa0000" : ( @reception_invitation_not_sent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_not_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_invitation_not_sent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_not_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>%
+                  <%= @reception_invitation_not_sent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -510,16 +510,16 @@
                   ></path>
                   <path class="circle"
                         fill="none"
-                        stroke="#4db8ff"
+                        stroke="<%= ( @reception_invitation_sent_percentage > 100 ) ? "#fa0000" : ( @reception_invitation_sent_percentage > 80 ) ? "#e5ed07" : "#4db8ff" %>"
                         stroke-width="3"
-                        stroke-dasharray="<%= ((@venue_reception.fetch_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>, 100"
+                        stroke-dasharray="<%= @reception_invitation_sent_percentage %>, 100"
                         d="M18 2.0845
                           a 15.9155 15.9155 0 1 1 0 31.831
                           a 15.9155 15.9155 0 1 1 0 -31.831"
                   ></path>
                 </svg>
                 <div class="percentage">
-                  <%= ((@venue_reception.fetch_sent_invitation.to_f / @venue_reception.fetch_total_invitations.to_f) * 100).round(2) %>%
+                  <%= @reception_invitation_sent_percentage %>%
                 </div>
               </div>
               <p class="card-text text-center">
@@ -627,8 +627,22 @@
       var minutesR = Math.floor((timeLeftReception % (1000 * 60 * 60)) / (1000 * 60));
       var secondsR = Math.floor((timeLeftReception % (1000 * 60)) / 1000);
 
-      document.getElementById("countdown-holy-matrimony").innerHTML = daysHM + " Days " + hoursHM + " Hours " + minutesHM + " Minutes " + secondsHM + " Seconds ";
-      document.getElementById("countdown-reception").innerHTML = daysR + " Days " + hoursR + " Hours " + minutesR + " Minutes " + secondsR + " Seconds ";
+      var hmCountdownEl = document.getElementById("countdown-holy-matrimony");
+      var rCountdownEl = document.getElementById("countdown-reception");
+
+      hmCountdownEl.innerHTML = daysHM + " Days " + hoursHM + " Hours " + minutesHM + " Minutes " + secondsHM + " Seconds ";
+      rCountdownEl.innerHTML = daysR + " Days " + hoursR + " Hours " + minutesR + " Minutes " + secondsR + " Seconds ";
+
+      if (daysHM < 7 && daysR < 7) {
+        hmCountdownEl.style.color = "red";
+        rCountdownEl.style.color = "red";
+      } else if (daysHM < 25 && daysR < 25) {
+        hmCountdownEl.style.color = "yellow";
+        rCountdownEl.style.color = "yellow";
+      } else {
+        hmCountdownEl.style.color = "";
+        rCountdownEl.style.color = "";
+      }
     }
   }
 

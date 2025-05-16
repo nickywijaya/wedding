@@ -121,7 +121,7 @@ class Admin::InvitationsController < AdminController
     # transform attributes
     attribute["search"] = attribute["search"].to_s.strip
     attribute["guest_source"] = attribute["guest_source"].to_s.strip
-    attribute["attendance_type"] = attribute["attendance_type"].to_i
+    attribute["attendance_type"] = attribute["attendance_type"].to_i if attribute["attendance_type"].present?
 
     attribute
   end
