@@ -313,10 +313,10 @@
                           <figure>
                             <% if invitation.guests.pluck(:gender).uniq == [0] %>
                               <!-- show female avatar icon -->
-                              <img src="<%= asset_path('female-avatar.jpeg') %>">
+                              <img src="<%= asset_path('female-avatar.jpg') %>">
                             <% elsif invitation.guests.pluck(:gender).uniq == [1] %>
                               <!-- show male avatar icon -->
-                              <img src="<%= asset_path('male-avatar.jpeg') %>">
+                              <img src="<%= asset_path('male-avatar.jpg') %>">
                             <% else invitation.guests.pluck(:gender).uniq == [1] %>
                               <!-- show group avatar icon -->
                               <img src="<%= asset_path('group-avatar.jpg') %>">
