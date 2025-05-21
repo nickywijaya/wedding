@@ -67,6 +67,13 @@
           <td>
             <%= link_to 'Edit', edit_admin_invitation_path(invitation), class: 'btn btn-primary' %>
             <%= link_to "Delete", admin_invitation_path(invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <button class="btn btn-success"
+                onclick="generateAndCopy(this)"
+                data-names="<%= j invitation.guests&.first&.name %>"
+                data-path="<%= j invitations_show_path(invitation) %>"
+                data-attendance-type="<%= j invitation.attendance_type %>">
+              Generate Text
+            </button>
           </td>
         </tr>
       <% end %>
@@ -76,3 +83,66 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  function generateAndCopy(button) {
+    const names = button.getAttribute("data-names");
+    const path = button.getAttribute("data-path");
+    const host = window.location.origin;
+    const attendance_type = button.getAttribute("data-attendance-type");
+
+    let place = "";
+
+    console.log(attendance_type)
+
+    switch (attendance_type) {
+      case "0":
+        place = `💒 Holy Matrimony
+Date: Saturday, June 7th, 2025
+Time: 11:00 AM – 1:00 PM
+Venue: GBI Basilea Christ Cathedral`
+        break;
+      case "1":
+place = `🍽️ Intimate Dinner Reception
+Date: Saturday, June 7th, 2025
+Time: 6:00 PM – 8:00 PM
+Venue: Umatis Resto & Venue`
+        break;
+      case "2":
+place = `💒 Holy Matrimony
+Date: Saturday, June 7th, 2025
+Time: 11:00 AM – 1:00 PM
+Venue: GBI Basilea Christ Cathedral
+
+🍽️ Intimate Dinner Reception
+Date: Saturday, June 7th, 2025
+Time: 6:00 PM – 8:00 PM
+Venue: Umatis Resto & Venue`
+        break;
+    }
+
+    const text = `Dear Mr./Mrs./Ms. ${names},
+
+With heartfelt joy, we invite you to join us in celebrating the union of:
+
+Vincentius Nicky & Nova Belina
+
+${place}
+
+It would mean the world to us to have you witness and celebrate this special moment in our lives.
+Whether in person or virtually, your presence is truly cherished.
+
+To view our invitation and confirm your attendance, please visit the link below:
+
+${host}${path}
+
+We are deeply grateful for your support, blessings, and warm wishes as we embark on this new journey together.
+
+With love and gratitude,
+Vincentius Nicky & Nova Belina`;
+
+    navigator.clipboard.writeText(text)
+      .then(() => alert("Copied: " + text))
+      .catch(err => alert("Failed to copy: " + err));
+  }
+</script>
