@@ -5,14 +5,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>The wedding of Nicky & Nova</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The wedding of Nicky & Nova">
-  <meta name="keywords" content="The wedding of Nicky & Nova">
+  <meta name="description" content="The Wedding Of Nicky & Nova">
+  <meta name="keywords" content="The Wedding Of Nicky & Nova">
   <meta name="author" content="VincentiusNicky">
-  <meta property="og:title" content="">
-  <meta property="og:image" content="">
-  <meta property="og:url" content="">
-  <meta property="og:site_name" content="">
-  <meta property="og:description" content="">
+  <meta property="og:title" content="<%= content_for?(:page_title) ? yield(:page_title) : 'The Wedding Of Nicky & Nova' %>" />
+  <meta property="og:description" content="<%= content_for?(:page_description) ? yield(:page_description) : "You're invited to celebrate with us!" %>" />
+  <meta property="og:image" content="<%= content_for?(:page_image) ? yield(:page_image) : image_url('background_home.jpg') %>" />
+  <meta property="og:url" content="<%= request.original_url %>" />
   <meta name="twitter:title" content="">
   <meta name="twitter:image" content="">
   <meta name="twitter:url" content="">
@@ -24,6 +23,11 @@
 	<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
+  <!-- Meta content page -->
+  <% content_for :page_title, "The Wedding Of Nicky & Nova" %>
+  <% content_for :page_description, "You're invited to celebrate with us!" %>
+  <% content_for :page_image, image_url('background_home.jpg') %>
+
   <!-- Audio section, will be hidden and autoplay upon user interaction -->
   <audio id="bg-audio" preload="auto" style="display: none;">
     <source src="<%= asset_path('intro.mp3') %>" type="audio/mpeg">
