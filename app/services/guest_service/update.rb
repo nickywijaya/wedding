@@ -34,11 +34,5 @@ module GuestService
       raise GuestService::InvalidServiceParameterWithMessage.new(:contact_source, 'harus dipilih') if params[:contact_source].blank?
       raise GuestService::InvalidServiceParameterWithMessage.new(:guest_relation, 'harus dipilih') if params[:from_groom].nil?
     end
-
-    def transform_params
-      params["gender"] = params["gender"].to_i
-      params["contact_source"] = params["contact_source"].to_i
-      params["from_groom"] = (params["from_groom"] == "true") ? true : false
-    end
   end
 end

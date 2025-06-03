@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe InvitationService::Retrieve do
-  let(:params) { { search: 'test-query', guest_source: 'groom', attendance_type: 0} }
+  let(:params) { { search: 'test-query', guest_source: 'groom', attendance_type: Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony]} }
 
   subject { InvitationService.retrieve(params) }
 
@@ -26,6 +26,61 @@ RSpec.describe InvitationService::Retrieve do
         subject
 
         expect { subject }.to_not raise_error
+      end
+    end
+
+    context 'when params[:attendance_type] is exist' do
+      before do
+        params[:search] = ''
+        params[:guest_source] = nil
+
+        allow(Invitation).to receive(:joins).with(:invitation_guests).and_return(mock_relation)
+        allow(mock_relation).to receive(:joins).with("INNER JOIN guests ON guests.id = invitation_guests.guest_id").and_return(mock_relation)
+      end
+
+      context 'and it is holy_matrimony' do
+        before do
+          params[:attendance_type] = Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony]
+          allow(mock_relation).to receive(:where).with("attendance_type IN (?)", [0, 2]).and_return(mock_relation)
+
+          allow(mock_relation).to receive(:uniq).and_return(mock_relation)
+        end
+
+        it 'should return no error and success retrieve' do
+          subject
+
+          expect { subject }.to_not raise_error
+        end
+      end
+
+      context 'and it is reception' do
+        before do
+          params[:attendance_type] = Invitation::ATTENDANCE_TYPE_ENUM[:reception]
+          allow(mock_relation).to receive(:where).with("attendance_type IN (?)", [1, 2]).and_return(mock_relation)
+
+          allow(mock_relation).to receive(:uniq).and_return(mock_relation)
+        end
+
+        it 'should return no error and success retrieve' do
+          subject
+
+          expect { subject }.to_not raise_error
+        end
+      end
+
+      context 'and it is both' do
+        before do
+          params[:attendance_type] = Invitation::ATTENDANCE_TYPE_ENUM[:both]
+          allow(mock_relation).to receive(:where).with("attendance_type IN (?)", [2]).and_return(mock_relation)
+
+          allow(mock_relation).to receive(:uniq).and_return(mock_relation)
+        end
+
+        it 'should return no error and success retrieve' do
+          subject
+
+          expect { subject }.to_not raise_error
+        end
       end
     end
 
