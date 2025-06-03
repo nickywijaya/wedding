@@ -26,7 +26,7 @@ module UserService
     def validate
       raise UserService::MissingAttributes.new(:params) if params.nil?
 
-      raise UserService::InvalidServiceParameter.new(:name) unless params[:search].is_a? String
+      raise UserService::InvalidServiceParameter.new(:search) unless params[:search].is_a? String
     end
   end
 end

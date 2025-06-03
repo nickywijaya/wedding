@@ -37,8 +37,8 @@ RSpec.describe InvitationService::Delete do
   end
 
   describe 'validations' do
-    context 'raise errors on guest' do
-      context 'when guest is nil' do
+    context 'raise errors on invitation' do
+      context 'when invitation is nil' do
         let(:invitation) { nil }
 
         it 'should raise error' do
@@ -46,8 +46,8 @@ RSpec.describe InvitationService::Delete do
         end
       end
 
-      context 'when guest is not a Guest' do
-        let(:invitation) { 'this is not a Guest' }
+      context 'when invitation is not an Invitatiion' do
+        let(:invitation) { 'this is not an Invitatiion' }
 
         it 'should raise error' do
           expect { subject }.to raise_error InvitationService::InvalidServiceParameter
