@@ -8,15 +8,27 @@ RSpec.describe BookService::Book do
   subject { BookService.book(invitation, params) }
 
   describe '#perform' do
-    before do
-      allow(invitation).to receive(:save!).and_return(true)
+    context 'when success' do
+      before do
+        allow(invitation).to receive(:save!).and_return(true)
+      end
+
+      it 'updates the invitation with comments and attending' do
+        subject
+
+        expect(invitation.comments).to eq(params[:comments])
+        expect(invitation.attending).to be true
+      end
     end
 
-    it 'updates the invitation with comments and attending' do
-      subject
+    context 'when error' do
+      before do
+        allow(invitation).to receive(:save!).and_raise(StandardError)
+      end
 
-      expect(invitation.comments).to eq(params[:comments])
-      expect(invitation.attending).to be true
+      it 'should return error' do
+        expect { subject }.to raise_error StandardError
+      end
     end
   end
 

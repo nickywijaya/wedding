@@ -1,4 +1,23 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
+
+require 'simplecov'
+SimpleCov.start 'rails' do
+  # exclude specific file that is not support to be tested
+  add_filter '/app/controllers/healthz_controller.rb'
+  add_filter '/app/models/application_record.rb'
+  add_filter '/app/services/services.rb'
+
+  # exculde some folders
+  add_filter '/spec/'
+  add_filter '/test/'
+  add_filter '/channels/'
+  add_filter '/mailers/'
+  add_filter '/helpers/'
+  add_filter '/jobs/'
+
+  add_group 'Services', 'app/services/'
+end
+
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
