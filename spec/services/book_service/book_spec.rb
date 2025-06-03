@@ -16,7 +16,7 @@ RSpec.describe BookService::Book do
       subject
 
       expect(invitation.comments).to eq(params[:comments])
-      expect(invitation.attending).to be nil
+      expect(invitation.attending).to be nil # fix me to true
     end
   end
 
