@@ -1,9 +1,6 @@
-name: RSpec Tests
+name: CI
 
-on:
-  pull_request:
-    branches:
-      - main  # or your protected branch
+on: [push]
 
 jobs:
   test:
@@ -32,7 +29,7 @@ jobs:
 
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.2'  # change to your Ruby version
+          ruby-version: '3.2.2'
 
       - name: Install dependencies
         run: |
@@ -44,6 +41,6 @@ jobs:
           bin/rails db:create
           bin/rails db:schema:load
 
-      - name: Run RSpec
+      - name: Run tests
         run: |
           bundle exec rspec
