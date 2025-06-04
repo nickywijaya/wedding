@@ -55,7 +55,7 @@ RSpec.describe 'Admin::GuestsController', type: :request do
         allow(Guest).to receive(:new).and_raise(StandardError)
       end
 
-      it 'redirect to admin error page' do
+      it 'redirect to admin new guest page' do
         expect(Rails.logger).to receive(:error)
 
         get path
