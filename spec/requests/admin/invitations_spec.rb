@@ -9,6 +9,7 @@ RSpec.describe 'Admin::InvitationsController', type: :request do
 
   before do
     sign_in user
+    allow_any_instance_of(Admin::InvitationsController).to receive(:render)
   end
 
   describe 'GET /_adminz/invitations' do

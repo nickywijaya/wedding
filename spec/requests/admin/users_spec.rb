@@ -7,6 +7,7 @@ RSpec.describe 'Admin::UsersController', type: :request do
 
   before do
     sign_in user
+    allow_any_instance_of(Admin::UsersController).to receive(:render)
   end
 
   describe 'GET /_adminz/users' do

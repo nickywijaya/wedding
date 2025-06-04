@@ -8,6 +8,7 @@ RSpec.describe 'Admin::WeddingsController', type: :request do
 
   before do
     sign_in user
+    allow_any_instance_of(Admin::WeddingsController).to receive(:render)
   end
 
   describe 'GET /_adminz/weddings' do

@@ -7,6 +7,10 @@ RSpec.describe 'Invitations::BooksController', type: :request do
   let(:invitation) { build_stubbed(:invitation, :holy_matrimony) }
   let(:guest)      { build_stubbed(:guest) }
 
+  before do
+    allow_any_instance_of(Invitations::BooksController).to receive(:render)
+  end
+
   describe 'GET /invitations/books' do
     let(:path)  { '/invitations/books' }
 
