@@ -248,12 +248,3 @@ RSpec.describe 'Admin::GuestsController', type: :request do
 
   end
 end
-
-
-
-
-
-
-
-
-

@@ -6,6 +6,15 @@ FactoryBot.define do
     id               { SecureRandom.uuid }
     participant      { 1 }
     attendance_type  { Invitation::ATTENDANCE_TYPE_ENUM[:both] }
+
+    trait :holy_matrimony do
+      attendance_type  { Invitation::ATTENDANCE_TYPE_ENUM[:holy_matrimony] }
+    end
+
+    trait :reception do
+      attendance_type  { Invitation::ATTENDANCE_TYPE_ENUM[:reception] }
+    end
+
     attending        { true }
     with_family      { true }
     sent             { false }
