@@ -1,5 +1,5 @@
 class Admin::WeddingsController < AdminController
-  before_action :load_resource, only: [:edit, :update]
+  before_action :load_resource, only: [:update]
 
   respond_to? :html
   layout 'admin'
@@ -15,6 +15,7 @@ class Admin::WeddingsController < AdminController
   end
 
   def edit
+    load_resource
   rescue StandardError => e
     log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"

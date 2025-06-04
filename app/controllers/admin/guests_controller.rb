@@ -1,5 +1,5 @@
 class Admin::GuestsController < AdminController
-  before_action :load_resource, only: [:edit, :update, :destroy]
+  before_action :load_resource, only: [:update, :destroy]
 
   respond_to? :html
   layout 'admin'
@@ -53,6 +53,7 @@ class Admin::GuestsController < AdminController
   end
 
   def edit
+    load_resource
   rescue StandardError => e
     log_error(e, action_name, params[:id])
     flash[:error] = "Tetap tenang tetap semangat"
