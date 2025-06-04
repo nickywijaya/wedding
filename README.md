@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/github/nickywijaya/wedding/badge.svg?branch=main)](https://coveralls.io/github/nickywijaya/wedding?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/nickywijaya/wedding/badge.svg?branch=main)](https://coveralls.io/github/nickywijaya/wedding?branch=main)
 
 ## Description
 A repository to host a simple wedding invitation
