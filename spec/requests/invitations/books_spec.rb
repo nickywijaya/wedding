@@ -42,23 +42,78 @@ RSpec.describe 'Invitations::BooksController', type: :request do
     let(:path)  { '/invitations/books/123' }
 
     context 'when success' do
-      before do
-        allow(Invitation).to receive(:find).and_return(invitation)
-        allow(invitation).to receive(:guests).and_return([guest])
-        allow(invitation).to receive(:wedding).and_return(wedding)
+      context 'and invitation with partner' do
+        before do
+          allow(Invitation).to receive(:find).and_return(invitation)
+          allow(invitation).to receive(:guests).and_return([guest])
 
-        allow(Invitation).to receive_message_chain(:fetch_filled_comments, :shuffle).and_return([invitation])
+          allow(invitation).to receive(:with_partner?).and_return(true)
+          allow(invitation).to receive(:wedding).and_return(wedding)
+
+          allow(Invitation).to receive_message_chain(:fetch_filled_comments, :shuffle).and_return([invitation])
+        end
+
+        it 'renders the index template' do
+          get path
+          expect(response).to have_http_status(:ok)
+        end
       end
 
-      it 'renders the index template' do
+      context 'and invitation with family' do
+        before do
+          allow(Invitation).to receive(:find).and_return(invitation)
+          allow(invitation).to receive(:guests).and_return([guest])
+
+          allow(invitation).to receive(:with_partner?).and_return(false)
+          allow(invitation).to receive(:with_family?).and_return(true)
+          allow(invitation).to receive(:wedding).and_return(wedding)
+
+          allow(Invitation).to receive_message_chain(:fetch_filled_comments, :shuffle).and_return([invitation])
+        end
+
+        it 'renders the index template' do
+          get path
+          expect(response).to have_http_status(:ok)
+        end
+      end
+
+      context 'and invitation without family / partner' do
+        before do
+          allow(Invitation).to receive(:find).and_return(invitation)
+          allow(invitation).to receive(:guests).and_return([guest])
+
+          allow(invitation).to receive(:with_partner?).and_return(false)
+          allow(invitation).to receive(:with_family?).and_return(false)
+          allow(invitation).to receive(:wedding).and_return(wedding)
+
+          allow(Invitation).to receive_message_chain(:fetch_filled_comments, :shuffle).and_return([invitation])
+        end
+
+        it 'renders the index template' do
+          get path
+          expect(response).to have_http_status(:ok)
+        end
+      end
+    end
+
+    context 'when error on load_resource' do
+      before do
+        allow(Invitation).to receive(:find).and_raise(StandardError)
+      end
+
+      it 'redirect to public error page' do
+        expect(Rails.logger).to receive(:error)
+
         get path
-        expect(response).to have_http_status(:ok)
+
+        expect(response).to redirect_to(error_path)
       end
     end
 
     context 'when error' do
       before do
-        allow(Invitation).to receive(:find).and_raise(StandardError)
+        allow(Invitation).to receive(:find).and_return(invitation)
+        allow(invitation).to receive(:guests).and_raise(StandardError)
       end
 
       it 'redirect to public error page' do

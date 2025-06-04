@@ -88,5 +88,8 @@ FactoryBot.define do
       end
     end
 
+    trait :reception do
+      venue_type  { Venue::VENUE_TYPE_ENUM[:reception] }
+    end
   end
 end
