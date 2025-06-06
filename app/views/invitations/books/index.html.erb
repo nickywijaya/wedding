@@ -466,22 +466,29 @@
     // handle timer countdown
     // --------------------------
 
-    var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.strftime('%Y-%m-%dT%H:%M:%S') %>");
+    var d = new Date("<%= @wedding.venues.holy_matrimony.start_time.iso8601 %>");
 
     // default example
     simplyCountdown('.simply-countdown-one', {
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate()
-    });
+    year: d.getUTCFullYear(),
+    month: d.getUTCMonth() + 1,
+    day: d.getUTCDate(),
+    hours: d.getUTCHours(),
+    minutes: d.getUTCMinutes(),
+    seconds: d.getUTCSeconds(),
+    enableUtc: false
+});
 
     //jQuery example
     $('#simply-countdown-losange').simplyCountdown({
-        year: d.getFullYear(),
-        month: d.getMonth() + 1,
-        day: d.getDate(),
-        enableUtc: false
-    });
+    year: d.getUTCFullYear(),
+    month: d.getUTCMonth() + 1,
+    day: d.getUTCDate(),
+    hours: d.getUTCHours(),
+    minutes: d.getUTCMinutes(),
+    seconds: d.getUTCSeconds(),
+    enableUtc: false
+});
   </script>
   <!-- Script related section: END -->
 
