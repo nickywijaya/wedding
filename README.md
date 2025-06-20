@@ -15,7 +15,8 @@ Vincentius Nicky
 #### Prerequisites
 1. [Ruby](https://rvm.io/rvm/install)
 2. [Rails](https://rubyonrails.org/)
-3. [MySQL](https://www.mysql.com/)
+3. [Rspec](https://rspec.info/documentation/)
+4. [MySQL](https://www.mysql.com/)
 
 #### Setup
 1. clone repository
@@ -50,4 +51,10 @@ rake db:seed
 6. run application
 ```
 rails s
+```
+
+7. run rspec
+```
+bundle exec rspec <file_rspec.rb>
+bundle exec rspec # alternative (all spec)
 ```
