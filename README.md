@@ -48,13 +48,19 @@ rake db:migrate
 rake db:seed
 ```
 
-6. run application
+6. run rspec
+```
+bundle exec rspec <file_rspec.rb>
+bundle exec rspec # alternative (all spec)
+```
+
+7. run application
 ```
 rails s
 ```
 
-7. run rspec
+8. access admin dashboard
 ```
-bundle exec rspec <file_rspec.rb>
-bundle exec rspec # alternative (all spec)
+go to <HOST>:<PORT>/_adminz
+you can login with user that is created using the db seeder
 ```

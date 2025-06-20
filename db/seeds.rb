@@ -7,7 +7,7 @@ include SecureRandom
 
 # create admin user
 admin = User.new
-admin.email = "admin@google.com"
+admin.email = "admin@yahoo.com"
 admin.password = "admin1234"
 admin.confirmed_at = Time.now
 admin.save!
@@ -24,7 +24,7 @@ wedding.save!
 venue_holy_matrimony = Venue.new
 venue_holy_matrimony.name = 'Big Valley Grace Community Church'
 venue_holy_matrimony.address = '4040 Tully Rd, Modesto, CA 95356'
-venue_holy_matrimony.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.9546875295914!2d-121.0108296!3d37.69726319999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809050e0c2a6b7b5%3A0x412c825ea2a51c7a!2sBig%20Valley%20Grace%20Community%20Church!5e0!3m2!1sid!2sid!4v1750389071904!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+venue_holy_matrimony.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3156.9546875295914!2d-121.0108296!3d37.69726319999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x809050e0c2a6b7b5%3A0x412c825ea2a51c7a!2sBig%20Valley%20Grace%20Community%20Church!5e0!3m2!1sid!2sid!4v1750389071904!5m2!1sid!2sid"
 venue_holy_matrimony.start_time = Time.new(2027, 07, 07, 07, 0, 0, 0)
 venue_holy_matrimony.end_time = Time.new(2027, 07, 07, 10, 0, 0, 0)
 venue_holy_matrimony.max_attendees = 300
@@ -35,7 +35,7 @@ venue_holy_matrimony.save!
 venue_reception = Venue.new
 venue_reception.name = 'Venice Boardwalk'
 venue_reception.address = 'Beach pavillion in, Los Angeles, CA'
-venue_reception.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26467.899601269317!2d-118.49045881340265!3d33.98001122091108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bbdcff2b25b3%3A0xedbe20babf53aa1b!2sVenice%20Boardwalk!5e0!3m2!1sid!2sid!4v1750389173788!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+venue_reception.map_src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26467.899601269317!2d-118.49045881340265!3d33.98001122091108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bbdcff2b25b3%3A0xedbe20babf53aa1b!2sVenice%20Boardwalk!5e0!3m2!1sid!2sid!4v1750389173788!5m2!1sid!2sid"
 venue_reception.start_time = Time.new(2027, 07, 07, 19, 0, 0, 0)
 venue_reception.end_time = Time.new(2027, 07, 07, 23, 0, 0, 0)
 venue_reception.max_attendees = 500
