@@ -77,10 +77,10 @@ class Invitations::BooksController < ActionController::Base
 
   def generate_calendar_url
     calendar_hash = {
-      text: "The Wedding Of Nicky & Nova",
-      dates: "20250607T040000Z/20250607T060000Z",
-      details: "You are invited to attend the holy matrimony of Nicky & Nova Wedding",
-      location: "GBI Basilea Christ Cathedral (https://g.co/kgs/iTL9qDT)"
+      text: "The Wedding Of Jhon Doe & Melissa",
+      dates: "20270707T000000Z/20270707T030000Z",
+      details: "You are invited to attend the holy matrimony of Jhon Doe & Melissa Wedding",
+      location: "Big Valley Grace Community Church (https://maps.app.goo.gl/TaE5mthP91Df9gXF7)"
     }
     query_string = calendar_hash.to_query
 
