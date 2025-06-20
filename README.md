@@ -15,7 +15,8 @@ Vincentius Nicky
 #### Prerequisites
 1. [Ruby](https://rvm.io/rvm/install)
 2. [Rails](https://rubyonrails.org/)
-3. [MySQL](https://www.mysql.com/)
+3. [Rspec](https://rspec.info/documentation/)
+4. [MySQL](https://www.mysql.com/)
 
 #### Setup
 1. clone repository
@@ -47,7 +48,19 @@ rake db:migrate
 rake db:seed
 ```
 
-6. run application
+6. run rspec
+```
+bundle exec rspec <file_rspec.rb>
+bundle exec rspec # alternative (all spec)
+```
+
+7. run application
 ```
 rails s
+```
+
+8. access admin dashboard
+```
+go to <HOST>:<PORT>/_adminz
+you can login with user that is created using the db seeder
 ```
